@@ -1,0 +1,110 @@
+\label{sec:conclusao}
+
+% ============================================================
+% Pacotes necessários no preâmbulo do documento principal:
+% \usepackage[utf8]{inputenc}
+% \usepackage[T1]{fontenc}
+% \usepackage[brazil]{babel}
+% \usepackage{booktabs}
+% \usepackage{tabularx}
+% \usepackage{array}
+% \usepackage{longtable}
+% \usepackage{caption}
+% \usepackage{geometry}
+% ============================================================
+
+\chapter{Conclusão}
+
+\section{Estimativa de Custos Operacionais}
+
+A adoção de ferramentas de código aberto elimina os custos de licenciamento de
+\textit{software}, que em soluções proprietárias equivalentes podem representar a parcela
+mais expressiva do orçamento de um \textit{pipeline} de dados. No entanto, a ausência de
+licenças não implica ausência de custos. Os gastos com infraestrutura, servidores,
+armazenamento e transferência de dados, persistem e devem ser estimados com precisão
+para que o benefício econômico do \textit{open source} seja quantificado de forma correta e justa.
+
+\subsection{Premissas da Estimativa}
+
+%% Inserir posteriamente após avaliar com o Diego 
+
+\subsection{Infraestrutura de Servidor}
+
+%% Inserir posteriamente após avaliar com o Diego 
+
+
+\subsection{Armazenamento}
+
+%% Inserir posteriamente após avaliar com o Diego 
+
+
+\subsection{Transferência de Dados}
+
+%% Inserir posteriamente após avaliar com o Diego 
+
+
+\subsection{Custo Total e Comparação com Soluções Proprietárias}
+
+%% Inserir posteriamente após avaliar com o Diego 
+
+
+\section{Análise Crítica e Lições Aprendidas}
+
+\subsection{Limitações de Escalabilidade das Ferramentas \textit{Open Source}}
+
+%% Inserir posteriamente após avaliar com o Diego 
+
+
+\subsection{Síntese das Lições Aprendidas}
+
+O desenvolvimento deste protótipo evidenciou que a viabilidade de um \textit{pipeline}
+de dados \textit{open source} para extração e análise de informações de mercado turístico
+é técnica e economicamente comprovada. As principais lições aprendidas, com valor
+imediato para implementações futuras, são organizadas a seguir.
+
+A heterogeneidade das fontes é o principal desafio de engenharia. Os 10
+\textit{scrapers} desenvolvidos implementam ao menos seis estratégias distintas de
+extração, \textit{scroll} infinito, carrossel, paginação, botão ``ver mais'',
+\textit{dropdown} de navegação e navegação multi-nível, porque cada operadora turística
+construiu seu site de forma independente. Essa diversidade torna impraticável uma solução
+genérica e reforça a necessidade de manutenção contínua, alterações no \textit{layout}
+de qualquer site exigem atualização do \textit{scraper} correspondente.
+
+A deduplicação incremental é uma funcionalidade, não um detalhe. A estratégia
+de comparar tuplas de campos-chave antes de inserir registros, implementada via
+get\_existing\_records() no db\_manager.py, permite que os
+\textit{scrapers} sejam reexecutados sem gerar duplicatas, o que é essencial tanto para
+a confiabilidade dos dados quanto para a operação de recuperação após falhas.
+
+O LocalExecutor do Airflow é suficiente para o escopo atual, mas cria débito
+arquitetural. A escolha deliberada pelo LocalExecutor simplificou enormemente a
+infraestrutura inicial, mas qualquer incremento substancial no número de
+\textit{scrapers} exigirá migração para um executor distribuído. Documentar essa decisão
+e seus \textit{trade-offs} desde o início é fundamental para que futuros mantenedores
+compreendam o contexto da escolha, estejam cientes do débito técnico. 
+
+Ferramentas \textit{open source} não eliminam custos, mas os redistribuem. O
+custo de licenciamento zero é substituído por custos de operação (servidor), custo de
+aprendizado (curva de adoção das ferramentas) e custo de manutenção (atualizações,
+correções de \textit{scrapers}, monitoramento). Para organizações sem equipe técnica
+dedicada, a comparação com soluções SaaS deve considerar o custo total de propriedade
+(\textit{Total Cost of Ownership} ou TCO), e não apenas o custo de licença.
+
+A separação dos dados em camadas demonstrou seu valor prático. O modelo de quatro camadas
+implementado, \textit{scrapers}, passando pelo DuckDB/PostgreSQL \textit{raw},
+depois pelos modelos dbt staging/marts, até o Superset, permitiu que cada componente
+evoluísse de forma independente. A adição de novos \textit{scrapers} não afetou os
+modelos dbt existentes, e a refatoração dos modelos não exigiu alterações nos
+\textit{scrapers}. Essa independência é um resultado direto da adesão ao princípio de
+separação de responsabilidades e ao padrão de dados em camadas (\textit{medallion
+architecture} simplificada).
+
+Em síntese, o \textit{pipeline} desenvolvido demonstra que é possível construir uma
+infraestrutura analítica funcional, auditável e economicamente acessível inteiramente
+com ferramentas de código aberto. As limitações
+identificadas não invalidam a abordagem, mas delimitam com precisão seu envelope de
+aplicabilidade. O protótipo é adequado para dezenas de fontes e volumes na casa dos
+gigabytes, e requer evolução arquitetural planejada para os próximos patamares de escala.
+
+
+

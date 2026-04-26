@@ -1,0 +1,60 @@
+\chapter{Fundamentação Teórica}
+\label{sec:fundamentacao}
+
+Neste capítulo, são apresentados os principais conceitos e estudos que embasam o desenvolvimento de \textit{pipelines} de dados com ferramentas \textit{open source}. A seguir, aborda-se a evolução das abordagens de ETL (\textit{Extract}, \textit{Transform}, \textit{Load}), os desafios contemporâneos da engenharia de dados e os benefícios da adoção de soluções de código aberto.
+
+\section{ETL e a Evolução das Arquiteturas de Dados}
+\label{sec:etl_evolucao}
+
+O processo de \textit{Extract, Transform, Load} (ETL) consolidou-se como o componente fundamental na engenharia de dados, responsável por extrair informações de diversas fontes, transformá-las conforme necessidades analíticas e carregá-las em ambientes como \textit{data warehouses} (DW) ou \textit{data lakes} (DL). O DW é uma estrutura de banco de dados desnormalizado e centralizado, projetada para fornecer suporte à tomada de decisão estratégica por meio de análise histórica, amplamente utilizada em operações de \textit{Online Analytical Processing} (OLAP) e \textit{data mining} (\cite{septian2019}).
+
+Em contrapartida, o \textit{data lake} representa uma abordagem eficiente e escalável para o armazenamento de grandes volumes de dados brutos em diversos formatos, permitindo que o processamento ocorra sob demanda. Com suporte a ferramentas \textit{open source}, como o Hadoop File System, os \textit{data lakes} oferecem vantagens como baixo custo, tolerância a falhas e flexibilidade de esquema (\textit{schema on read}).
+
+Essa evolução arquitetural é um reflexo direto dos desafios impostos pelo \textit{Big Data}. Segundo \cite{nwokeji2021}, o ETL evoluiu para lidar com os cinco principais desafios do Big Data, conhecidos como os 5Vs: volume, variedade, velocidade, veracidade e valor. No entanto, processos tradicionais de ETL, tipicamente associados ao contexto de \textit{Business Intelligence} (BI), frequentemente demonstram limitações em ambientes modernos, incluindo custo elevado e ingestão limitada em tempo real (\cite{nwokeji2021}).
+
+Para superar essas restrições, houve uma evolução significativa nos modelos. \cite{boulahia2024} categorizam o ETL em três grandes vertentes: ETL para \textit{Business Intelligence} (tradicional, focado em dados estruturados), ETL para \textit{Big Data} (utilizando tecnologias distribuídas como Hadoop e Spark para escalabilidade) e ETL Semântico (que utiliza ontologias para integração de dados heterogêneos).
+
+Em paralelo, a própria ordem do processamento foi redefinida. Surgiu a abordagem ELT (\textit{Extract, Load, Transform}), na qual os dados brutos são primeiramente carregados no \textit{data lake} ou \textit{data warehouse} e a transformação ocorre posteriormente, explorando o poder de processamento do próprio destino. Essa flexibilidade é crucial para o desenvolvimento de \textit{pipelines} híbridos e escaláveis.
+
+\subsubsection{Transição para ELT e o Papel do Data Wrangling}
+\label{ssec:transicao_elt}
+
+Um desafio central que afeta a escolha é a \textbf{complexidade} do \textit{Data Wrangling} (obter, organizar, entender, extrair e formatar dados) . A complexidade e a escala do \textit{Big Data} impulsionaram a transição do modelo tradicional \textbf{ETL} (\textit{Extract, Transform, Load}) para o \textbf{ELT} (\textit{Extract, Load, Transform}) . No modelo ELT, a transformação ocorre \textit{após} o carregamento dos dados brutos no \textit{Data Lake}, aproveitando a capacidade de processamento distribuído da plataforma \textit{open source}.
+
+Apesar do desafio de \textit{setup} e manutenção (\textit{steep learning curve}), o modelo \textit{open source}, exemplificado pelo Apache Airflow, é a opção preferida por sua escalabilidade, flexibilidade e a capacidade de ser um "contêiner aberto" para diversas soluções de \textit{data wrangling} .
+
+\section{Open Source: Estratégia, Flexibilidade e Comparação}
+\label{sec:open_source}
+
+O uso de ferramentas \textit{open source} vem se consolidando como alternativa viável e estratégica às soluções proprietárias em projetos de engenharia de dados. \cite{septian2019} demonstram que, ao construir \textit{pipelines} com softwares livres, é possível reduzir custos, adaptar a arquitetura às necessidades específicas da organização e fomentar a inovação por meio da colaboração comunitária.
+
+Especificamente para pequenas e médias empresas, \cite{septian2019} apontam que soluções baseadas em software livre oferecem alternativas de baixo custo para acessar tecnologias antes restritas a grandes corporações. Ferramentas como Apache Hadoop, Spark e Kafka são amplamente utilizadas em diversos ambientes corporativos, viabilizando a escalabilidade e a interoperabilidade entre diferentes camadas da arquitetura.
+
+A agilidade na evolução tecnológica é outro fator decisivo. \cite{murarka2024} destacam que a natureza colaborativa das comunidades \textit{open source} impulsiona a inovação contínua, criando ecossistemas que evoluem rapidamente. Essa característica contrasta com o ciclo mais lento de atualização das ferramentas proprietárias.
+
+A escolha entre as abordagens, no entanto, depende do contexto organizacional. \cite{boulahia2024} apresentam uma análise comparativa:
+\begin{itemize}
+\item Ferramentas Proprietárias: Oferecem maior robustez, suporte técnico especializado e garantias contratuais.
+\item Ferramentas \textit{Open Source}: Destacam-se pela flexibilidade, personalização e baixo custo.
+\end{itemize}
+Desta forma, ambientes acadêmicos e empresas com foco em inovação e adaptabilidade podem beneficiar-se das soluções \textit{open source}, enquanto grandes corporações com alta criticidade de dados e requisitos regulatórios podem ainda optar por ferramentas proprietárias (\cite{boulahia2024}, \cite{septian2019}).
+
+\section{Técnicas Avançadas de Ingestão e Processamento}
+\label{sec:avancos_tecnicas}
+
+Com o aumento exponencial da produção de dados provenientes de dispositivos \textit{IoT}, redes sociais e sistemas transacionais, surgem novos desafios na ingestão em tempo real. \cite{murarka2024} enfatizam que tecnologias como Apache Kafka, Flume e NiFi desempenham papel central nesse contexto, oferecendo suporte eficiente tanto a fluxos \textit{batch} quanto \textit{streaming}, sendo alternativas ao modelo tradicional do Hadoop MapReduce por oferecerem processamento em memória e análises em tempo real.
+
+A capacidade de lidar com diferentes padrões de fluxo de dados é crucial. Plataformas como Apache Spark, Flink  e Storm permitem a construção de \textit{pipelines} mais eficientes, com menor latência e maior resiliência.
+
+Um aspecto relevante, e tendência crescente, é a incorporação de aprendizado de máquina (\textit{machine learning}) nos \textit{pipelines} de dados. O objetivo é automatizar etapas como detecção de anomalias, classificação e priorização de fluxos. Essa integração aumenta a eficiência operacional e abre espaço para \textit{pipelines} mais autônomos e adaptativos (\cite{murarka2024}).
+
+\section{Tendências Emergentes: Reverse ETL}
+\label{sec:reverse_etl}
+
+Tradicionalmente, a arquitetura analítica de dados foca na consolidação de dados em repositórios centrais. No entanto, o conceito de \textit{Reverse ETL} (\textit{Extract, Transform, Load} Invertido) tem ganhado destaque ao propor o fluxo de dados no sentido oposto: devolver os dados já tratados, enriquecidos e analisados a sistemas operacionais e de negócio.
+
+\cite{reverseetl2022} explicam que essa abordagem resolve o chamado “último quilômetro da análise de dados”, reduzindo silos de informação e permitindo que \textit{insights} estratégicos sejam consumidos diretamente em ferramentas operacionais (como \texttt{CRMs}, ferramentas de marketing ou \texttt{ERPs}). Isso alinha decisões analíticas com ações operacionais em tempo quase real.
+
+Apesar de ser uma tendência poderosa para a \textit{Operational Analytics}, o \textit{Reverse ETL} ainda enfrenta desafios técnicos como a sincronização eficiente de dados, a integração com múltiplas \texttt{APIs} de terceiros e a gestão de custos associados à latência, temas que continuam a impulsionar o desenvolvimento de novas ferramentas no ecossistema de dados (\cite{reverseetl2022}).
+
+

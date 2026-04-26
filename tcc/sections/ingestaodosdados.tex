@@ -1,0 +1,796 @@
+\label{sec:ingestaodosdados}
+
+Para a construção do \textit{pipeline} de dados, foram mapeadas e extraídas informações de dez websites internacionais, de diferentes países, que oferecem pacotes de viagem e passagens aéreas com destino ao Brasil. Essa diversidade de fontes enriquece o conjunto de dados, permitindo uma análise comparativa mais ampla e detalhada. Contudo, essa variedade também impôs desafios significativos, especialmente em relação à multi-moeda e ao multi-idioma. A extração de dados exigiu que os scripts fossem adaptados para lidar com diferentes moedas (Euros, Libras, Dólares americanos e Dólares chilenos) e idiomas (alemão, espanhol, francês e inglês), garantindo que os dados brutos fossem coletados de forma consistente, apesar das variações. Foram desenvolvidos dez scripts para cada site escolhido: Bleu Selectour (França), Comptoir Des Voyages (França), Ikarus Tours (Alemanha), Jetmar (Uruguai), Journey Latin America (Reino Unido), Newmarket Holidays (Reino Unido), Panamericana Turismo (Chile), Sol Férias (Portugal), Transalpino (Portugal) e Turismo Costanera (Chile).
+
+O foco principal do trabalho é a avaliação de ferramentas de código aberto, analisando seu impacto direto na escalabilidade e no desempenho da solução. A metodologia empregada aborda os principais desafios na elaboração da arquitetura, desde a extração de dados dinâmicos até o processamento e armazenamento eficientes.
+
+Em suma, este estudo de caso serve como um guia prático para a construção de soluções de dados eficientes, provando que é possível desenvolver sistemas de alta performance utilizando um ecossistema de ferramentas acessíveis e flexíveis. Além de seu caráter acadêmico e tecnológico, este trabalho também possui relevância prática, podendo servir como base para instituições como a Embratur, que dependem da coleta e análise de informações de mercado internacional para planejar estratégias de promoção turística do Brasil no exterior.
+
+\subsubsection{Tecnologias Utilizadas}
+
+O processo de construção do pipeline de dados foi integralmente desenvolvido em Python, uma linguagem de programação cuja vasta aplicabilidade em automação e no ecossistema de processamento de dados a torna uma escolha robusta para projetos de Engenharia de Dados.
+
+A Figura~\ref{fig:arquitetura} apresenta a visão geral da arquitetura do pipeline desenvolvido. O fluxo de dados percorre cinco etapas: (1) extração dos dados de dez sites internacionais via Selenium e Python; (2) armazenamento dos dados brutos no DuckDB, que atua como repositório temporário (\textit{raw}); (3) transformação e padronização dos dados pelo dbt; (4) consolidação no PostgreSQL, que serve como \textit{data warehouse} analítico; e (5) visualização por meio do Apache Superset. O Apache Airflow orquestra todas as etapas de forma automatizada, e toda a infraestrutura é conteinerizada via Docker Compose, garantindo a reprodutibilidade do ambiente.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\linewidth]{arquitetura.png}
+    \caption{Arquitetura completa do pipeline de dados}
+    \label{fig:arquitetura}
+\end{figure}
+
+Para a fase crucial de aquisição e extração de conteúdo dinâmico (\textit{web scraping}), a ferramenta central adotada foi o \textbf{Selenium WebDriver}. Este framework de automação de navegadores serviu como a espinha dorsal da solução, simulando o comportamento de um usuário real (como cliques, rolagem de página e interações complexas com elementos de interface, utilizando recursos da biblioteca que permitem simular ações do mouse e selecionar opções em menus suspensos). Sua capacidade de lidar com interações complexas garante a extração de dados de fontes que demandam alta flexibilidade de acesso.
+
+Uma vez extraídos, os dados brutos foram imediatamente direcionados para o \textbf{DuckDB}, que atuou como repositório temporário de alto desempenho. O DuckDB é um sistema de banco de dados relacional e analítico que se destaca por sua arquitetura embutida, ou seja, ele funciona diretamente dentro do programa que o utiliza, sem a necessidade de instalar ou manter um servidor de banco de dados separado. Essa característica simplifica a arquitetura do projeto e minimiza os custos indiretos associados à complexidade operacional e manutenção de um componente dedicado.
+
+Após a ingestão inicial, os dados brutos foram migrados para o \textbf{PostgreSQL}, um sistema de gerenciamento de banco de dados relacional open source que atua como o \textit{data warehouse} analítico do projeto. Diferentemente do DuckDB, o PostgreSQL opera no modelo cliente-servidor, o que significa que ele funciona como um serviço independente ao qual múltiplas ferramentas podem se conectar simultaneamente, uma característica essencial para a integração com as demais tecnologias do pipeline. Sua robustez, ampla conformidade com padrões SQL e mais de 35 anos de desenvolvimento ativo o consolidam como uma das soluções open source mais confiáveis para cargas analíticas.
+
+Para a camada de transformação dos dados, foi adotado o \textbf{dbt} (\textit{data build tool}), uma ferramenta open source que implementa o paradigma de transformação como código (\textit{transformation as code}). Em termos práticos, isso significa que todas as regras de limpeza, padronização e reorganização dos dados são escritas em SQL, a linguagem padrão para consultas em bancos de dados, e armazenadas em arquivos versionáveis, da mesma forma que se versiona o código de um software. O dbt opera exclusivamente sobre os dados já carregados no PostgreSQL, alinhando-se à abordagem ELT discutida no Capítulo 2. Seu sistema integrado de testes automáticos e documentação agrega uma camada de qualidade e governança que seria difícil de replicar com scripts avulsos.
+
+A orquestração de todo o pipeline, desde a execução dos scripts de web scraping até a materialização dos modelos dbt, foi confiada ao \textbf{Apache Airflow}, uma plataforma open source de gerenciamento de fluxos de trabalho. O Airflow permite a definição de pipelines como código Python, utilizando o conceito de DAGs (\textit{Directed Acyclic Graphs}), que são grafos direcionados sem ciclos nos quais cada nó representa uma tarefa a ser executada e as setas entre eles definem a ordem de execução, ou seja, qual tarefa precisa terminar antes que a próxima comece. Sua interface web oferece visibilidade completa sobre o histórico de execuções, registros detalhados de cada etapa e mecanismos automáticos de reexecução em caso de falha, garantindo a observabilidade e a resiliência do pipeline em produção.
+
+Por fim, a disponibilização dos dados transformados para análise visual foi realizada por meio do \textbf{Apache Superset}, uma plataforma open source de \textit{Business Intelligence} que permite a criação de painéis interativos (\textit{dashboards}) e a exploração de dados via consultas SQL. O Superset conecta-se nativamente ao PostgreSQL e se posiciona como uma alternativa direta a ferramentas proprietárias como Tableau e Power BI, sem custos de licenciamento.
+
+Em paralelo, o processamento e a qualidade dos dados foram aprimorados pelo uso estratégico de bibliotecas nativas do Python. A biblioteca de expressões regulares foi essencial na etapa de transformação para identificar e extrair padrões específicos dentro de textos, como valores monetários e durações de viagem que estavam misturados em frases descritivas. Adicionalmente, bibliotecas auxiliares foram integradas ao pipeline para gerenciar a organização dos arquivos e enriquecer os dados com informações temporais (como a data e hora da coleta), garantindo a rastreabilidade e a consistência do conjunto de dados final.
+
+\subsection{Tentativa com a ferramenta Browser Use (\textit{Web Scraping} com Inteligência Artificial)}
+
+Antes de iniciar a abordagem manual com o Selenium, foi explorada a possibilidade de usar ferramentas de inteligência artificial para a extração de dados. A ferramenta Browser Use, que atua como um agente de navegação autônomo, prometia uma alternativa mais intuitiva e menos dependente de seletores CSS fixos, ao permitir a automação de tarefas online em linguagem natural. Essa abordagem era perfeitamente alinhada com a premissa do trabalho, que busca soluções \textit{open source} e flexíveis. O agente foi configurado para usar o modelo de linguagem Mistral, que rodou localmente via Ollama e foi orquestrado com a biblioteca LangChain.
+
+O Mistral 8x7B é um Grande Modelo de Linguagem (Large Language Model - LLM) notável por sua arquitetura Mixture of Experts (MoE), sendo composto por oito módulos especialistas (\textit{experts}), cada um contendo sete bilhões de parâmetros. Essa estrutura é projetada para especializar-se em diferentes tipos de tarefas e está na vanguarda da pesquisa em aprendizado multimodal, visando aprimorar a integração e o processamento de dados de texto, imagem e áudio.
+
+A tentativa demonstrou que o Browser Use é funcional. O modelo conseguia interagir com as páginas e extrair informações, validando a promessa de que é possível automatizar o processo com comandos de alto nível. No entanto, essa abordagem enfrentou uma limitação técnica significativa: o processamento local do modelo de IA. A execução do Mistral via Ollama se mostrou extremamente intensiva em termos de recursos computacionais, sobrecarregando a máquina utilizada para o projeto.
+
+Os testes foram realizados em um computador DESKTOP-I0H93GR, equipado com um processador AMD Ryzen 7 4800HS with Radeon Graphics (2,90 GHz), 16 GB de memória RAM (15,4 GB utilizáveis) e sistema operacional Windows 10 de 64 bits. Apesar de possuir boas especificações para tarefas gerais de desenvolvimento, a execução local do modelo exigiu recursos acima da capacidade disponível, resultando em lentidão significativa e, em alguns casos, no desligamento completo do computador devido à alta demanda de CPU e memória RAM.
+
+Essa limitação inviabilizou a continuidade do projeto com essa arquitetura, evidenciando a necessidade de recursos computacionais mais robustos ou da adoção de uma abordagem baseada em infraestrutura em nuvem para o processamento de modelos de linguagem de grande porte.
+
+Essa experiência reforça a importância de considerar o custo operacional e os requisitos de infraestrutura ao escolher as ferramentas para um \textit{pipeline} de dados, especialmente em projetos que buscam a acessibilidade e a eficiência. A tentativa, embora não tenha sido bem-sucedida em termos de implementação prática devido às limitações de \textit{hardware}, serviu como uma valiosa lição sobre as barreiras que ainda existem para o uso de soluções de IA em ambientes de baixo custo, destacando que essa abordagem é promissora para o futuro, desde que haja um \textit{hardware} mais potente à disposição.
+
+\section{Web Scraping}
+
+O \textit{Web Scraping} ou \textit{Web Crawling} refere-se ao procedimento de extração automática de dados de websites utilizando software \cite{khder2021web}. Essa técnica é fundamental em cenários onde os dados não são fornecidos em formatos facilmente legíveis por máquinas, como JSON ou XML, sendo utilizada para extrair dados estruturados a partir de texto, tipicamente em HTML \cite{khder2021web}. Em essência, o \textit{web scraping} é um método para converter dados da web não estruturados em \textbf{dados estruturados} que podem ser armazenados e analisados em um banco de dados central ou planilha \cite{khder2021web, mbata2024survey}.
+
+Essa automação é significativamente mais rápida e precisa do que a entrada manual de dados, resultando em informações mais completas, consistentes e acuradas \cite{khder2021web}.
+
+\subsection{Diferenciação e Propósito}
+
+Embora os termos \textit{Web Scraping} e \textit{Web Crawling} sejam frequentemente usados de forma intercambiável para descrever a extração automática de dados de websites \cite{khder2021web}, é importante notar a distinção. O processo de \textit{web scraping} geralmente envolve a criação e implementação de duas ferramentas de software principais:
+\begin{enumerate}
+    \item Um \textbf{crawler} (ou \textit{spider}), que tem a função de baixar os dados da Internet de forma sistemática \cite{khder2021web, heltweg2023systematic}.
+    \item Um \textbf{scraper}, que extrai as informações cruas relevantes do dado baixado, codifica-as e armazena-as em um arquivo ou banco de dados em um formato e estrutura definidos pelo usuário \cite{khder2021web}.
+\end{enumerate}
+
+O processo de \textit{web scraping} (ou \textit{data acquisition}) é uma das primeiras fases em qualquer estudo ou desenvolvimento de Ciência de Dados, sendo crucial em situações como a Inteligência de Negócios (\textit{Business Intelligence}) e em análises de mercado, onde a coleta de dados é de extrema importância para a tomada de decisões estratégicas \cite{khder2021web, reddi2021data}. O uso de \textit{web scraping} tem sido largamente documentado em diversas indústrias, como:
+\begin{itemize}
+    \item \textbf{Comércio e Varejo:} Para coletar preços em tempo real de sites de varejistas e obter detalhes do produto \cite{khder2021web}.
+    \item \textbf{Inteligência de Negócios (\textit{Business Intelligence}):} Para rastreamento de preços, pesquisa de mercado e análise de sentimento \cite{khder2021web}.
+    \item \textbf{Ciência de Dados e Aprendizado de Máquina (\textit{Machine Learning}):} Como método para obter grandes volumes de dados necessários para treinar e avaliar modelos, inclusive em casos onde as APIs são limitadas ou inexistentes \cite{khder2021web, reddi2021data}.
+\end{itemize}
+
+Essa técnica é particularmente útil quando os dados não são acessíveis por meio de uma Interface de Programação de Aplicações (\textbf{API}) ou quando o acesso via API é limitado, pago ou restrito \cite{khder2021web}.
+
+\section{Ingestão dos dados}
+
+A escolha da ferramenta de armazenamento para a fase de ingestão é um ponto crítico do \textit{pipeline}. Embora bibliotecas como o \textbf{Pandas} e frameworks de processamento distribuído como o \textbf{Apache Spark} sejam populares para a engenharia de dados, o \textbf{DuckDB} foi a solução preferencial para este projeto, especialmente no que tange à volumetria de dados e ao custo operacional.
+
+\subsection{Limitações do Pandas e do Apache Spark}
+
+O \textbf{Pandas} é uma biblioteca de manipulação de dados em memória, o que significa que ele carrega todo o conjunto de dados na RAM para processamento. Essa característica, embora eficiente para bases pequenas e médias, torna-se uma limitação importante em cenários de web scraping em larga escala, pois o consumo de memória cresce proporcionalmente ao volume de dados. Dessa forma, rapidamente os recursos computacionais da máquina podem ser esgotados, tornando o \textit{pipeline} ineficiente ou até mesmo inviável para grandes volumes de informação.
+
+Por outro lado, o \textbf{Apache Spark} foi projetado para o processamento de \textit{Big Data} em clusters distribuídos, sendo uma ferramenta extremamente poderosa para lidar com datasets que chegam à ordem de petabytes. No entanto, a configuração e manutenção de um ambiente Spark exigem uma infraestrutura complexa, composta por múltiplos servidores, além de uma curva de aprendizado acentuada. Considerando o escopo deste projeto, que visa demonstrar a viabilidade de \textit{pipelines} acessíveis a pequenas e médias empresas, bem como a projetos acadêmicos, a adoção do Spark não se justificaria devido à sua complexidade e aos custos associados à infraestrutura necessária.
+
+Nesse contexto, a escolha do \textbf{DuckDB} foi estratégica. Posicionando-se como um banco de dados analítico embutido, o DuckDB combina a eficiência do processamento em colunas com a simplicidade de uma biblioteca integrada. Sua adoção se deu por três motivos principais. Primeiro, pela otimização para volumetria de dados: ao contrário do Pandas, o DuckDB não precisa carregar todos os dados na memória para processá-los, podendo trabalhar diretamente a partir do disco. Isso permite lidar com arquivos maiores do que a RAM disponível, oferecendo desempenho superior em cenários de médio e grande porte. Após a execução inicial de todos os dez scripts de web scraping desenvolvidos neste trabalho, o volume total de dados brutos coletados e armazenados no banco destinosbrasil.duckdb alcançou 3.084 KB. Esse resultado prático valida a discussão teórica e comprova a viabilidade do uso de soluções \textit{open source} em cenários de dados de médio porte.
+
+O segundo motivo refere-se à simplicidade e custo zero. Por ser uma biblioteca de código aberto, o DuckDB pode ser facilmente instalado e integrado a scripts Python, sem a necessidade de um servidor dedicado, eliminando custos de licenciamento e infraestrutura. Por fim, destaca-se a flexibilidade e confiabilidade da ferramenta. O DuckDB se mostra ideal para atuar como um repositório temporário, persistindo os dados de forma estruturada entre a fase de ingestão e as etapas subsequentes de transformação. Dessa forma, oferece a confiabilidade de um banco de dados relacional aliada à flexibilidade de lidar com dados semi-estruturados, garantindo que o \textit{pipeline} desenvolvido seja robusto, seguro e eficiente.
+
+Com essa abordagem, o \textit{pipeline} de dados demonstra que é possível construir uma arquitetura eficiente e economicamente viável, usando ferramentas \textit{open source} que se adaptam perfeitamente à volumetria e aos requisitos do projeto, sem o peso de infraestruturas complexas ou de alto custo.
+
+\subsection{Modelagem das tabelas}
+
+A modelagem de dados de cada tabela foi desenvolvida de forma personalizada, respeitando a estrutura HTML e a organização de conteúdo específica de cada site. Todos os scripts implementam verificação de duplicidade antes de inserir novos registros, comparando os dados extraídos com registros já existentes no banco. Essa abordagem adaptativa foi necessária devido às diferenças significativas entre as plataformas.
+
+\subsubsection{Variações Estruturais e Padronização dos Dados}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{7cm}|p{7cm}|}
+\hline
+\textbf{Problema} & \textbf{Solução} \\ \hline
+
+Nível de Detalhamento: Alguns sites (ex.: Journey Latin America, Newmarket Holidays) oferecem informações mais granulares, enquanto outros (ex.: Sol Férias, Panam) apresentam estruturas simples. 
+& 
+Padronização dos campos: criação de estrutura flexível com campos opcionais para dados adicionais e campos obrigatórios para informações essenciais. \\ \hline
+
+Formato de Preços: Alguns sites exibem preços padronizados; outros misturam moeda e texto descritivo. 
+& 
+Utilização de campos de texto para armazenar valores mistos e posterior normalização via scripts de limpeza. \\ \hline
+
+Descrições e Atributos: Sites europeus apresentam descrições estruturadas (highlights, includes), enquanto sites latino-americanos usam formato livre. 
+& 
+Uso combinado de campos de texto curto e longo para suportar diferentes níveis de estruturação. \\ \hline
+
+URLs e Navegação: Variação significativa na estrutura das URLs (deep links, hashes, parâmetros complexos). 
+& 
+Criação de campo URL padronizado e tratamento posterior com scripts de análise para extração de componentes relevantes. \\ \hline
+
+Idioma e Terminologia: Termos específicos em diferentes idiomas (ex.: \textit{circuit/séjour}, \textit{rundreisen}, \textit{holidays}). 
+& 
+Preservação da terminologia original nos campos de tipo/categoria, garantindo consistência sem perda semântica. \\ \hline
+
+Controle Temporal: Necessidade de rastrear quando os dados foram coletados. 
+& 
+Inclusão de um campo de data de extração em todas as tabelas. \\ \hline
+
+Heterogeneidade de Campos: Diferenças entre tabelas quanto à presença de colunas específicas. 
+& 
+Definição mínima comum de colunas (preço, URL, data de extração) para uniformização. \\ \hline
+
+Textos de Diferentes Tamanhos: Campos variando entre descrições curtas e longas. 
+& 
+Utilização de campos de texto com tamanhos adequados a cada tipo de conteúdo. \\ \hline
+
+\end{tabular}
+\caption{Problemas e soluções observados na estrutura dos sites analisados}
+\label{tab:problemas_solucoes}
+\end{table}
+
+
+\subsection{Implementação Prática}
+
+A fase de ingestão de dados, a primeira e crucial etapa do \textit{pipeline}, foi executada com o objetivo de demonstrar a eficácia de soluções \textit{open source} para a coleta de dados brutos. O processo foi inteiramente construído com ferramentas de código aberto, reforçando a premissa central deste trabalho.
+
+\subsection{Desafios e Estratégias de Mitigação}
+
+A fase de ingestão foi a mais complexa do \textit{pipeline}, pois exigiu a superação de diversos desafios técnicos impostos pela natureza variada das fontes de dados. As estratégias de mitigação implementadas demonstraram a resiliência e a adaptabilidade da sua solução:
+
+Durante o desenvolvimento dos scripts de web scraping, diversos desafios técnicos foram enfrentados e solucionados de forma estratégica. Um dos principais foi o conteúdo dinâmico e o carregamento assíncrono. Muitos dos websites analisados utilizavam JavaScript para carregar as ofertas de forma dinâmica, o que impedia a coleta direta dos dados por meio do código-fonte estático da página. Para contornar essa limitação, foi implementada a automação de interações, como o clique em botões "Ver Mais" e a rolagem da página até que todo o conteúdo estivesse visível, garantindo, assim, a extração completa das informações.
+
+Outro obstáculo importante envolveu as defesas anti-automação. Alguns sites aplicavam mecanismos de detecção de robôs, o que exigiu a adoção de medidas como a ocultação de rastros do WebDriver e a implementação de pausas estratégicas entre as ações de navegação e coleta, simulando um comportamento humano e reduzindo a probabilidade de bloqueio.
+
+A variabilidade na estrutura dos websites também representou um desafio significativo, uma vez que cada domínio apresentava diferentes padrões de HTML e seletores CSS. Para lidar com essa heterogeneidade, foi adotada uma abordagem defensiva, na qual os scripts tentavam múltiplos seletores alternativos para cada informação relevante como título, preço e descrição, minimizando a necessidade de refatoração frequente do código.
+
+Nos casos em que os dados estavam distribuídos em múltiplas páginas, foi necessário lidar com navegação e paginação complexas. Para isso, foram implementadas rotinas que incluíam a iteração sobre listas de URLs pré-definidas, a automação de cliques em botões de "próxima página" e, em algumas situações, até a simulação de rolagem horizontal em carrosséis de produtos, garantindo que todos os registros fossem coletados.
+
+Por fim, uma camada adicional de resiliência foi obtida por meio do tratamento de erros e da lógica de \textit{fallback}. Cada script foi projetado com blocos de captura de exceções, assegurando que eventuais falhas não interrompessem o processo completo de coleta. Em caso de erro na extração de determinado elemento, a lógica tentava seletores alternativos e, se ainda assim não obtivesse sucesso, registrava o incidente para posterior diagnóstico. Essa estratégia aumentou significativamente a robustez e a confiabilidade do \textit{pipeline} de scraping desenvolvido.
+
+\subsection{Formato e Armazenamento dos Dados Brutos}
+
+Após a extração, os dados foram estruturados em um formato tabular e armazenados em tabelas dedicadas no \textbf{DuckDB}. A criação de uma tabela por fonte (ex: Transalpino, Jetmar, Panam) é uma estratégia de modelagem que separa o dado "cru" do "limpo" e facilita a análise de proveniência, um passo crítico em qualquer projeto de engenharia de dados. Os dados foram persistidos em seu formato original, com a intenção de que a padronização, limpeza e enriquecimento ocorram nas próximas etapas do \textit{pipeline}, o que será documentado nos capítulos seguintes. Dessa forma, a fase de ingestão demonstra não apenas a viabilidade de uma arquitetura baseada em ferramentas \textit{open source}, mas também o seu potencial de aplicação prática em cenários reais, como no suporte à \textbf{Embratur} e a outras instituições que necessitam de dados confiáveis para a tomada de decisão estratégica.
+
+\section{Transformação dos Dados com dbt e PostgreSQL}
+
+Após a fase de ingestão, na qual os dados brutos foram armazenados no DuckDB, o
+\textit{pipeline} avança para a etapa de transformação, seguindo a abordagem ELT
+discutida no Capítulo 2. Nesta fase, os dados são primeiramente migrados para o
+PostgreSQL e, em seguida, transformados declarativamente pelo dbt
+(\textit{data build tool}), que opera exclusivamente dentro do banco de dados destino.
+
+\subsection{Migração do DuckDB para PostgreSQL}
+
+A migração dos dados brutos do DuckDB para o PostgreSQL foi implementada por meio de
+um script Python dedicado, que utiliza uma funcionalidade nativa do DuckDB: a extensão
+de conexão com PostgreSQL. Essa extensão permite que o DuckDB se conecte diretamente
+a um banco PostgreSQL, possibilitando a transferência de dados entre os dois sistemas
+sem a necessidade de bibliotecas intermediárias. Na prática, o DuckDB ``enxerga'' as
+tabelas do PostgreSQL como se fossem suas, permitindo copiar dados de um sistema para
+o outro com comandos SQL simples.
+
+O processo de migração segue as seguintes etapas: (1) cópia do arquivo do banco DuckDB
+para um diretório temporário, evitando conflitos caso outro processo esteja acessando
+o banco ao mesmo tempo; (2) estabelecimento de conexão simultânea com o DuckDB e o
+PostgreSQL; (3) para cada uma das dez tabelas de dados brutos, criação da tabela
+correspondente na área de dados brutos (chamada de \textit{schema} raw) do PostgreSQL,
+caso ainda não exista; e (4) inserção apenas dos registros novos, ou seja, aqueles
+cuja data de extração ainda não existe no destino, evitando duplicatas entre execuções
+consecutivas do \textit{pipeline}.
+
+Essa estratégia de inserção incremental, na qual apenas dados novos são transferidos a
+cada execução, é particularmente relevante em um \textit{pipeline} orquestrado com
+execução diária, pois elimina a necessidade de reprocessar todo o histórico a cada dia.
+A Tabela~\ref{tab:tabelas_migradas} lista as dez tabelas migradas e seus respectivos
+nomes no PostgreSQL.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Tabela DuckDB} & \textbf{Tabela PostgreSQL (raw)} & \textbf{País} \\ \hline
+Bleu\_Selectour        & raw.bleu\_selectour        & França      \\ \hline
+Comptoir\_Des\_Voyages  & raw.comptoir\_des\_voyages  & França      \\ \hline
+Ikarus\_Tours           & raw.ikarus\_tours           & Alemanha    \\ \hline
+Jetmar                  & raw.jetmar                  & Uruguai     \\ \hline
+Journey\_Latin\_America & raw.journey\_latin\_america & Reino Unido \\ \hline
+Newmarket\_Holidays     & raw.newmarket\_holidays     & Reino Unido \\ \hline
+Panam                   & raw.panam                   & Chile       \\ \hline
+Sol\_Ferias             & raw.sol\_ferias             & Portugal    \\ \hline
+Transalpino             & raw.transalpino             & Portugal    \\ \hline
+Turismo\_Costanera      & raw.turismo\_costanera      & Chile       \\ \hline
+\end{tabular}
+\caption{Mapeamento das tabelas do DuckDB para o \textit{schema} raw do PostgreSQL}
+\label{tab:tabelas_migradas}
+\end{table}
+
+\subsection{Arquitetura Medallion no PostgreSQL}
+
+A organização dos dados no PostgreSQL segue a arquitetura \textit{Medallion}
+(Bronze/Silver/Gold), um padrão amplamente adotado na engenharia de dados que organiza
+as informações em camadas progressivas de qualidade e refinamento. Essa arquitetura
+foi implementada por meio de três áreas de armazenamento separadas (chamadas
+\textit{schemas}), criadas automaticamente pelo script de inicialização do banco:
+
+\begin{itemize}
+    \item \textbf{raw (Bronze):} Primeira camada, contendo os dados brutos exportados
+    do DuckDB exatamente como foram coletados, sem nenhuma transformação. Preserva o
+    dado original para fins de rastreabilidade e, caso necessário, reprocessamento.
+    \item \textbf{staging (Silver):} Segunda camada, onde o dbt cria visualizações dos
+    dados já limpos e padronizados. Nesta camada, são aplicadas operações como remoção
+    de caracteres indesejados, conversão de textos de preço para valores numéricos e
+    extração de informações estruturadas a partir de campos de texto livre.
+    \item \textbf{marts (Gold):} Terceira e última camada, onde o dbt cria tabelas
+    consolidadas e otimizadas para consumo analítico pelo Apache Superset. Contém a
+    tabela de fatos (com os dados dos pacotes turísticos), as tabelas de dimensões
+    (com informações sobre operadoras, destinos e datas) e tabelas analíticas adicionais
+    para análises exploratórias.
+\end{itemize}
+
+Essa separação em camadas foi configurada no arquivo de configuração do projeto dbt,
+que define que os modelos da camada staging são criados como \textit{views} (consultas
+salvas que são recalculadas sob demanda, economizando espaço em disco), enquanto os
+modelos da camada marts são criados como \textit{tables} (tabelas físicas com dados
+pré-calculados, otimizando o desempenho das consultas). Uma configuração adicional
+garante que o dbt utilize os nomes das camadas exatamente como definidos, sem adicionar
+prefixos automáticos — um comportamento padrão da ferramenta que foi ajustado para
+manter a nomenclatura organizada.
+
+\subsection{Camada Staging: Limpeza e Padronização}
+
+Foram desenvolvidos dez modelos de staging, um para cada operadora, seguindo um padrão
+de nomenclatura que identifica claramente a fonte dos dados (por exemplo,
+\texttt{stg\_bleu\_selectour} para os dados da operadora francesa Bleu Selectour). Cada
+modelo aplica um conjunto de transformações sobre os dados brutos, padronizando as
+colunas para um formato comum que viabiliza a unificação na camada seguinte.
+
+As transformações realizadas na camada staging incluem:
+
+\begin{enumerate}
+    \item \textbf{Enriquecimento com metadados:} Adição de informações sobre a origem
+    de cada registro, nome da operadora, país de origem e idioma, como valores fixos em
+    cada modelo. Isso permite que, após a unificação de todos os dados em uma única
+    tabela, seja possível identificar de qual site cada pacote turístico foi coletado.
+
+    \item \textbf{Extração numérica de preços:} Os campos de preço nos dados brutos
+    contêm textos em formatos variados, como ``1 230 €'', ``£3975pp'' ou
+    ``desde \$599''. Para viabilizar comparações e cálculos, cada modelo aplica uma
+    expressão regular para remover todos os caracteres que não são dígitos, convertendo
+    o resultado em um valor numérico. Operadoras sul-americanas (Panam, Turismo
+    Costanera e Jetmar) utilizam o padrão de separadores numéricos local, onde o ponto
+    indica milhar e a vírgula indica decimal, exigindo uma etapa adicional de conversão
+    antes da transformação final.
+
+    A moeda é identificada separadamente com base no país de origem da operadora: Euro
+    para as operadoras francesas, portuguesas e alemã; libra esterlina para as
+    britânicas. Para a operadora uruguaia (Jetmar) e a operadora chilena Panam, o
+    dólar americano é atribuído diretamente como valor fixo. A operadora chilena Turismo
+    Costanera adota uma abordagem distinta: a moeda é extraída dinamicamente do próprio
+    texto do preço por meio de expressão regular, com o dólar americano como valor
+    padrão quando nenhum símbolo monetário é identificado.
+
+    \item \textbf{Extração de duração em dias:} O campo de duração dos pacotes contém
+    textos heterogêneos como ``15 days from £3975pp'' ou ``8 jours / 7 nuits'' (em
+    francês, ``8 dias / 7 noites''). Uma função reutilizável, desenvolvida
+    especificamente para este projeto, extrai o primeiro número encontrado no texto e o
+    interpreta como a duração em dias. Quando nenhum número é encontrado, o campo
+    recebe um valor vazio, evitando erros de processamento. Uma exceção é o modelo
+    \texttt{stg\_transalpino}, que utiliza uma expressão regular própria para
+    identificar padrões do tipo ``\textit{N Dias}'' diretamente no campo de descrição,
+    em vez de aplicar a macro compartilhada. Adicionalmente, o modelo
+    \texttt{stg\_jetmar} atribui valores nulos aos campos de duração, pois o site de
+    origem não disponibiliza essa informação de forma estruturada.
+
+    \item \textbf{Filtragem de registros inválidos:} Cada modelo remove registros que
+    não possuem título, que contêm marcadores de erro (como ``não encontrado'' em
+    português ou ``nicht angegeben'' em alemão), e, no caso de operadoras que oferecem
+    destinos além do Brasil, aplica filtros por palavras-chave no título, na descrição
+    ou na URL para manter apenas os pacotes com destino ao Brasil.
+\end{enumerate}
+
+A Tabela~\ref{tab:staging_filtros} apresenta os filtros específicos aplicados nos
+modelos de operadoras que oferecem destinos múltiplos.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|p{9cm}|}
+\hline
+\textbf{Modelo} & \textbf{Filtro de Destino Brasil} \\ \hline
+stg\_ikarus\_tours & Busca pela palavra ``Brasil'' (em português/espanhol) e também
+por ``Brasilien'' (que é Brasil em alemão). Isso garante que, se o anúncio for para
+turistas europeus, ele ainda seja capturado. Mesmo que o texto não diga o nome do
+país, o filtro entende que se o roteiro menciona ``Amazon'' (Amazônia) ou ``Iguazu''
+(Cataratas do Iguaçu), a viagem é, com certeza, para o Brasil. \\ \hline
+stg\_journey\_latin\_america & O sistema olha para o endereço da página. Se na URL
+aparecer algo como \texttt{/brazil/}, ele já classifica automaticamente como destino
+Brasil. Ele também faz uma varredura no texto descritivo buscando pela grafia em
+inglês: ``Brazil''. \\ \hline
+stg\_transalpino & Filtro por destino Brasil aplicado via CTE intermediária: mantém
+apenas registros onde o campo de destino (\texttt{destino}) ou a URL do pacote
+(\texttt{url}) contém a palavra ``brasil'' (sem distinção de maiúsculas/minúsculas).
+\\ \hline
+stg\_turismo\_costanera & Remoção de registros com título vazio ou em branco. Filtro
+estrito pelo campo de localização: apenas registros onde \texttt{local = 'Brasil'} são
+mantidos, garantindo exclusividade de destino sem necessidade de análise textual.
+\\ \hline
+\end{tabular}
+\caption{Filtros de destino aplicados nos modelos staging}
+\label{tab:staging_filtros}
+\end{table}
+
+\subsection{Macros Reutilizáveis}
+
+Para evitar a duplicação de lógica entre os dez modelos de staging, foram desenvolvidas
+duas funções reutilizáveis (chamadas \textit{macros} na terminologia do dbt),
+armazenadas em um diretório dedicado do projeto:
+
+\begin{itemize}
+    \item \textbf{Extração de duração em dias:} Recebe o nome de uma coluna de texto e
+    retorna um número inteiro correspondente ao primeiro número encontrado naquele texto.
+    Por exemplo, a partir do texto ``15 days from £3975pp'', a macro extrai o número 15.
+    Quando nenhum dígito é encontrado no texto, retorna um valor vazio, evitando erros
+    de conversão.
+
+    \item \textbf{Detecção automática de moeda:} Recebe o nome de uma coluna de texto e
+    identifica a moeda com base nos símbolos presentes — o símbolo £ indica Libra
+    Esterlina, o símbolo € indica Euro, e a sigla USD indica Dólar Americano. Nos
+    modelos atuais, a moeda é atribuída diretamente com base no país da operadora ou
+    extraída via expressão regular diretamente nos modelos de staging; esta função
+    permanece disponível como utilitário para cenários futuros onde a detecção
+    automática seja necessária.
+\end{itemize}
+
+\subsection{Camada Marts: Consolidação e Modelagem Dimensional}
+
+A camada marts contém os modelos finais otimizados para consumo analítico, organizados
+seguindo uma modelagem dimensional — um padrão de organização de dados amplamente
+utilizado em \textit{Business Intelligence}, no qual os dados são divididos entre
+tabelas de fatos (que contêm as métricas e medições) e tabelas de dimensões (que
+contêm os atributos descritivos que contextualizam os fatos). Além dessas, foram
+criadas tabelas analíticas adicionais para facilitar análises exploratórias e
+comparativas. Todos os modelos desta camada são armazenados como tabelas físicas no
+PostgreSQL, garantindo desempenho nas consultas realizadas pelo Superset.
+
+\subsubsection{One Big Table (OBT)}
+
+O modelo central desta camada é a chamada \textit{One Big Table} (OBT), literalmente
+``Uma Grande Tabela''. Seu papel é unificar os dados dos dez modelos de staging em uma
+única tabela consolidada, com colunas padronizadas que incluem: data de extração, nome
+da operadora, país de origem, idioma, título do pacote, descrição, tipo, texto original
+do preço, valor numérico do preço, moeda, texto original da duração, duração em dias e
+URL.
+
+Para identificar cada registro de forma única, é gerada uma chave artificial
+utilizando uma função de resumo criptográfico (MD5) sobre a combinação do nome da
+operadora, o título do pacote e a data de extração. Essa abordagem garante que cada
+registro tenha um identificador exclusivo, sem depender de campos dos sites de origem
+que podem ser inconsistentes ou inexistentes.
+
+\subsubsection{Tabela Fato: fct\_pacotes}
+
+A tabela de fatos (\texttt{fct\_pacotes}) é derivada da OBT e associa cada pacote
+turístico à sua respectiva operadora por meio de uma chave de referência. A
+granularidade — ou seja, o nível de detalhe — é de um registro por pacote por data de
+extração. Cada registro contém os valores de preço e duração como métricas
+quantitativas, além das chaves que permitem cruzar as informações com as tabelas de
+dimensões.
+
+\subsubsection{Dimensão de Operadoras: dim\_operadora}
+
+A tabela de dimensão de operadoras é alimentada por um arquivo de dados auxiliar
+(chamado \textit{seed} na terminologia do dbt): uma planilha em formato CSV, elaborada
+manualmente, contendo os metadados das dez operadoras turísticas — nome, país de
+origem, idioma e moeda padrão. O modelo enriquece essas informações com campos
+derivados que facilitam a análise: por exemplo, o código ``fr'' é traduzido para
+``Francês'', o código ``EUR'' é traduzido para ``Euro'', e o país ``França'' é
+classificado na região ``Europa''. Esses campos facilitam a criação de filtros e
+agrupamentos nos painéis do Superset.
+
+\subsubsection{Dimensão Temporal: dim\_tempo}
+
+A tabela de dimensão temporal é gerada automaticamente a partir das datas de extração
+presentes nos dados, evitando a necessidade de manter manualmente uma tabela de
+calendário. O modelo decompõe cada data em seus componentes — ano, mês, dia, trimestre,
+número da semana no ano e nome do dia da semana — e inclui um indicador que identifica
+se a data corresponde a um fim de semana. Esses atributos permitem análises temporais
+detalhadas no Superset, como a comparação de preços entre diferentes períodos ou a
+identificação de padrões sazonais.
+
+\subsubsection{Dimensão de Destinos: dim\_destino}
+
+A tabela de dimensão de destinos representa uma das transformações mais complexas do
+projeto. Como os dados brutos não possuem um campo estruturado de destino — a
+informação está dispersa nos títulos dos pacotes, escritos em múltiplos idiomas —
+este modelo implementa uma estratégia de correspondência por palavras-chave em cinco
+idiomas.
+
+O modelo parte dos dados da OBT aplicando um filtro de moeda: apenas registros com
+preço em USD, EUR ou GBP são considerados, excluindo os valores em peso chileno (CLP),
+cuja escala de grandeza distinta inviabilizaria comparações diretas entre moedas. Em
+seguida, analisa o título de cada pacote e, por meio de uma extensa regra condicional
+com mais de 80 variações de palavras-chave, classifica o pacote em um dos 21 destinos
+brasileiros identificados. Por exemplo: os termos ``iguaçu'' (português), ``iguazu''
+(espanhol), ``iguassu'' (variação internacional) e ``cataratas'' (genérico) são todos
+mapeados para o destino ``Foz do Iguaçu''. Os destinos mapeados são: Rio de Janeiro,
+Bahia/Salvador, Amazônia, Foz do Iguaçu, Pantanal, Fernando de Noronha,
+Florianópolis/SC, Fortaleza/CE, Natal/Pipa, Maceió/Maragogi, Porto Seguro/Trancoso,
+Recife/Nordeste, João Pessoa/RN, Búzios, Angra/Ilha Grande, Lençóis Maranhenses, Porto
+de Galinhas, São Paulo, Paraty, Gramado/Serra Gaúcha e Brasil (múltiplos destinos).
+Pacotes que não correspondem a nenhum padrão reconhecido são classificados como
+``Outros / Múltiplos''.
+
+Essa abordagem, embora funcional e eficaz para o escopo do projeto, evidencia uma das
+limitações do processamento baseado em regras fixas: a necessidade de manutenção manual
+das palavras-chave à medida que novos destinos ou variações linguísticas surgem nos
+sites monitorados.
+
+\subsubsection{Mart de Faixas de Preço por Destino: mart\_faixa\_precos\_destino}
+
+Derivado diretamente da \texttt{dim\_destino}, este modelo consolida as faixas de preço
+para cada destino, excluindo as categorias genéricas (``Outros / Múltiplos'' e
+``Brasil (múltiplos destinos)''). Os dados são agrupados por destino e moeda, com o
+cálculo do preço médio, mínimo e máximo, além do total de pacotes por combinação.
+Os resultados são ordenados por preço médio decrescente, facilitando a identificação
+dos destinos mais e menos acessíveis dentro de cada moeda.
+
+\subsubsection{Mart de Preços por Operadora: mart\_precos\_por\_operadora}
+
+Este modelo cruza os dados da tabela de fatos (fct\_pacotes) com os metadados
+da dimensão de operadoras (dim\_operadora), produzindo uma visão analítica
+comparativa por região de origem, operadora e moeda. Além do filtro padrão de preço
+nulo ou zero, aplica-se um tratamento de outliers: registros com preço em CLP inferior
+a 10.000 são descartados, pois representam valores equivalentes a menos de dez dólares
+americanos, caracterizando dados claramente espúrios. O modelo agrega preço médio,
+menor preço, preço máximo e total de pacotes para cada combinação de região, operadora
+e moeda.
+
+\subsection{Testes de Qualidade de Dados}
+
+O projeto dbt implementa testes automáticos de qualidade de dados, definidos em
+arquivos de configuração das camadas staging e marts. Esses testes são executados
+automaticamente ao final de cada execução do \textit{pipeline}, funcionando como uma
+rede de segurança que verifica se os dados transformados atendem aos critérios de
+qualidade esperados. Os testes implementados incluem:
+
+\begin{itemize}
+    \item \textbf{Testes de campos obrigatórios:} Verificam que campos essenciais,
+    como data de extração, nome da operadora, título do pacote e identificadores,
+    nunca estejam vazios em nenhum registro.
+    \item \textbf{Testes de unicidade:} Garantem que as chaves primárias das tabelas de
+    dimensões (como o identificador de cada operadora e de cada data) não contenham
+    valores duplicados, preservando a integridade do modelo dimensional.
+    \item \textbf{Testes de valores permitidos:} Verificam que o campo de moeda
+    contenha apenas os códigos esperados, EUR (Euro), GBP (Libra Esterlina), USD
+    (Dólar Americano) e CLP (Peso Chileno), tanto nos modelos de staging individuais
+    quanto na tabela unificada.
+\end{itemize}
+
+No total, o projeto conta com mais de 40 testes distribuídos entre as camadas staging
+e marts, cobrindo a integridade referencial, a consistência dos campos monetários e a
+completude dos registros. Caso algum teste falhe, a execução do \textit{pipeline} é
+interrompida e o problema é registrado nos logs do Airflow para investigação.
+
+
+\subsection{Arquitetura da DAG}
+
+O \textit{pipeline} completo foi modelado como uma única DAG (\textit{Directed Acyclic Graph} — Grafo Direcionado Acíclico) no Airflow, denominada pipeline\_destinos\_brasil. Uma DAG é, em termos simples, um mapa que define quais tarefas devem ser executadas e em qual ordem, garantindo que nenhuma tarefa comece antes que suas dependências tenham sido concluídas. A DAG deste projeto é composta por seis etapas sequenciais:
+
+\begin{enumerate}
+    \item \textbf{Scrapers (sequenciais):} Dez tarefas que executam os scripts de \textit{web scraping}, uma para cada operadora. As tarefas são encadeadas sequencialmente, ou seja, uma só começa após a anterior terminar, para evitar a sobrecarga de memória e de conexões simultâneas, já que cada tarefa inicia um navegador Chrome completo dentro de um container.
+    \item \textbf{Exportação DuckDB para PostgreSQL:} Uma tarefa que executa o script de migração, transferindo os dados brutos para a camada raw do PostgreSQL.
+    \item \textbf{Carga dos dados auxiliares (dbt seed):} Carrega o arquivo com os metadados das operadoras como tabela no PostgreSQL, fornecendo as informações de referência necessárias para a dimensão de operadoras.
+    \item \textbf{Transformação da camada staging (dbt run staging):} Cria as dez visualizações de dados limpos e padronizados na camada staging.
+    \item \textbf{Transformação da camada marts (dbt run marts):} Cria as tabelas consolidadas, a tabela unificada (OBT), a tabela de fatos e as tabelas de dimensões, na camada marts.
+    \item \textbf{Testes de qualidade (dbt test):} Executa todos os testes automáticos para validar a integridade dos dados transformados.
+\end{enumerate}
+
+\subsection{Uso do DockerOperator}
+
+Uma decisão arquitetural importante foi a escolha de executar cada tarefa do Airflow dentro de um container Docker independente e temporário, em vez de executá-las diretamente no ambiente do Airflow. Na prática, isso significa que, a cada tarefa, o Airflow cria um ambiente isolado, executa o trabalho necessário e, ao final, remove esse ambiente automaticamente, liberando os recursos da máquina.
+
+Essa abordagem, viabilizada pelo componente DockerOperator do Airflow, oferece três vantagens significativas para este projeto:
+
+\begin{itemize}
+    \item \textbf{Isolamento de dependências:} O ambiente dos scrapers inclui o navegador Google Chrome e a biblioteca Selenium, enquanto o ambiente do dbt inclui apenas as ferramentas de transformação de dados. Sem esse isolamento, todas essas dependências precisariam coexistir no mesmo ambiente, aumentando a complexidade e o risco de conflitos entre versões incompatíveis de bibliotecas.
+    \item \textbf{Reprodutibilidade:} O mesmo ambiente utilizado durante o desenvolvimento local é exatamente o mesmo executado pelo Airflow em produção, eliminando o problema clássico de inconsistências entre ambientes.
+    \item \textbf{Gerenciamento de recursos:} Cada tarefa de scraping roda em um ambiente isolado com seu próprio processo de navegador. Ao finalizar, o ambiente é removido automaticamente, liberando memória e capacidade de processamento para as tarefas seguintes.
+\end{itemize}
+
+Para viabilizar essa abordagem, o Airflow acessa o sistema de gerenciamento de containers do computador hospedeiro, e os dados são compartilhados entre os diferentes ambientes por meio de diretórios montados: os scripts e o banco DuckDB são acessíveis tanto pelos containers de scraping quanto pelo container de exportação, enquanto os arquivos do projeto dbt são acessíveis pelo container de transformação.
+
+\subsection{Configuração do Agendamento}
+
+A DAG foi configurada para execução diária às 06h no fuso horário de Brasília. Essa periodicidade reflete a frequência desejada de atualização dos dados de passagens aéreas. Uma configuração adicional impede que o Airflow tente executar retroativamente os dias anteriores à criação da DAG, comportamento que seria desnecessário neste projeto. Cada tarefa possui configuração de reexecução automática: em caso de falha, o Airflow aguarda dez minutos e tenta novamente, com um limite máximo de duas horas por tarefa como proteção contra execuções que excedam o tempo esperado, um cenário possível nas tarefas de \textit{web scraping}, que dependem da disponibilidade e da velocidade de resposta dos sites externos.
+
+\subsection{Configuração do Executor}
+
+O Airflow foi configurado com o modo de execução local (LocalExecutor), que permite a execução de tarefas em processos separados na mesma máquina. Essa configuração oferece um equilíbrio entre simplicidade e desempenho: é mais eficiente do que o modo sequencial (que executa apenas uma tarefa por vez), mas não requer a complexidade de um sistema distribuído com múltiplos servidores. O banco de dados de controle do Airflow, onde ele armazena o histórico de execuções, os status das tarefas e as configurações, é hospedado no mesmo PostgreSQL do projeto, porém em um banco de dados separado, evitando qualquer interferência com os dados analíticos.
+
+\subsection{Resultados da Orquestração}
+
+A execução completa da DAG pipeline\_destinos\_brasil foi realizada com sucesso em abril de 2026, com duração total de 19 minutos e 20 segundos. Todas as 16 tarefas foram concluídas sem falhas, validando a robustez da arquitetura de orquestração proposta. A Figura~\ref{fig:dag_graph} apresenta a estrutura visual da DAG na interface do Airflow, exibindo o encadeamento sequencial das tarefas, enquanto a Figura~\ref{fig:dag_details} apresenta os detalhes da execução.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\linewidth]{graph_dag.png}
+    \caption{Estrutura visual da DAG pipeline\_destinos\_brasil na interface do Apache Airflow, exibindo o encadeamento sequencial das 16 tarefas.}
+    \label{fig:dag_graph}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\linewidth]{details_execucao.png}
+    \caption{Detalhes da execução da DAG, com status de sucesso e duração total de 19 minutos e 20 segundos.}
+    \label{fig:dag_details}
+\end{figure}
+
+
+A análise dos tempos de execução revela que a etapa de \textit{web scraping} consome a maior parte do tempo total do pipeline, correspondendo a aproximadamente 92\% da duração total (17 minutos e 53 segundos de um total de 19 minutos e 20 segundos). Esse resultado é esperado, uma vez que os scrapers dependem da velocidade de resposta dos sites externos, do carregamento de conteúdo dinâmico via JavaScript e da simulação de interações humanas com pausas estratégicas para evitar bloqueios. A Tabela~\ref{tab:tempos_execucao} detalha o tempo de execução de cada tarefa, organizado por etapa do pipeline.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|r|}
+\hline
+\textbf{Etapa} & \textbf{Tarefa} & \textbf{Duração} \\ \hline
+\multirow{10}{*}{Scraping} 
+    & Bleu Selectour           & 0min 38s  \\ \cline{2-3}
+    & Comptoir des Voyages     & 0min 18s  \\ \cline{2-3}
+    & Ikarus Tours             & 1min 05s  \\ \cline{2-3}
+    & Jetmar                   & 7min 25s  \\ \cline{2-3}
+    & Journey Latin America    & 1min 22s  \\ \cline{2-3}
+    & Newmarket Holidays       & 0min 56s  \\ \cline{2-3}
+    & Panam                    & 0min 45s  \\ \cline{2-3}
+    & Sol Férias               & 2min 31s  \\ \cline{2-3}
+    & Transalpino              & 1min 48s  \\ \cline{2-3}
+    & Turismo Costanera        & 1min 05s  \\ \hline
+\multicolumn{2}{|l|}{\textbf{Subtotal Scraping}} & \textbf{17min 53s} \\ \hline
+Migração & Export de DuckDB para PostgreSQL & 0min 05s \\ \hline
+\multirow{3}{*}{Transformação}
+    & dbt seed (dados auxiliares)       & 0min 13s  \\ \cline{2-3}
+    & dbt run staging (10 modelos)      & 0min 14s  \\ \cline{2-3}
+    & dbt run marts (5 modelos)         & 0min 11s  \\ \hline
+Qualidade & dbt test (mais de 40 testes) & 0min 13s \\ \hline
+\multicolumn{2}{|l|}{\textbf{Total do Pipeline}}  & \textbf{19min 20s} \\ \hline
+\end{tabular}
+\caption{Tempo de execução de cada tarefa da DAG pipeline\_destinos\_brasil}
+\label{tab:tempos_execucao}
+\end{table}
+
+Dentro da etapa de scraping, a tarefa do Jetmar se destaca como a mais demorada (7 minutos e 25 segundos), representando sozinha cerca de 38\% do tempo total do pipeline. Essa duração elevada pode ser atribuída à complexidade da estrutura do site, que exige múltiplas interações para revelar todo o conteúdo disponível. Em contrapartida, o Comptoir des Voyages foi o scraper mais rápido, concluindo em apenas 18 segundos.
+
+As etapas de migração e transformação, por outro lado, são notavelmente rápidas. A exportação dos dados do DuckDB para o PostgreSQL levou apenas 5 segundos, demonstrando a eficiência da extensão nativa de conexão entre os dois bancos. As três etapas do dbt, carga dos dados auxiliares, transformação da camada staging e transformação da camada marts, totalizaram 38 segundos, evidenciando que o dbt é capaz de processar os dez modelos de staging, a tabela unificada, a tabela de fatos e as três tabelas de dimensões em tempo desprezível quando comparado à etapa de coleta. Os testes de qualidade, que validaram mais de 40 critérios de integridade dos dados, foram executados em 13 segundos.
+
+Esses resultados demonstram que a arquitetura proposta é viável para execução diária, o \textit{pipeline} completo conclui em menos de 20 minutos. A concentração do tempo na etapa de \textit{scraping} também indica que eventuais otimizações futuras, como a paralelização dos \textit{scrapers} ou a substituição de sites com tempos de resposta elevados, teriam o maior impacto na redução do tempo total de execução.
+
+
+\section{Visualização dos Dados com Apache Superset}
+\subsection{Escolha e Configuração da ferramenta}
+
+A última etapa do \textit{pipeline} é a disponibilização dos dados transformados para análise visual interativa. O Apache Superset, versão 3.1.0, foi selecionado como ferramenta de \textit{Business Intelligence} por ser uma plataforma \textit{open source} (licença Apache 2.0) que permite a criação de painéis interativos e a exploração de dados via consultas SQL, posicionando-se como alternativa direta a ferramentas proprietárias como Tableau e Power BI.
+
+O Superset foi configurado por meio do Docker Compose com dois serviços, o serviço principal da aplicação (acessível pela porta 8088 do navegador) e um serviço temporário de inicialização, responsável por preparar o banco de dados interno do Superset e criar o usuário administrador. O banco de dados interno do Superset, onde ele armazena as definições de painéis, gráficos e conexões, utiliza um banco PostgreSQL próprio, separado tanto do banco de dados analítico quanto do banco do Airflow. A interface foi configurada para exibição em português brasileiro.
+
+A conexão com os dados analíticos é realizada diretamente ao banco destinosbrasil, apontando para a camada marts que contém as tabelas consolidadas pelo dbt. Os conjuntos de dados registrados no Superset incluem a tabela unificada (para análises exploratórias diretas, sem necessidade de cruzamento entre tabelas), a tabela de fatos (para análises dimensionais com cruzamento de informações de operadoras, destinos e datas), e as tabelas de dimensões.
+
+\subsection{Dashboards Desenvolvidos}
+
+Os seguintes painéis interativos foram projetados para demonstrar o potencial analítico dos dados coletados e transformados pelo \textit{pipeline}:
+
+\textbf{Dashboard 1 — Panorama Geral de Passagens para o Brasil:} Indicadores-chave como o total de pacotes coletados, o preço médio por moeda e o número de destinos brasileiros identificados. Gráficos de barras com os destinos mais ofertados e os preços médios por destino. Gráfico de séries temporais mostrando a evolução da coleta ao longo das datas de extração.
+
+\textbf{Dashboard 2 — Comparação entre Operadoras:} Tabela comparativa com preço médio, mínimo e máximo por operadora, agrupados por região de origem (Europa vs. América do Sul). Gráficos de barras agrupadas comparando preços por destino entre diferentes operadoras. Filtros interativos por país de origem, moeda e faixa de preço.
+
+\subsection{Resultados da Visualização e Análise dos Dados}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\linewidth]{panorama-geral.png}
+    \caption{Painel \textit{Panorama Geral} no Apache Superset}
+    \label{fig:superset_panorama}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\linewidth]{detalhamento-por-destino.png}
+    \caption{Painel \textit{Detalhamento por Destino} no Apache Superset}
+    \label{fig:superset_detalhamento}
+\end{figure}
+
+
+A camada de visualização do \textit{pipeline} é composta por dois painéis analíticos
+implementados no Apache Superset, conectado diretamente ao PostgreSQL. O painel
+\textbf{Panorama Geral} oferece uma visão consolidada da coleta, enquanto o painel
+\textbf{Detalhamento por Destino} aprofunda a análise por destino, operadora e faixa
+de preços. Juntos, os dois painéis totalizam nove gráficos distribuídos sobre quatro
+tabelas da camada marts: fct\_pacotes, dim\_destino, mart\_faixa\_precos\_destino e mart\_precos\_por\_operadora.
+
+\subsubsection{Painel Panorama Geral}
+
+O painel \textit{Panorama Geral} é organizado em duas linhas de visualizações. A
+primeira linha reúne três indicadores operacionais. O primeiro é o número de destinos
+identificados, exibido como um grande indicador numérico que
+computa a contagem distinta de títulos de pacotes ao longo do tempo,
+acompanhado de uma linha de tendência. O segundo é a evolução do volume de coleta por
+operadora, representada como um gráfico de linhas temporais que exibe o número de
+registros coletados por dia para cada uma das dez operadoras. E por último,o total de pacotes
+coletados por dia, também como um indicador numérico com linha de tendência.
+
+A segunda linha apresenta duas visualizações analíticas: uma tabela com o preço
+médio agregado por moeda, permitindo comparar diretamente a faixa de preços praticada em Euro, Libra Esterlina e Dólar
+Americano. Além de um gráfico de barras com o preço médio por destino, derivado da
+dim\_destino e com filtro explícito para excluir a categoria ``Outros /
+Múltiplos'', ordenado de forma decrescente para evidenciar os destinos com maior
+valor médio de oferta internacional.
+
+A evolução da coleta por operadora é particularmente útil para fins de
+monitoramento operacional: quedas bruscas no volume de uma operadora em determinada
+data sinalizam falhas de raspagem que exigem investigação, enquanto a estabilidade
+consistente de todas as séries indica que o \textit{pipeline} está operando
+normalmente. A comparação das linhas entre operadoras também revela diferenças
+estruturais no catálogo de cada site: operadoras com portfólio menor produzem séries
+com amplitude reduzida, enquanto as de maior oferta apresentam volumes consistentemente
+mais elevados.
+
+A tabela de preço médio por moeda permite uma observação imediata da
+diferença de escala entre os mercados monitorados. As operadoras europeias, que
+cobram em Euro ou Libra Esterlina, tendem a apresentar valores nominais mais altos
+do que as sul-americanas, que cobram em dólar americano. Essa diferença, no entanto,
+não implica necessariamente que as viagens sejam mais caras em termos de poder de
+compra, uma vez que os pacotes europeus geralmente incluem trechos de voo
+intercontinental, enquanto os sul-americanos embarcam de países com menor distância ao
+Brasil.
+
+Os cinco gráficos deste painel compartilham filtros cruzados globais. Clicar em uma barra do gráfico de destinos, por exemplo, propaga
+automaticamente um filtro temporal ou de forma categórica para os demais gráficos da tela,
+permitindo investigações interativas sem necessidade de configurar filtros de maneira manual.
+
+\subsubsection{Painel Detalhamento por Destino}
+
+O painel \textit{Detalhamento por Destino} organiza quatro gráficos em duas linhas,
+com dois filtros nativos configurados na lateral: um filtro de moeda e um filtro de
+destino, ambos com seleção múltipla, que propagam seus valores para todos os gráficos
+do painel simultaneamente.
+
+A primeira linha exibe o gráfico \textbf{Visibilidade dos Destinos Brasileiros},
+um gráfico de barras que soma o campo \texttt{total\_pacotes} por destino, ordenado
+de forma decrescente, revelando quais destinos recebem maior atenção das operadoras
+internacionais. Já a tabela \textbf{Preços por Operadora e Região}, que consolida
+menor preço, preço médio e preço máximo por combinação de região de origem, operadora
+e moeda, a partir do 
+mart\_precos\_por\_operadora.
+
+A segunda linha apresenta a tabela \textbf{Faixa de Preços por Destino}, derivada
+do mart\_faixa\_precos\_destino, com colunas de preço mínimo, médio e máximo
+agrupadas por destino e moeda. O gráfico de barras \textbf{Duração Média por
+Destino}, que exibe a média do campo de duracao de dias para cada destino,
+excluindo registros sem duração informada.
+
+O gráfico de \textbf{visibilidade dos destinos} é o principal instrumento analítico
+para avaliar a promoção diferencial do Brasil no mercado internacional. A distribuição
+esperada segue um padrão de cauda longa, no qual um pequeno conjunto de destinos
+consolidados, principalmente Rio de Janeiro, Amazônia e Foz do Iguaçu, concentra a
+maior parte dos pacotes oferecidos, ao passo que destinos menos conhecidos
+internacionalmente, como Lençóis Maranhenses, Gramado ou João Pessoa, aparecem com
+representação marginal. Essa diferença quantifica, de forma objetiva, a diferença
+entre a diversidade real de destinos turísticos brasileiros e aquela que é efetivamente
+explorada pelo mercado internacional atualmente.
+
+A leitura combinada do gráfico de visibilidade com a tabela de faixas de preço
+permite identificar padrões relevantes, sobre como destinos com alta visibilidade e alta amplitude
+de preço, como Rio de Janeiro, indicam mercados maduros com oferta diversificada
+atendendo a múltiplos segmentos de renda. Destinos com baixa visibilidade mas preço
+médio elevado, como Fernando de Noronha, sugerem nichos de mercado de luxo com
+oferta restrita. Os destinos com baixa visibilidade e preço médio acessível podem
+representar oportunidades de promoção internacional ainda pouco exploradas.
+
+O gráfico de \textbf{duração média por destino} acrescenta uma dimensão qualitativa
+relevante: destinos que exigem deslocamentos internos significativos, como a Amazônia
+ou o Pantanal, tendem a apresentar durações médias mais longas, refletindo a
+necessidade de roteiros de imersão. Destinos urbanos como Rio de Janeiro e Salvador,
+por sua vez, apresentam maior variabilidade, pois são frequentemente combinados com
+outros pontos em pacotes de múltiplos destinos.
+
+\subsubsection{Usabilidade e Discussão Crítica}
+
+O Apache Superset demonstrou-se adequado para o perfil de uso previsto pelo projeto,
+que combina a necessidade de monitoramento operacional do \textit{pipeline} com a
+exploração analítica dos dados de turismo. A configuração em português do Brasil e o uso de sessões persistentes de 30
+dias contribuem para uma experiência de uso mais fluída, especialmente relevante para
+usuários que retornam regularmente aos painéis.
+
+A funcionalidade de filtros cruzados, habilitada globalmente no painel
+\textit{Panorama Geral} e por filtros nativos no painel \textit{Detalhamento por
+Destino}, representa um diferencial expressivo em relação a visualizações estáticas. Ela permite que um analista de turismo, sem conhecimento de SQL, navegue pelos dados
+de forma exploratória, selecionando uma moeda ou um destino específico e observando
+instantaneamente como as demais métricas respondem. Essa interatividade é, no contexto
+do projeto, uma proxy da análise que um especialista em inteligência de mercado
+realizaria manualmente.
+
+Por outro lado, o Superset apresenta limitações que devem ser consideradas para o
+público-alvo. A curva de aprendizado para a criação e modificação de gráficos, em
+contraste com ferramentas comerciais como Tableau ou Power BI, pode representar
+uma barreira para usuários sem experiência prévia com ferramentas de \textit{Business
+Intelligence} de código aberto. A ausência de conversão cambial automática entre as
+três moedas do projeto (USD, EUR e GBP) implica que comparações intermoedas devem
+ser realizadas com cautela e requerem uma etapa interpretativa manual por parte de quem for fazer a análise. Adicionalmente, por se tratar de uma solução implantada em infraestrutura
+local via Docker, a disponibilidade do ambiente depende da operação contínua da pilha
+de contêineres, o que demanda competência técnica para manutenção que pode não estar
+presente em organizações menores do setor de turismo.
+
+No geral, a combinação de dois painéis com escopo complementar, um operacional e
+um analítico, atende ao duplo propósito do projeto, que é verificar a integridade da
+coleta e extrair inteligência de mercado a partir dos dados agregados. A escolha do
+Apache Superset como ferramenta de visualização se mostrou bastante coerente com os objetivos
+do projeto, viabilizando análises interativas sem exigir programação por parte do
+usuário final, ao custo de uma maior complexidade de implantação e manutenção em
+relação a alternativas comerciais.
+
+
+\section{Infraestrutura Conteinerizada com Docker}
+
+Toda a infraestrutura do \textit{pipeline} foi conteinerizada utilizando o \textbf{Docker} e
+orquestrada via \textbf{Docker Compose}. Em termos práticos, a conteinerização significa que
+cada componente do sistema (o banco de dados, os scrapers, o dbt, o Airflow e o Superset) roda dentro de um ambiente isolado chamado \textit{container}, que empacota todas as
+dependências necessárias para o seu funcionamento. O Docker Compose é a aplicação que
+coordena a criação e a comunicação entre todos esses containers a partir de um único arquivo
+de configuração, o docker-compose.yml.
+
+O arquivo de configuração do projeto define oito serviços organizados em uma rede interna
+compartilhada, que permite que todos os containers se comuniquem entre si utilizando nomes
+simples. A Tabela~\ref{tab:docker_services} detalha os serviços configurados.
+
+\begin{table}[H]
+\centering
+\caption{Serviços definidos no arquivo docker-compose.yml do projeto}
+\label{tab:docker_services}
+\begin{tabular}{llp{6.5cm}}
+\toprule
+\textbf{Serviço} & \textbf{Imagem / Origem} & \textbf{Função} \\
+\midrule
+postgres          & postgres:15            & Banco de dados principal, hospedando os dados analíticos, os metadados do Airflow e os metadados do Superset \\
+scraper           & python:3.11-slim$^{*}$ & Ambiente com navegador Chrome, Selenium e scripts de web scraping \\
+airflow-init      & apache/airflow:2.9.0   & Serviço temporário que prepara o banco do Airflow e cria o usuário administrador \\
+airflow-webserver & apache/airflow:2.9.0   & Interface web do Airflow, acessível pela porta \texttt{8080} \\
+airflow-scheduler & apache/airflow:2.9.0   & Agendador responsável por disparar as execuções das DAGs nos horários configurados \\
+dbt               & python:3.11-slim$^{*}$ & Ambiente com a ferramenta dbt para execução das transformações de dados \\
+superset          & apache/superset:3.1.0  & Interface de Business Intelligence, acessível pela porta \texttt{8088} \\
+superset-init     & apache/superset:3.1.0  & Serviço temporário que prepara o banco do Superset e cria o usuário administrador \\
+\bottomrule
+\end{tabular}
+
+\footnotesize{$^{*}$ Imagens construídas localmente a partir de python:3.11-slim,
+nomeadas pipeline\_scraper e pipeline\_dbt, respectivamente.}
+\end{table}
+
+Dois ambientes customizados foram desenvolvidos especificamente para o projeto. O primeiro
+constrói o ambiente dos scrapers, partindo de uma imagem base  de Python e
+adicionando o navegador Google Chrome e as bibliotecas necessárias (Selenium, DuckDB e Loguru
+para registro de logs). O segundo constrói o ambiente do dbt, também a partir da mesma linguagem de programação, instalando exclusivamente o pacote dbt-postgres==1.8.0.
+
+Os dados são persistidos de duas formas complementares. \textit{Volumes} Docker, áreas de
+armazenamento gerenciadas pelo Docker, são utilizados para o banco de dados PostgreSQL e
+para os metadados do Superset, garantindo que as informações sobrevivam ao reinício dos
+containers. \textit{Bind mounts}, mapeamentos diretos entre pastas do computador hospedeiro
+e pastas dentro dos containers, são utilizados para os diretórios de código e dados,
+permitindo que alterações feitas nos scripts ou nos modelos dbt sejam imediatamente refletidas
+dentro dos containers, sem necessidade de reconstrução.
+
+O PostgreSQL desempenha um papel central na arquitetura, hospedando três bancos de dados
+distintos dentro da mesma instância: o banco analítico (com as camadas \textit{raw},
+\textit{staging} e \textit{marts}), o banco de controle do Airflow (com o histórico de
+execuções e configurações) e o banco de controle do Superset (com as definições de painéis e
+conexões). Essa consolidação em uma única instância simplifica a infraestrutura e reduz o
+consumo de recursos, sendo adequada para o escopo do projeto. Em um cenário de produção com
+maior escala, cada serviço poderia utilizar uma instância dedicada de banco de dados.
+
+Essa abordagem conteinerizada garante que o \textit{pipeline} completo possa ser reproduzido
+em qualquer máquina com Docker instalado por meio do comando \textit{docker compose up},
+eliminando conflitos de dependências e reduzindo significativamente a barreira técnica para a
+validação dos resultados deste trabalho.

@@ -1,0 +1,197 @@
+\chapter{Revisão da Literatura}
+\label{sec:revisãoliteratura}
+
+O método de pesquisa em questão utiliza a \textbf{Revisão Rápida (\textit{Rapid Review})}, uma abordagem que se assemelha à \textbf{Revisão Sistemática (\textit{Systematic Review})}, mas que é conduzida de forma a ser mais oportuna e com custos reduzidos \cite{pena2025comparing}.
+
+A Revisão Sistemática é um estudo secundário rigoroso e abrangente, projetado para localizar, avaliar criticamente e sintetizar todas as evidências relevantes sobre uma questão de pesquisa claramente definida, minimizando o viés e gerando conclusões confiáveis e cientificamente sólidas.
+
+Em contraste, a Revisão Rápida adapta o método da Revisão Sistemática para entregar evidências em prazos reduzidos e a custos menores, geralmente simplificando procedimentos como a limitação das fontes de busca, o uso de apenas um avaliador para a triagem de estudos ou a omissão de uma avaliação de qualidade detalhada \cite{pena2025comparing}. Dada a necessidade de agilidade na coleta e análise de literatura para o trabalho em questão, opta-se pela metodologia de Revisão Rápida para a condução deste estudo.
+
+Para garantir rigor metodológico na seleção das fontes e na construção deste trabalho, foi adotado um rigoroso protocolo de revisão baseado no modelo \textit{PICOC} (\textit{Population, Intervention, Comparison, Outcome, Context}). Esse modelo permitiu estruturar a busca de forma sistemática, relacionando diretamente os elementos da investigação com os objetivos do trabalho. Os elementos definidos foram:
+
+\begin{itemize}
+ 	\item \textbf{Population}: Data engineer, Data processing, Big Data, SQL, Data Lake e Data Warehouse.
+ 	\item \textbf{Intervention}: ETL, ELT e Extract Transform Load.
+ 	\item \textbf{Comparison}: N/A.
+ 	\item \textbf{Outcome}: N/A.
+ 	\item \textbf{Context}: N/A.
+\end{itemize}
+
+Com base nesse enquadramento, foram definidas as seguintes questões de pesquisa (\textit{Research Questions}):
+
+\begin{enumerate}
+ 	\item Quais são as principais ferramentas open source utilizadas no desenvolvimento de pipelines de dados atualmente?
+ 	\item De que forma o uso de ferramentas open source impacta a eficiência, flexibilidade e custo dos pipelines de dados?
+ 	\item Em quais contextos as ferramentas open source são mais vantajosas para o desenvolvimento de pipelines de dados?
+ 	\item Quais os benefícios e limitações do uso de ferramentas open source em comparação com ferramentas proprietárias no contexto da engenharia de dados?
+\end{enumerate}
+
+Para operacionalizar a busca, foi utilizada a seguinte \textit{search string} em bases de dados científicas:
+
+\begin{quote}
+\texttt{TITLE-ABS-KEY ( ( "data engineer*" OR "data processing" OR "big data*" OR sql OR "Data lake" OR datawarehouse ) AND ( etl OR elt OR "extract transform load" ) ) AND PUBYEAR > 2019 AND PUBYEAR < 2026 AND ( LIMIT-TO ( SUBJAREA , "COMP" ) OR LIMIT-TO ( SUBJAREA , "ENGI" ) )}
+\end{quote}
+
+A execução dessa estratégia de busca retornou inicialmente um total de \textbf{315 publicações}. Para organizar o processo de triagem, foi utilizada a ferramenta \textbf{Parsifal}, amplamente empregada em revisões sistemáticas da literatura. Esses trabalhos constituem a base para a análise de avanços recentes, comparação de ferramentas e identificação de tendências emergentes no campo dos pipelines de dados.
+
+A escassez de artigos diretamente identificados pela string de busca inicial, um desafio comum em revisões bibliográficas de escopo restrito ou emergente, levou a uma busca de literatura ad hoc complementar. Esta abordagem pragmática, porém sistemática, permitiu a inclusão de informações cruciais e altamente relevantes de um conjunto mais amplo de fontes, garantindo a robustez necessária para responder de forma completa e fundamentada às questões de pesquisa propostas.
+
+\begin{subsection}{Artigos Selecionados para a Revisão}
+A execução dessa estratégia de busca retornou inicialmente um total de \textbf{315 publicações}. Para organizar o processo de triagem, foi utilizada a ferramenta \textbf{Parsifal}, amplamente empregada em revisões sistemáticas da literatura. Após a leitura dos resumos, aplicação de critérios de inclusão e exclusão e a verificação de alinhamento com as \textit{Research Questions}, apenas \textbf{5 artigos foram selecionados} para compor a presente revisão. Esses trabalhos constituem a base para a análise de avanços recentes, comparação de ferramentas e identificação de tendências emergentes no campo dos pipelines de dados.
+
+\begin{table}[H]
+    \label{tab:artigos_selecionados}
+    \small
+    \setlength{\extrarowheight}{3pt} % Espaçamento vertical interno
+    \renewcommand{\arraystretch}{1.3} % Altura das linhas
+    \begin{tabular}{
+        >{\raggedright\arraybackslash}p{2.6cm}
+        >{\raggedright\arraybackslash}p{5.8cm}
+        >{\raggedright\arraybackslash}p{4.8cm}
+    }
+        \toprule
+        \textbf{Citação} & \textbf{Título e Foco Principal} & \textbf{Relevância para o Projeto} \\
+        \midrule
+
+        \rowcolor[gray]{0.96}
+        \cite{boulahia2024} &
+        \textit{The multi-criteria evaluation of research efforts based on ETL software} \newline
+        (Avaliação de múltiplos critérios (AHP) para escolha de ETLs em BI, Big Data e contexto semântico.) &
+        Critérios de avaliação de ETLs Open Source (M1). \\
+
+        \cite{nwokeji2021} &
+        \textit{A Systematic Literature Review on Big Data Extraction, Transformation and Loading (ETL)} \newline
+        (Revisão sistemática sobre ETL para Big Data, abordando abordagens e atributos de qualidade.) &
+        Estrutura e atributos de qualidade para ETL em Big Data (M1). \\
+
+        \rowcolor[gray]{0.96}
+        \cite{murarka2024} &
+        \textit{Advanced Techniques in Data Ingestion and Pipelining for Scalable Big Data Platforms} \newline
+        (Técnicas avançadas de ingestão e processamento para Big Data escalável, com uso de Kafka, Spark e ML/AI.) &
+        Demonstra a escalabilidade de ferramentas como Kafka e Spark no ecossistema Open Source (M2/M5). \\
+
+        \cite{septian2019} &
+        \textit{A Study Review of Common Big Data Architecture for Small-medium Enterprise} \newline
+        (Arquitetura de Big Data e pipelines para Pequenas e Médias Empresas, com foco em Open Source.) &
+        Justifica o foco em Open Source para PMEs (M1) e serve de base para a arquitetura (M2). \\
+
+        \rowcolor[gray]{0.96}
+        \cite{reverseetl2022} &
+        \textit{Reverse ETL for Improved Scalability, Observability, and Performance of Modern Operational Analytics – A Comparative Review} \newline
+        (Análise e importância do Reverse ETL para o fluxo inverso do Data Warehouse para sistemas operacionais.) &
+        Identifica a tendência emergente do Reverse ETL, essencial para a análise crítica (M5). \\
+
+        \bottomrule
+    \end{tabular}
+     \centering
+        \caption{Artigos Selecionados para a Revisão Rápida}
+\end{table}
+
+\end{subsection}
+
+\section{Respostas às Questões de Pesquisa}
+
+A análise da literatura selecionada, complementada pela busca ad hoc, permite responder às questões de pesquisa propostas, traçando um panorama atualizado sobre as ferramentas open source, suas vantagens, desvantagens e o contexto de aplicação em pipelines de dados.
+
+\subsection{Quais são as principais ferramentas open source utilizadas no desenvolvimento de pipelines de dados atualmente?}
+\label{sec:respostas:ferramentas}
+
+A revisão da literatura aponta para um ecossistema de pipelines de dados dominado por ferramentas open source, especialmente no contexto de plataformas de \textit{Big Data} e para Pequenas e Médias Empresas (PMEs) \cite{septian2019, murarka2024, mbata2024survey}. As principais ferramentas de código aberto são categorizadas de acordo com a fase do pipeline de dados em que são aplicadas:
+
+\begin{enumerate}
+    \item \textbf{Ingestão de Dados e Filas de Mensagens (\textit{Data Ingestion and Message Queues}):}
+    O \textbf{Apache Kafka} é amplamente reconhecido como a principal ferramenta \textit{open source} para processamento de \textit{streams} de dados em tempo real, fornecendo escalabilidade e tolerância a falhas na ingestão de dados de alta velocidade \cite{murarka2024, mbata2024survey}. Ferramentas como \textbf{Apache Flume} e \textbf{Apache Nifi} são citadas para ingestão em lote (\textit{batch}) e em \textit{stream} de dados de diversas fontes, como \textit{logs} e sistemas baseados em eventos \cite{murarka2024}. O \textbf{RabbitMQ} também é mencionado como outra opção popular de fila de mensagens \textit{open source} \cite{septian2019}.
+
+    \item \textbf{Processamento, Transformação e Orquestração (ETL/ELT):}
+    O \textbf{Apache Spark} é a ferramenta de processamento de dados mais destacada, considerada uma alternativa robusta ao tradicional MapReduce. O Spark oferece processamento em memória, acelerando drasticamente as velocidades de processamento de dados e suportando tanto o processamento em lote quanto em tempo real \cite{murarka2024, septian2019, mbata2024survey}. Para orquestração e gerenciamento de fluxo de trabalho:
+    \begin{itemize}
+        \item \textbf{Apache Airflow:} Utilizado para orquestração e gerenciamento de fluxo de trabalho (\textit{Workflow Management}) e \textit{pipeline} de \textit{Machine Learning} (ML) \cite{mbata2024survey}.
+        \item \textbf{Apache NiFi:} Mencionado para a criação de fluxos de trabalho ETL, ingestão e transformação de dados, além de gerenciar fluxos de dados em tempo real \cite{mbata2024survey}.
+    \end{itemize}
+
+    \item \textbf{Armazenamento (\textit{Data Lake} e \textit{Data Warehouse}):}
+    O \textbf{Hadoop Distributed File System (HDFS)} é citado como o componente fundamental \textit{open source} para a construção de um \textit{Data Lake}, permitindo o armazenamento confiável e o processamento distribuído de grandes conjuntos de dados \cite{murarka2024, septian2019}.
+
+    \item \textbf{Visualização e \textit{Business Intelligence} (BI):}
+    Produtos como \textbf{Apache Zeppelin} e \textbf{Metabase} são citados como exemplos de ferramentas de código aberto que auxiliam na visualização dos \textit{insights} e podem se conectar com sistemas como HDFS e diversos bancos de dados \cite{septian2019}.
+\end{enumerate}
+
+\subsection{De que forma o uso de ferramentas open source impacta a eficiência, flexibilidade e custo dos pipelines de dados?}
+\label{sec:respostas:impacto}
+
+O impacto das ferramentas \textit{open source} nos \textit{pipelines} de dados é positivo em três dimensões críticas: custo, flexibilidade e eficiência, sendo particularmente relevante para empresas de menor porte \cite{septian2019}.
+
+\begin{itemize}
+    \item \textbf{Custo (Custo-Benefício):} Para Pequenas e Médias Empresas (PMEs), a adoção de ferramentas \textit{open source} é frequentemente justificada pela \textbf{redução de custos de licenciamento de software} (\textit{low cost over a software license}). O uso de produtos como Apache Hadoop, Kafka e Spark permite que as empresas iniciem seus projetos de \textit{Big Data} com um custo mínimo de licença para a implementação inicial (\textit{minimum cost over a software license for the early implementation}).
+    
+    \item \textbf{Flexibilidade (\textit{Flexibility}):} A flexibilidade é uma das qualidades mais valorizadas em soluções ETL/ELT e está intrinsecamente ligada à capacidade de uma solução acomodar \textbf{mudanças nos requisitos de integração de dados} e adaptar-se a volumes e complexidades de dados variáveis.
+    
+    \item \textbf{Adaptabilidade Tecnológica:} Ferramentas como Apache Spark e Apache Kafka oferecem \textbf{integração contínua e perfeita com o ecossistema de \textit{Big Data}}, permitindo que as organizações construam \textit{multi-service data pipelines} complexos com relativa facilidade.
+    
+    \item \textbf{Reutilização (\textit{Reusability}):} O atributo de \textit{reusability} define a capacidade de uma solução ETL/ELT ser usada em \textbf{vários domínios de aplicação} (\textit{various application domains}), uma característica que o código aberto facilita por sua natureza não restritiva e ampla compatibilidade.
+    
+    \item \textbf{Eficiência (\textit{Performance} e Escalabilidade):} A eficiência dos \textit{pipelines} é frequentemente medida pelo atributo de \textit{performance}, que exige que o processo ETL seja concluído em uma \textbf{janela de tempo especificada}.
+    
+    \item \textbf{Processamento Distribuído:} Plataformas \textit{open source} como o Hadoop com HDFS e o Apache Spark são essenciais para a eficiência em escala, pois fornecem capacidades de armazenamento distribuído e processamento paralelo, acelerando drasticamente o processamento de grandes volumes de dados.
+    
+    \item \textbf{Escalabilidade (\textit{Scalability}):} A escalabilidade refere-se à capacidade de uma solução ETL/ELT ser usada para volumes e complexidades de dados variáveis. O design inerente de ferramentas como Kafka (mensageria distribuída) e Spark (processamento em memória) as torna soluções robustas para gerenciar \textit{Big Data} em escala.
+\end{itemize}
+
+\subsection{Em quais contextos as ferramentas open source são mais vantajosas para o desenvolvimento de pipelines de dados?}
+\label{sec:respostas:contextos}
+
+As ferramentas \textit{open source} demonstram ser vantajosas em diversos contextos, sendo o fator predominante a necessidade de escalabilidade e flexibilidade em ambientes de \textit{Big Data} e a otimização de custos em organizações com recursos limitados \cite{septian2019, murarka2024}.
+
+\begin{itemize}
+    \item \textbf{Contexto de \textit{Big Data} e \textit{Scalability}:}
+    A vantagem do código aberto é máxima em projetos que lidam com as características V's do \textit{Big Data} (Volume, Velocidade, Variedade) \cite{septian2019}. Ferramentas como Apache Spark e Apache Kafka são fundamentais em cenários que exigem análise imediata e baixa latência \cite{murarka2024}. O uso do Spark (processamento em memória) oferece grande vantagem sobre modelos tradicionais em lote para cenários que necessitam de agilidade e escalabilidade horizontal \cite{murarka2024}.
+
+    \item \textbf{Contexto de PMEs e Custo (\textit{Cost-effective}):}
+    Para pequenas e médias empresas, o código aberto é a principal via de acesso à infraestrutura de \textit{Big Data} \cite{septian2019}. A ausência de custos de licença (\textit{low cost over a software license}) permite que as PMEs experimentem e cresçam com a infraestrutura sem a barreira financeira associada a soluções proprietárias de grande escala \cite{septian2019}.
+
+    \item \textbf{Contexto de Inovação e \textit{Feature Engineering} (ML/AI):}
+    A vasta e criativa comunidade \textit{open source} (\textit{vibrant and creative open-source ecosystem}) é o "combustível para foguetes" (\textit{rocket fuel}) para pesquisa e inovação em \textit{Machine Learning} (ML) e Inteligência Artificial (AI) \cite{reddi2021data}. Em contextos de engenharia de dados voltados para alimentar modelos de ML, a colaboração em torno de conjuntos de dados e ferramentas \textit{open source} acelera o desenvolvimento de novos modelos e a reprodutibilidade dos resultados \cite{reddi2021data}.
+\end{itemize}
+
+\subsection{Quais os benefícios e limitações do uso de ferramentas open source em comparação com ferramentas proprietárias no contexto da engenharia de dados?}
+\label{sec:respostas:comparacao}
+
+A comparação entre ferramentas \textit{open source} e proprietárias é um tema central na Engenharia de Dados. A literatura fornece uma visão clara sobre os \textit{trade-offs} envolvidos, especialmente em termos de custo, suporte e complexidade operacional \cite{septian2019, nwokeji2021, murarka2024, mbata2024survey}.
+
+\subsubsection{Benefícios do \textit{Open Source} em Comparação com o Proprietário}
+\begin{table}[h!]
+    \label{tab:beneficios_os}
+    \small
+    \begin{tabular}{p{3.0cm} p{8.5cm} p{1.5cm}}
+        \toprule
+        \textbf{Benefício} & \textbf{Descrição} & \textbf{Fontes} \\
+        \midrule
+        Custo Inicial Reduzido & Eliminação ou redução drástica dos custos de licença, o que é crucial para a implementação inicial por PMEs \cite{septian2019}. & \cite{septian2019} \\
+        \rowcolor[gray]{0.95}
+        Flexibilidade e Reutilização & Maior adaptabilidade às mudanças de requisitos e capacidade de ser reutilizada em múltiplos domínios \cite{nwokeji2021}. & \cite{nwokeji2021} \\
+        Inovação Acelerada (ML/AI) & Acesso imediato ao ecossistema global de inovação, impulsionando a pesquisa e o desenvolvimento de modelos de \textit{Machine Learning} \cite{reddi2021data}. & \cite{reddi2021data} \\
+        \bottomrule
+    \end{tabular}
+        \centering
+    \caption{Benefícios do \textit{Open Source} em \textit{Data Pipelines}}
+\end{table}
+
+\subsubsection{Limitações do \textit{Open Source} em Comparação com o Proprietário}
+\begin{table}[h!]
+    \label{tab:limitacoes_os}
+    \small
+    \begin{tabular}{p{3.0cm} p{8.5cm} p{1.5cm}}
+        \toprule
+        \textbf{Limitação} & \textbf{Descrição} & \textbf{Fontes} \\
+        \midrule
+        Suporte e Manutenção & O suporte tende a ser baseado na comunidade, podendo levar a uma curva de aprendizado mais íngreme e custos indiretos com a complexidade de \textit{setup} e monitoramento operacional \cite{mbata2024survey, septian2019}. & \cite{mbata2024survey, septian2019} \\
+        \rowcolor[gray]{0.95}
+        Complexidade Operacional & A configuração e a manutenção podem ser complexas e exigir um alto nível de especialização técnica. Soluções proprietárias baseadas em nuvem oferecem serviços gerenciados, simplificando essa complexidade \cite{septian2019, murarka2024}. & \cite{septian2019, murarka2024} \\
+        Observabilidade (Reverse ETL) & O \textit{Reverse ETL} é mais difícil devido à necessidade de sincronização manual e reconciliação de dados, um desafio simplificado por ferramentas proprietárias focadas em \textit{Operational Analytics} \cite{reverseetl2022}. & \cite{reverseetl2022} \\
+        \rowcolor[gray]{0.95}
+        Foco na Ferramenta & Soluções \textit{open source}, por vezes, carecem de um gerenciamento de fluxo de trabalho de ponta a ponta e componentes "prontos para usar", exigindo a combinação de várias ferramentas para obter uma solução completa \cite{mbata2024survey}. & \cite{mbata2024survey} \\
+        \bottomrule
+    \end{tabular}
+        \centering
+    \caption{Limitações do \textit{Open Source} em \textit{Data Pipelines}}
+\end{table}

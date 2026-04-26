@@ -1,0 +1,146 @@
+\chapter{Introdução}
+\label{sec:introducao}
+
+ Este capítulo tem como propósito introduzir o cenário em que se insere este trabalho de conclusão de curso, destacando sua motivação, os problemas investigados e os principais objetivos.
+
+\section{Contextualização}
+
+A era digital tem sido marcada por uma crescente geração de dados provenientes de diversas fontes, como redes sociais, dispositivos móveis, sensores de \textit{Internet of Things} (IOT) e sistemas transacionais. Nesse cenário, o conceito de \textit{Big Data} emerge como um paradigma essencial para lidar com essa grande quantidade de informações de maneira eficaz, possibilitando análises complexas e decisões baseadas em dados. Com o aumento da necessidade de extração de valor a partir desses dados, surgem arquiteturas e processos especializados como os \textit{pipelines} de dados, que são fluxos estruturados que extraem, transformam e carregam dados para ambientes de análise e decisão.
+
+Historicamente, o ecossistema de dados nas organizações foi dominado pelas ferramentas proprietárias, ou seja, as fornecidas por grandes empresas, como Amazon, Microsoft e Google \cite{septian2019, reverseetl2022}. Estas soluções, juntamente com outras proprietárias, são explicitamente destacadas em comparação com alternativas de código aberto \cite{septian2019, reverseetl2022}. Essas soluções apresentam algumas limitações importantes, dentre elas os altos custos de licenciamento, dependência de fornecedores e restrições de customização. A precificação de muitas plataformas de dados em nuvem, especialmente as proprietárias, adota um modelo baseado no consumo, como o \textit{pay-per-use} ou custos por hora e nó de processamento \cite{murarka2024}. Este modelo de cobrança por uso e por escalabilidade automática para acomodar \textit{bursty workloads} \cite{murarka2024}, embora ofereça flexibilidade, introduz o custo de implementação e manutenção como um risco significativo no Big Data \cite{septian2019}. Além disso, a adoção dessas ferramentas pode se tornar um obstáculo para inovação e agilidade operacional, especialmente em contextos onde há necessidade de adaptação rápida a novas demandas de negócio ou escalabilidade. Em resposta à complexidade e ao risco de custos elevados inerentes aos modelos de precificação de plataformas proprietárias \cite{septian2019}, muitas organizações estão reorientando suas estratégias. Há uma busca crescente por alternativas que sejam mais acessíveis, modulares e flexíveis, sendo as soluções \textit{\textbf{open source}} destacadas como essenciais para permitir que até Pequenas e Médias Empresas (PMEs) enfrentem seus desafios de \textit{Big Data} \cite{septian2019, murarka2024}.
+
+Para viabilizar as operações de dados de forma escalável e segura, e de maneira economicamente sustentável, especialmente em um cenário de constante crescimento do volume de dados, as ferramentas de código aberto \textit{open source} passaram a desempenhar um papel estratégico \cite{murarka2024, septian2019}. Plataformas como Hadoop, com seus componentes HDFS e MapReduce, tornaram-se essenciais no gerenciamento de conjuntos de dados em larga escala, provendo armazenamento distribuído e capacidades de processamento paralelo cruciais para a escalabilidade \cite{murarka2024}.
+
+Essas ferramentas oferecem alternativas robustas e acessíveis às soluções proprietárias, permitindo que organizações de diferentes portes construam e personalizem suas próprias arquiteturas de dados. Além disso, a natureza colaborativa do \textit{software} \textit{open source} impulsiona a inovação contínua e facilita a integração com diferentes tecnologias, tornando-se um pilar fundamental na construção de \textit{pipelines} de dados modernos \cite{murarka2024, septian2019}. O uso de ferramentas como Apache Spark, por exemplo, oferece flexibilidade para acomodar tanto o processamento em lote quanto a manipulação de dados em tempo real, integrando-se de maneira robusta ao ecossistema de \textit{Big Data} \cite{murarka2024}.
+    
+Embora o uso de \textit{pipelines} de dados seja essencial para lidar com os desafios do \textit{Big Data} \cite{murarka2024}, muitas organizações enfrentam entraves significativos em sua implementação prática. Entre os principais desafios estão a complexidade da ingestão de dados em tempo real, a integração de fontes heterogêneas e a dificuldade em manter processos de transformação consistentes e escaláveis \cite{murarka2024, nwokeji2021}. Em particular, o ETL (Extract, Transform, Load) tradicional pode ser um processo de custo intensivo e é fundamentalmente uma abordagem unidirecional, não sendo capaz de movimentar dados para fora do \textit{data warehouse} \cite{nwokeji2021, reverseetl2022}.
+
+Além disso, há uma ausência de diretrizes padronizadas que auxiliem na seleção, combinação e orquestração de ferramentas \textit{open source} de forma segura e eficiente. A falta de uma abordagem padronizada para modelar os processos e fluxos de trabalho do ETL é reconhecida como um desafio prevalente \cite{nwokeji2021}. Essa carência resulta na desorientação na escolha e na dificuldade de selecionar um ETL que esteja alinhado às necessidades específicas, preferências e interesses de cada organização \cite{boulahia2024}. Isso gera incertezas, retrabalho e adoções tecnológicas mal planejadas, resultando em arquiteturas pouco escaláveis ou difíceis de manter.
+
+Diante desse cenário e dos problemas descritos, surge a questão de pesquisa deste trabalho: como ferramentas \textit{open source} podem ser utilizadas na construção de \textit{pipelines} de dados eficientes, escaláveis e acessíveis, e quais são seus impactos em comparação com soluções proprietárias. Visando auxiliar na resposta desta pergunta, este trabalho tem como principal objetivo analisar as ferramentas disponíveis para geração de um \textit{pipeline} de dados funcional e robusto, utilizando exclusivamente tecnologias livres, que seja equivalente aos \textit{pipelines} que são criados utilizando soluções proprietárias. Estudo que vai desde a coleta de dados brutos, realizando \textit{web scraping} de passagens aéreas de sites internacionais com destino ao Brasil, até a disponibilização para análise.
+
+\section{Objetivos do Trabalho}
+\label{sec:objetivo}
+
+Este trabalho busca demonstrar a viabilidade técnica e econômica de \textit{pipelines} de dados baseados em ferramentas \textit{open source}, oferecendo uma alternativa às soluções proprietárias tradicionais. O foco recai sobre cenários onde orçamentos limitados e a necessidade de flexibilidade são críticos, tais como pequenas e médias empresas ou projetos acadêmicos. Para isso, é destacado:
+
+\section{Justificativas da Abordagem \textit{Open Source} no \textit{Pipeline} de Dados}
+
+A escolha pela construção de um \textit{pipeline} de dados baseado em tecnologias \textit{open source} visa explorar e demonstrar as seguintes vantagens estratégicas, essenciais para o seu potencial de comparação com soluções proprietárias:
+
+\begin{itemize}
+    \item \textbf{Sustentabilidade Econômica e Previsibilidade de Custos:} A abordagem \textit{open source} é fundamental para a viabilidade econômica do \textit{Big Data}, pois evita os custos de licença por usuário ou por volume de dados processados, característicos das plataformas proprietárias \cite{septian2019}. Esta escolha permite a construção de uma solução economicamente sustentável, com um custo de implementação e manutenção mais previsível, mesmo em cenários de alta variabilidade de carga \cite{murarka2024, septian2019}.
+    
+    \item \textbf{Flexibilidade e Interoperabilidade Arquitetural:} As ferramentas de código aberto não impõem um ecossistema fechado, oferecendo a liberdade e a flexibilidade para escolher e combinar os melhores componentes para cada necessidade específica \cite{murarka2024}. Esta flexibilidade se manifesta na interoperabilidade entre diferentes tecnologias e se torna um pilar fundamental na construção de \textit{pipelines} de dados modernos \cite{murarka2024, septian2019}.
+    
+    \item \textbf{Escalabilidade Técnica Comprovada:} O uso de componentes \textit{open source} é uma estratégia chave para viabilizar operações de dados de forma escalável e segura \cite{murarka2024, septian2019}. Plataformas \textit{open source}, como o Hadoop e o Apache Spark, demonstraram ser essenciais no gerenciamento de conjuntos de dados em larga escala, provendo armazenamento distribuído e capacidade de processamento paralelo, cruciais para a escalabilidade horizontal da infraestrutura \cite{murarka2024}.
+    
+    \item \textbf{Comparação de Desempenho e Viabilidade:} O objetivo final do projeto reside na capacidade de construir e, posteriormente, comparar esta arquitetura \textit{open source} com os modelos proprietários. Essa comparação é justificada pela necessidade de avaliar se as soluções \textit{open source}, que são intrinsecamente mais acessíveis e modulares, podem ser uma alternativa viável e eficiente frente aos desafios de complexidade, volume e heterogeneidade de dados enfrentados pelas organizações \cite{boulahia2024, nwokeji2021}.
+\end{itemize}
+
+\subsection{Objetivos Específicos}
+\begin{enumerate}
+    \item \textbf{Mapear e Catalogar Ferramentas \textit{Open Source}:} Identificar e catalogar as ferramentas de código aberto mais relevantes e robustas para cada etapa do \textit{pipeline} de dados (Ingestão, Transformação, Armazenamento e Ativação), baseando-se nos critérios de avaliação encontrados na literatura para garantir a escalabilidade e a interoperabilidade arquitetural da solução \cite{boulahia2024, murarka2024, septian2019}.
+
+    \item \textbf{Construir o Protótipo Funcional (\textit{Estudo de Caso}):} Construir um protótipo funcional de um \textit{pipeline} de dados utilizando as ferramentas \textit{open source} selecionadas para o Estudo de Caso. O foco será na ingestão e processamento de dados de passagens aéreas (um domínio com dados variados), abrangendo as seguintes sub-etapas:
+    \begin{itemize}
+        \item Realizar a \textbf{Extração de Dados} de fontes públicas, via \textit{web scraping}, empregando essa técnica onde APIs não são disponíveis ou são limitadas, e sempre respeitando os termos de serviço e a legalidade.
+        \item Efetuar a \textbf{Transformação dos Dados} brutos para garantir sua qualidade, consistência e adequação analítica, incluindo padronização (conversão de moedas, limpeza de dados nulos ou duplicados) e o enriquecimento com informações contextuais (dados geográficos).
+        \item Concluir a \textbf{Carga dos Dados} transformados em um banco de dados otimizado para consultas analíticas, servindo como a camada de consumo para análises e visualizações.
+    \end{itemize}
+
+    \item \textbf{Avaliar o Desempenho Operacional:} Focar na mensuração e análise do desempenho do \textit{pipeline} de dados construído, quantificando sua eficiência e eficácia por meio de métricas-chave:
+    \begin{itemize}
+        \item Medir o \textbf{Tempo Médio de Processamento} por lote de dados, desde o início da ingestão até a carga final, utilizando logs de tempo ou ferramentas de orquestração para determinar o \textit{throughput} do \textit{pipeline} sob diferentes cargas.
+        \item Monitorar o \textbf{Consumo de Recursos Computacionais} (CPU e memória) pelos processos, empregando ferramentas de monitoramento do sistema para identificar gargalos e otimizar a \textit{performance}.
+        \item Estimar os \textbf{Custos Operacionais}, calculando os gastos com a infraestrutura (servidores, armazenamento, transferência de dados) da operação do \textit{pipeline}, mesmo com o uso de ferramentas \textit{open source} sem custo de licenciamento.
+    \end{itemize}
+
+    \item \textbf{Realizar a Análise Crítica e Documentar Lições Aprendidas:} Documentar os desafios, as lições aprendidas e oferecer \textit{insights} para futuras implementações, buscando contextualizar os achados:
+    \begin{itemize}
+        \item Analisar as \textbf{Limitações de Escalabilidade} das ferramentas \textit{open source} em cenários de alta escala, comparando o desempenho do protótipo com \textit{benchmarks} de soluções proprietárias ou com as expectativas teóricas para volumes de dados muito maiores (escala petabyte).
+        \item Documentar \textbf{Estratégias para Mitigar \textit{Vendor Lock-in}}, identificando dependências inadvertidas em ecossistemas ou tecnologias específicas, apesar de a abordagem \textit{open source} ser vista como o meio principal de evitar essa restrição.
+    \end{itemize}
+\end{enumerate}
+
+\section{Metodologia de Pesquisa: Design Science Research (DSR)}
+\label{sec:metodologia}
+
+Este trabalho adota o paradigma \textit{Design Science Research} (DSR), uma abordagem metodológica fundamental para a pesquisa em Sistemas de Informação que se foca na criação de artefatos inovadores e úteis para solucionar problemas práticos, conforme proposto por \cite{peffers2012design}. A DSR é a abordagem mais apropriada, pois alinha a necessidade de contribuição acadêmica (geração de conhecimento sobre a viabilidade de soluções livres) com a necessidade prática (construção de um protótipo funcional).
+
+O artefato central deste TCC é a \textbf{Arquitetura de \textit{Pipeline} de Dados \textit{Open Source} para \textit{Big Data}} e a documentação detalhada da sua avaliação de desempenho. O artefato compreende um pipeline end-to-end que abrange web scraping (Selenium), armazenamento analítico (DuckDB/PostgreSQL), transformação (dbt), orquestração (Airflow) e visualização (Apache Superset). O processo metodológico é estruturado em seis etapas interligadas, mapeando os objetivos específicos do projeto às fases canônicas da DSR.
+
+\subsection{Fluxo Metodológico (DSR)}
+\label{sec:bpmn_fluxo}
+
+O processo de pesquisa e desenvolvimento é concebido como um fluxo de trabalho sequencial. A Figura \ref{fig:bpmn_metodologia} ilustra este fluxo, alinhando as etapas do projeto (\textbf{M1-M6}) com as fases do \textit{Design Science Research} (DSR) \cite{peffers2012design}.
+
+\begin{figure}[htb]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[node distance=2.5cm, auto, >=stealth', line width=1pt]
+
+\tikzstyle{dsr_phase} = [rectangle, minimum width=2.4cm, minimum height=1cm, text centered, draw=black, fill=gray!25, font=\bfseries, text width=2.4cm]
+\tikzstyle{activity} = [rectangle, minimum width=2.4cm, minimum height=1cm, text centered, draw=black, fill=blue!10, text width=2.4cm]
+\tikzstyle{flow} = [->, thick]
+\node (P1) [dsr_phase] {Identificação do\\Problema};
+\node (P2) [dsr_phase, right=of P1, text width=5.5cm, minimum width=5.8cm] {Design e Desenvolvimento};
+\node (P3) [dsr_phase, right=of P2] {Demonstração};
+\node (P4) [dsr_phase, right=of P3] {Avaliação};
+\node (P5) [dsr_phase, right=of P4] {Comunicação};
+
+\node (M1) [activity, below=0.7cm of P1] {M1: Revisão\\Rápida};
+\node (M2) [activity, below=0.7cm of P2.south west, anchor=north west, xshift=1mm] {M2: Mapeamento\\/Projeto};
+\node (M3) [activity, right=1cm of M2] {M3: Construção\\Protótipo};
+\node (M4) [activity, below=0.7cm of P3] {M4: Demonstração\\e Coleta};
+\node (M5) [activity, below=0.7cm of P4] {M5: Avaliação\\Crítica};
+\node (M6) [activity, below=0.7cm of P5] {M6: Comunicação\\Resultados};
+
+\draw [flow] (M1) -- (M2.west);
+\draw [flow] (M2.east) -- (M3.west);
+\draw [flow] (M3) -- (M4);
+\draw [flow] (M4) -- (M5);
+\draw [flow] (M5) -- (M6);
+
+\end{tikzpicture}}
+    \caption{Fluxo Metodológico do Projeto Mapeado às Fases do \textit{Design Science Research} (DSR)}
+    \label{fig:bpmn_metodologia}
+\end{figure}
+
+A Tabela \ref{tab:etapas_metodologicas} detalha as atividades, suas respectivas fases DSR e os resultados concretos esperados.
+
+\begin{table}[H] 
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|p{0.5cm}|p{3.0cm}|p{2.8cm}|p{6.8cm}|}
+        \hline
+        \textbf{ID} & \textbf{Atividade} & \textbf{Fase DSR} & \textbf{Resultado (Artefato) e Descrição} \\
+        \hline
+        \hline
+        \textbf{M1} & \textbf{Revisão Rápida da Literatura} & Identificação do Problema e Objetivos & \textbf{Catálogo de Ferramentas \textit{Open Source}:} Base teórica de tecnologias e \textbf{Critérios de Avaliação} de ETL \cite{boulahia2024} para guiar a seleção (Capítulo 3). \\
+        \hline
+        \textbf{M2} & \textbf{Mapeamento e Projeto da Arquitetura} & Design e Desenvolvimento & \textbf{Arquitetura Conceitual e Lógica:} Definição formal do \textit{stack} tecnológico (ferramentas específicas) e do fluxo de dados que será implementado no protótipo. \\
+        \hline
+        \textbf{M3} & \textbf{Construção do Protótipo Funcional} & Design e Desenvolvimento & \textbf{Protótipo do Pipeline Funcionando:} Código implementado para Extração (\textit{web scraping}), scripts de Transformação (limpeza e enriquecimento) e Carga dos dados (Capítulo 4). \\
+        \hline
+        \textbf{M4} & \textbf{Demonstração e Coleta de Métricas} & Demonstração & \textbf{Dados Operacionais Brutos:} Logs de \textbf{Tempo Médio de Processamento} e relatórios de \textbf{Consumo de Recursos Computacionais} (CPU/Memória) sob carga, essenciais para a avaliação. \\
+        \hline
+        \textbf{M5} & \textbf{Avaliação Crítica e Análise Comparativa} & Avaliação & \textbf{Análise Crítica e Lições Aprendidas:} Documentação dos \textit{benchmarks} de desempenho, limitações de escalabilidade e a confirmação da viabilidade econômica das soluções \textit{open source} (Capítulo 5). \\
+        \hline
+        \textbf{M6} & \textbf{Comunicação dos Resultados} & Comunicação & \textbf{Trabalho de Conclusão de Curso (TCC):} Documento final que formaliza o artefato criado e o novo conhecimento gerado. \\
+        \hline
+    \end{tabular}}
+    \caption{Etapas Metodológicas, Resultados e Mapeamento DSR}
+    \label{tab:etapas_metodologicas}
+\end{table}
+
+\section{ Organização do texto }
+Este trabalho de conclusão de curso está organizado em cinco capítulos, seguindo o fluxo metodológico detalhado na Seção \ref{sec:metodologia} e na Tabela \ref{tab:etapas_metodologicas}. Neste capítulo, foi apresentado o contexto em que ele se insere, sua motivação e a questão de pesquisa.
+
+O Capítulo 2 apresenta a fundamentação teórica de conceitos que são essenciais para o entendimento dos demais capítulos escritos, incluindo a definição de \textit{Big Data}, a evolução dos \textit{pipelines} de dados (ETL, ELT, Reverse ETL), e o detalhamento das ferramentas \textit{open source} mais relevantes.
+
+O Capítulo 3, correspondente à \textbf{Etapa M1} (Revisão Rápida da Literatura), apresenta uma revisão diante dos materiais encontrados em uma \textit{Rapid Review} \cite{dobbins2017rapid} sobre o tema. Este capítulo demonstra as características essenciais para a seleção de ferramentas, conforme os critérios de avaliação propostos por Boulahia et al. \cite{boulahia2024}, fornecendo o embasamento teórico para a \textbf{Etapa M2} de projeto.
+
+O Capítulo 4, correspondente às \textbf{Etapas M2, M3 e M4} da metodologia, apresenta a proposta de solução do problema e a demonstração prática do artefato. O foco reside na construção e teste de um \textit{pipeline} de dados robusto, desde a coleta via \textit{web scraping} de passagens aéreas até a disponibilização dos dados para análise, demonstrando que é possível atingir resultados comparáveis aos de soluções comerciais.
+
+O Capítulo 5, correspondente à \textbf{Etapa M5} (Avaliação Crítica e Análise Comparativa) e \textbf{M6} (Comunicação), apresenta uma discussão final sobre o conteúdo que foi apresentado nesse trabalho de pesquisa, analisando os resultados da performance, suas contribuições e limitações.

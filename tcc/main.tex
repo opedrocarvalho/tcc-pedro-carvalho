@@ -1,0 +1,276 @@
+\documentclass[12pt]{tcc} 
+
+\usepackage[brazil]{babel} 
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage[pt-BR]{datetime2}
+\usepackage{url}
+\usepackage[portuguese,ruled,linesnumbered,algochapter,titlenumbered]{algorithm2e}
+\usepackage[normalem]{ulem}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage[justification=centering]{caption}
+\usepackage{placeins}
+\usepackage{tabularx} 
+\usetikzlibrary{shapes, arrows, positioning, fit}
+%code style
+\usepackage{float}
+\usepackage{blindtext}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{minted}
+\usemintedstyle{borland}
+\definecolor{command-line}{rgb}{0.85,0.85,0.9}
+\definecolor{php-code}{rgb}{1,1,1}
+
+% Color definition %
+\definecolor{bash_main_commands}{rgb}{0.0, 0.0, 1.0}
+
+\usepackage{lipsum}
+\lstset{
+  language        = php,
+  basicstyle      = \small\ttfamily,
+  keywordstyle    = \color{blue},
+  keywords    ={__halt_compiler, abstract, and, array,
+                    as, break,  callable,   case,   catch, class,
+                    clone,  const,  continue,   declare,    default,
+                    die,    do, echo,   else,   elseif,
+                    empty,  enddeclare, endfor, endforeach, endif,
+                    endswitch,  endwhile,   eval,   exit,   extends,
+                    final,  finally,    for,    foreach,    function,
+                    global, goto, if,   implements, include,
+                    include_once,   instanceof, insteadof,
+                    interface,  isset, list,    namespace,
+                    new,    or, print, private, protected,  public,
+                    require,    require_once, return,   static,
+                    switch, throw,  trait, try, unset, use, var,
+                    while,  xor,    yield, string, int, object, closure
+  },
+  stringstyle     = \color{red},
+  identifierstyle = \color{OliveGreen},
+  commentstyle    = \color{gray},
+  emph            =[1]{php},
+  emphstyle       =[1]\color{violet},
+  emph            =[2]{if,and,or,else, bool, null},
+  emphstyle       =[2]\color{blue},
+  emph            =[3]{Core, Abstractions, Model, App, Models, User, Database, Query, SelectBuilder, JoinBuilder, HavingBuilder, Hash, Post, Team, Schema, TableBuilder, ChangeTableBuilder, Factories, UserFactory, Factory, DateTime, UserSeeder, Seeder, UserController, Uri, CreatePostsTable, Migration,  Enterprise, Phone, Test   },
+  emphstyle       =[3]\color{orange},
+  emph            =[4]{User, git, clone},
+  emphstyle       =[4]\color{orange},
+  emph            =[5]{index, find, get, where, orWhere, whereNot, whereBetween, whereNotBetween, whereIsNull, whereIsNotNull, whereAll, from, column, whereNotIn, whereExists, whereIn, when, on, orderBy, groupBy, limit, having, or, and, first, last, insert, hashPassword, update, delete, abstract, create, and, array,
+                    as, break,  callable,   case,   catch, class,
+                    clone,  const,  continue,   declare,    default,
+                    die,    do, echo,   else,   elseif,
+                    empty,  enddeclare, endfor, endforeach, endif,
+                    endswitch,  endwhile,   eval,   exit,   extends,
+                    final,  finally,    for,    foreach,    function,
+                    global, goto, if,   implements, include,
+                    include_once,   instanceof, insteadof,
+                    interface,  isset, list,    namespace,
+                    new,    or, print, private, protected,  public,
+                    require,    require_once, return,   static,
+                    switch, throw,  trait, try, unset, use, var,
+                    while,  xor,    yield, string, int, object, closure, hasOne, hasMany, hasManyThrough, belongsTo, 
+                     hasOneThrough,
+                    belongsToMany, trace, enableTraceMode,
+                    dateTime, varchar, id, primaryKey, autoIncrement, foreignKey, unique, visible, fullText, alter, dropColumn, dropConstraint, dropIndex, notNull, change, drop, faker, name, safeEmail. currentDateTime, self, void, factory, view, getRootPath, bigInt, timestamp},
+  emphstyle       =[5]\color{blue},
+  numbers=left,
+  stepnumber=1,  
+  numberfirstline=true,
+  numberstyle=\footnotesize,
+  upquote=true,
+  showlines=true,
+  showspaces=false,
+  captionpos=b
+  }
+
+  \lstset{
+  language        = bash,
+  basicstyle      = \small\ttfamily,
+  keywordstyle    = \color{blue},
+  keywords    ={__halt_compiler},
+  stringstyle     = \color{red},
+  identifierstyle = \color{black},
+  commentstyle    = \color{gray},
+  emph            =[1]{git, composer, php, cosmo, APP_NAME, APP_ENV, APP_URL, APP_LOCALHOST_SERVER_PORT, DB_CONNECTION, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD, DB_CHARSET},
+  emphstyle       =[1]\color{bash_main_commands},
+  emph            =[2]{help, api, step, filename},
+  emphstyle       =[2]\color{orange},
+  numbers=left,
+  stepnumber=1,  
+  numberfirstline=true,
+  numberstyle=\footnotesize,
+  upquote=true,
+  showlines=true,
+  showspaces=false,
+  captionpos=b
+  }
+
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{FFFFFF}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\usepackage{xcolor}
+
+\newboolean{showcomments}
+\setboolean{showcomments}{true}
+\ifthenelse{\boolean{showcomments}}
+ { \newcommand{\mynote}[3]{
+      \fbox{\bfseries\sffamily\scriptsize#1}
+        {\small$\blacktriangleright$\textsf{\textcolor{#3}{{\em #2}\bf }}$\blacktriangleleft$}}}
+        { \newcommand{\mynote}[2]{}}
+\newcommand{\pantoja}[1]{\mynote{Pantoja}{#1}{blue}}
+\newcommand{\attention}[1]{\mynote{Atenção}{#1}{red}}
+\newcommand{\modify}[1]{\mynote{Ajustes}{#1}{orange}}
+\newcommand{\john}[1]{\mynote{Jonh}{#1}{brown}}
+
+\lstdefinestyle{mystyle}{
+    basicstyle=\normalfont\ttfamily,
+    numbers=left,
+    numberstyle=\scriptsize,
+    stepnumber=1,
+    numbersep=1pt,
+    showstringspaces=false,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    frame=lines,
+    backgroundcolor=\color{background}
+}
+\lstset{style=mystyle}
+
+\lstdefinelanguage{json}{0
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{
+delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+
+\lstdefinelanguage{Jason}{
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {;}{{{\color{punct}{;}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1}
+      {<-}{{{\color{punct}{<-}}}}{2}
+      {.}{{{\color{punct}{.}}}}{1},
+}
+
+\lstdefinelanguage{Java}{
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {;}{{{\color{punct}{;}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1}
+      {<-}{{{\color{punct}{<-}}}}{2}
+      {.}{{{\color{punct}{.}}}}{1},
+}
+
+% Desenho de X
+\newcommand{\tikzcmark}{
+\tikz[scale=0.23] {
+    \draw[line width=0.7,line cap=round] (0.25,0) to [bend left=10] (1,1);
+    \draw[line width=0.8,line cap=round] (0,0.35) to [bend right=1] (0.23,0);
+}}
+
+% Definições.
+\usepackage{amsthm}
+\newtheorem{definition}{Definição}
+
+% Algoritmo
+\newcommand{\spaceH}[1]{\ \ \ \ \ }
+\newcommand{\spaceAction}[1]{\- \spaceH \spaceH \spaceH }
+
+% As Figuras ficam armazenadas na pasta Figuras
+\graphicspath{{./figures/}}
+
+% Informações do trabalho
+\newcommand\dtitle{A Importância das Ferramentas Open Source no Desenvolvimento de Pipelines de Dados}
+\newcommand\dauthor{Pedro Medeiros Pereira Carvalho}
+\newcommand\dadvisor{Diego Cardoso Borda Castro}
+
+% Definição de acronimos
+
+\input{sections/acronimos}
+\begin{document}
+\pagenumbering{gobble}
+\pagenumbering{roman}
+
+\dcover
+
+\dcoverback
+
+\newpage
+\dacknowledgment{
+Upcoming...
+}
+
+\input{sections/abstract}
+%\dtables
+
+\tableofcontents
+\newpage
+\listoffigures
+
+
+\pagenumbering{arabic}
+\justifying
+	
+\input{sections/intro}
+\input{sections/fundamentação}
+
+\input{sections/revisãoliteratura}
+
+\chapter{Construção do Pipeline} 
+\input{sections/ingestaodosdados}
+
+\input{sections/conclusao}
+
+\label{bibpage}
+\addcontentsline{toc}{section}{Referências Bibliográficas}
+\bibliography{references}
+\bibliographystyle{plainnat}
+\label{bibfinalpage}
+
+\label{lastpage}
+\end{document}

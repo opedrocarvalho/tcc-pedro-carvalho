@@ -1,0 +1,93 @@
+\begin{thebibliography}{12}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Boulahia et~al.(2024)Boulahia, Behja, Chbihi~Louhdi, and
+  Boulahia]{boulahia2024}
+Chaimae Boulahia, Hicham Behja, Mohammed~Reda Chbihi~Louhdi, and Zoubair
+  Boulahia.
+\newblock The multi-criteria evaluation of research efforts based on etl
+  software.
+\newblock \emph{Evolutionary Intelligence}, 17:\penalty0 2099–2124, 2024.
+\newblock \doi{10.1007/s12065-023-00899-z}.
+
+\bibitem[Dash and Swayamsiddha(2022)]{reverseetl2022}
+Bibhu Dash and Swati Swayamsiddha.
+\newblock Reverse etl for improved scalability, observability, and performance
+  of modern operational analytics - a comparative review.
+\newblock In \emph{2022 OITS International Conference on Information Technology
+  (OCIT)}. IEEE, 2022.
+\newblock \doi{10.1109/OCIT56763.2022.00097}.
+
+\bibitem[Dobbins(2017)]{dobbins2017rapid}
+Maureen Dobbins.
+\newblock Rapid review guidebook.
+\newblock \emph{Natl Collab Cent Method Tools}, 13:\penalty0 25, 2017.
+
+\bibitem[Heltweg and Riehle(2023)]{heltweg2023systematic}
+Philip Heltweg and Dirk Riehle.
+\newblock A systematic analysis of problems in open collaborative data
+  engineering.
+\newblock \emph{ACM Transactions on Social Computing}, 6\penalty0
+  (3-4):\penalty0 1--30, 2023.
+
+\bibitem[Khder(2021)]{khder2021web}
+Moaiad~Ahmad Khder.
+\newblock Web scraping or web crawling: State of art, techniques, approaches
+  and application.
+\newblock \emph{International Journal of Advances in Soft Computing \& Its
+  Applications}, 13\penalty0 (3), 2021.
+
+\bibitem[Mbata et~al.(2024)Mbata, Sripada, and Zhong]{mbata2024survey}
+Anthony Mbata, Yaji Sripada, and Mingjun Zhong.
+\newblock A survey of pipeline tools for data engineering.
+\newblock \emph{arXiv preprint arXiv:2406.08335}, 2024.
+
+\bibitem[Murarka et~al.(2024)Murarka, Jain, and Singh]{murarka2024}
+Sachin Murarka, Anshuj Jain, and Laxmi Singh.
+\newblock Advanced techniques in data ingestion and pipelining for scalable big
+  data platforms.
+\newblock In \emph{ICTBIG 2024}. IEEE, 2024.
+
+\bibitem[Nwokeji and Matovu(2021)]{nwokeji2021}
+Joshua~Chibuike Nwokeji and Richard Matovu.
+\newblock A systematic literature review on big data extraction, transformation
+  and loading (etl).
+\newblock In \emph{Lecture Notes in Computer Science}. Springer, 2021.
+\newblock \doi{10.1007/978-3-030-80126-7_24}.
+
+\bibitem[Peffers et~al.(2012)Peffers, Rothenberger, Tuunanen, and
+  Vaezi]{peffers2012design}
+Ken Peffers, Marcus Rothenberger, Tuure Tuunanen, and Reza Vaezi.
+\newblock Design science research evaluation.
+\newblock In \emph{International Conference on Design Science Research in
+  Information Systems}, pages 398--410. Springer Berlin Heidelberg, 2012.
+\newblock \doi{10.1007/978-3-642-29863-9_33}.
+
+\bibitem[Pena et~al.(2025)Pena, Cartaxo, Steinmacher, Badampudi, da~Silva,
+  Ferreira, Almeida, Kamei, and Soares]{pena2025comparing}
+Carolline Pena, Bruno Cartaxo, Igor Steinmacher, Deepika Badampudi, Deyvson
+  da~Silva, Williby Ferreira, Adauto Almeida, Fernando Kamei, and Sergio
+  Soares.
+\newblock Comparing the efficacy of rapid review with a systematic review in
+  the software engineering field.
+\newblock \emph{Journal of Software: Evolution and Process}, 37\penalty0
+  (1):\penalty0 e2748, 2025.
+
+\bibitem[Reddi et~al.(2021)Reddi, Diamos, Warden, Mattson, and
+  Kanter]{reddi2021data}
+Vijay~Janapa Reddi, Greg Diamos, Pete Warden, Peter Mattson, and David Kanter.
+\newblock Data engineering for everyone.
+\newblock \emph{arXiv preprint arXiv:2102.11447}, 2021.
+
+\bibitem[Septian et~al.(2019)Septian, Abdillah, and Aliyudin]{septian2019}
+Ridwan~Fadjar Septian, Fajri Abdillah, and Tajhul~Faijin Aliyudin.
+\newblock A study review of common big data architecture for small-medium
+  enterprise.
+\newblock In \emph{MSCEIS 2019}, 2019.
+\newblock \doi{10.4108/eai.12-10-2019.2296535}.
+
+\end{thebibliography}

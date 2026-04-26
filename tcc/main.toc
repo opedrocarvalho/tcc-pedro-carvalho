@@ -1,0 +1,74 @@
+\babel@toc {brazil}{}\relax 
+\contentsline {chapter}{\numberline {1}Introdução}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Contextualização}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Objetivos do Trabalho}{4}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Justificativas da Abordagem \textit {Open Source} no \textit {Pipeline} de Dados}{4}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Objetivos Específicos}{5}{subsection.1.3.1}%
+\contentsline {section}{\numberline {1.4}Metodologia de Pesquisa: Design Science Research (DSR)}{7}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Fluxo Metodológico (DSR)}{7}{subsection.1.4.1}%
+\contentsline {section}{\numberline {1.5} Organização do texto }{8}{section.1.5}%
+\contentsline {chapter}{\numberline {2}Fundamentação Teórica}{10}{chapter.2}%
+\contentsline {section}{\numberline {2.1}ETL e a Evolução das Arquiteturas de Dados}{10}{section.2.1}%
+\contentsline {subsubsection}{Transição para ELT e o Papel do Data Wrangling}{11}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Open Source: Estratégia, Flexibilidade e Comparação}{11}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Técnicas Avançadas de Ingestão e Processamento}{12}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Tendências Emergentes: Reverse ETL}{12}{section.2.4}%
+\contentsline {chapter}{\numberline {3}Revisão da Literatura}{14}{chapter.3}%
+\contentsline {subsection}{\numberline {3.0.1}Artigos Selecionados para a Revisão}{16}{subsection.3.0.1}%
+\contentsline {section}{\numberline {3.1}Respostas às Questões de Pesquisa}{17}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Quais são as principais ferramentas open source utilizadas no desenvolvimento de pipelines de dados atualmente?}{18}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}De que forma o uso de ferramentas open source impacta a eficiência, flexibilidade e custo dos pipelines de dados?}{19}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Em quais contextos as ferramentas open source são mais vantajosas para o desenvolvimento de pipelines de dados?}{20}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Quais os benefícios e limitações do uso de ferramentas open source em comparação com ferramentas proprietárias no contexto da engenharia de dados?}{21}{subsection.3.1.4}%
+\contentsline {subsubsection}{Benefícios do \textit {Open Source} em Comparação com o Proprietário}{21}{subsection.3.1.4}%
+\contentsline {subsubsection}{Limitações do \textit {Open Source} em Comparação com o Proprietário}{21}{table.caption.4}%
+\contentsline {chapter}{\numberline {4}Construção do Pipeline}{23}{chapter.4}%
+\contentsline {subsubsection}{Tecnologias Utilizadas}{23}{chapter.4}%
+\contentsline {subsection}{\numberline {4.0.1}Tentativa com a ferramenta Browser Use (\textit {Web Scraping} com Inteligência Artificial)}{26}{subsection.4.0.1}%
+\contentsline {section}{\numberline {4.1}Web Scraping}{27}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Diferenciação e Propósito}{27}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Ingestão dos dados}{28}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Limitações do Pandas e do Apache Spark}{29}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Modelagem das tabelas}{30}{subsection.4.2.2}%
+\contentsline {subsubsection}{Variações Estruturais e Padronização dos Dados}{31}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Implementação Prática}{31}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Desafios e Estratégias de Mitigação}{31}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Formato e Armazenamento dos Dados Brutos}{32}{subsection.4.2.5}%
+\contentsline {section}{\numberline {4.3}Transformação dos Dados com dbt e PostgreSQL}{33}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Migração do DuckDB para PostgreSQL}{33}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Arquitetura Medallion no PostgreSQL}{34}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Camada Staging: Limpeza e Padronização}{35}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Macros Reutilizáveis}{37}{subsection.4.3.4}%
+\contentsline {subsection}{\numberline {4.3.5}Camada Marts: Consolidação e Modelagem Dimensional}{38}{subsection.4.3.5}%
+\contentsline {subsubsection}{One Big Table (OBT)}{38}{subsection.4.3.5}%
+\contentsline {subsubsection}{Tabela Fato: fct\_pacotes}{38}{subsection.4.3.5}%
+\contentsline {subsubsection}{Dimensão de Operadoras: dim\_operadora}{39}{subsection.4.3.5}%
+\contentsline {subsubsection}{Dimensão Temporal: dim\_tempo}{39}{subsection.4.3.5}%
+\contentsline {subsubsection}{Dimensão de Destinos: dim\_destino}{39}{subsection.4.3.5}%
+\contentsline {subsubsection}{Mart de Faixas de Preço por Destino: mart\_faixa\_precos\_destino}{40}{subsection.4.3.5}%
+\contentsline {subsubsection}{Mart de Preços por Operadora: mart\_precos\_por\_operadora}{40}{subsection.4.3.5}%
+\contentsline {subsection}{\numberline {4.3.6}Testes de Qualidade de Dados}{40}{subsection.4.3.6}%
+\contentsline {subsection}{\numberline {4.3.7}Arquitetura da DAG}{41}{subsection.4.3.7}%
+\contentsline {subsection}{\numberline {4.3.8}Uso do DockerOperator}{42}{subsection.4.3.8}%
+\contentsline {subsection}{\numberline {4.3.9}Configuração do Agendamento}{43}{subsection.4.3.9}%
+\contentsline {subsection}{\numberline {4.3.10}Configuração do Executor}{43}{subsection.4.3.10}%
+\contentsline {subsection}{\numberline {4.3.11}Resultados da Orquestração}{43}{subsection.4.3.11}%
+\contentsline {section}{\numberline {4.4}Visualização dos Dados com Apache Superset}{46}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Escolha e Configuração da ferramenta}{46}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Dashboards Desenvolvidos}{46}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Resultados da Visualização e Análise dos Dados}{47}{subsection.4.4.3}%
+\contentsline {subsubsection}{Painel Panorama Geral}{48}{figure.caption.14}%
+\contentsline {subsubsection}{Painel Detalhamento por Destino}{49}{figure.caption.14}%
+\contentsline {subsubsection}{Usabilidade e Discussão Crítica}{50}{figure.caption.14}%
+\contentsline {section}{\numberline {4.5}Infraestrutura Conteinerizada com Docker}{51}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Conclusão}{54}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Estimativa de Custos Operacionais}{54}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Premissas da Estimativa}{54}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Infraestrutura de Servidor}{54}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Armazenamento}{54}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Transferência de Dados}{54}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5}Custo Total e Comparação com Soluções Proprietárias}{54}{subsection.5.1.5}%
+\contentsline {section}{\numberline {5.2}Análise Crítica e Lições Aprendidas}{54}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Limitações de Escalabilidade das Ferramentas \textit {Open Source}}{54}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Síntese das Lições Aprendidas}{54}{subsection.5.2.2}%
+\contentsline {section}{Referências Bibliográficas}{56}{subsection.5.2.2}%

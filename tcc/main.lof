@@ -1,0 +1,12 @@
+\babel@toc {brazil}{}\relax 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1}{\ignorespaces Fluxo Metodológico do Projeto Mapeado às Fases do \textit {Design Science Research} (DSR)}}{7}{figure.caption.1}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2}{\ignorespaces Arquitetura completa do pipeline de dados}}{24}{figure.caption.6}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Estrutura visual da DAG pipeline\_destinos\_brasil na interface do Apache Airflow, exibindo o encadeamento sequencial das 16 tarefas.}}{44}{figure.caption.10}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Detalhes da execução da DAG, com status de sucesso e duração total de 19 minutos e 20 segundos.}}{44}{figure.caption.11}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Painel \textit {Panorama Geral} no Apache Superset}}{47}{figure.caption.13}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Painel \textit {Detalhamento por Destino} no Apache Superset}}{48}{figure.caption.14}%
+\addvspace {10\p@ }
