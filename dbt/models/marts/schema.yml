@@ -1,0 +1,62 @@
+version: 2
+
+models:
+
+  - name: obt_pacotes
+    description: >
+      One Big Table — união de todos os scrapers já transformados (staging).
+      Usada para análises exploratórias no Superset sem necessidade de joins.
+    columns:
+      - name: pacote_id
+        description: "Chave surrogate MD5 (operadora + titulo + data_extracao)."
+        tests: [not_null]
+      - name: data_extracao
+        tests: [not_null]
+      - name: operadora
+        tests: [not_null]
+      - name: titulo
+        tests: [not_null]
+      - name: preco_moeda
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['EUR', 'GBP', 'USD', 'CLP']
+
+  - name: dim_operadora
+    description: "Dimensão de operadoras turísticas com metadados de país, idioma e moeda."
+    columns:
+      - name: operadora_key
+        tests: [not_null, unique]
+      - name: nome_display
+        tests: [not_null]
+      - name: pais_origem
+        tests: [not_null]
+      - name: moeda_padrao
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['EUR', 'GBP', 'USD', 'CLP']
+
+  - name: dim_tempo
+    description: "Dimensão temporal derivada das datas de extração encontradas na OBT."
+    columns:
+      - name: data_key
+        tests: [not_null, unique]
+      - name: ano
+        tests: [not_null]
+      - name: mes
+        tests: [not_null]
+
+  - name: fct_pacotes
+    description: >
+      Tabela fato de pacotes turísticos com chaves para dim_operadora e dim_tempo.
+      Granularidade: um registro por pacote por extração.
+    columns:
+      - name: pacote_id
+        tests: [not_null]
+      - name: data_key
+        tests: [not_null]
+      - name: operadora_key
+        tests: [not_null]
+      - name: titulo
+        tests: [not_null]

@@ -1,0 +1,9 @@
+CREATE DATABASE airflow;
+
+CREATE DATABASE superset;
+
+\connect destinosbrasil;
+
+CREATE SCHEMA IF NOT EXISTS raw;
+CREATE SCHEMA IF NOT EXISTS staging;
+CREATE SCHEMA IF NOT EXISTS marts;

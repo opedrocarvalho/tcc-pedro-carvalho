@@ -1,0 +1,192 @@
+x-airflow-common: &airflow-common
+  image: apache/airflow:2.9.0
+  environment:
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://pipeline:pipeline@postgres/airflow
+    AIRFLOW__CORE__FERNET_KEY: 'ZmDfcTF7_60GrrY167zsiPd67pEvs0aGOv2oasOM1Pg='
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth'
+    AIRFLOW__WEBSERVER__SECRET_KEY: 'pipeline_airflow_secret_key_fixed'
+    AIRFLOW__WEBSERVER__SESSION_LIFETIME_DAYS: '30'
+    TZ: America/Sao_Paulo
+    _PIP_ADDITIONAL_REQUIREMENTS: 'apache-airflow-providers-docker==3.9.2'
+    HOST_PIPELINE_PATH: /c/projetos/web_scraping/pipededados_opensource
+  volumes:
+    - ./airflow/dags:/opt/airflow/dags
+    - ./airflow/logs:/opt/airflow/logs
+    - ./airflow/plugins:/opt/airflow/plugins
+    - ./data/duckdb:/app/data/duckdb
+    - ./scripts:/app/scripts
+    - /var/run/docker.sock:/var/run/docker.sock
+  depends_on:
+    postgres:
+      condition: service_healthy
+  networks:
+    - pipeline_network
+
+services:
+
+  postgres:
+    image: postgres:15
+    container_name: pipeline_postgres
+    environment:
+      POSTGRES_USER: pipeline
+      POSTGRES_PASSWORD: pipeline
+      POSTGRES_DB: destinosbrasil
+      POSTGRES_HOST_AUTH_METHOD: md5
+      TZ: America/Sao_Paulo
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "pipeline", "-d", "destinosbrasil"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - pipeline_network
+
+  scraper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: pipeline_scraper
+    container_name: tcc_scraper
+    volumes:
+      - ./data/duckdb:/app/data/duckdb
+      - ./scripts:/app/scripts
+      - ./data/logs:/app/logs
+    environment:
+      - DUCKDB_PATH=/app/data/duckdb/destinosbrasil.duckdb
+      - LOG_PATH=/app/logs
+      - TZ=America/Sao_Paulo
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=destinosbrasil
+      - POSTGRES_USER=pipeline
+      - POSTGRES_PASSWORD=pipeline
+    working_dir: /app/scripts
+    command: tail -f /dev/null
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - pipeline_network
+
+  airflow-init:
+    <<: *airflow-common
+    container_name: airflow_init
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+        airflow db migrate &&
+        airflow users create \
+          --username admin \
+          --firstname Admin \
+          --lastname Admin \
+          --role Admin \
+          --email admin@pipeline.local \
+          --password admin
+    restart: "no"
+
+  airflow-webserver:
+    <<: *airflow-common
+    container_name: airflow_webserver
+    command: webserver
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: always
+
+  airflow-scheduler:
+    <<: *airflow-common
+    container_name: airflow_scheduler
+    command: scheduler
+    restart: always
+
+  dbt:
+    build:
+      context: ./dbt
+      dockerfile: Dockerfile
+    image: pipeline_dbt
+    container_name: pipeline_dbt
+    volumes:
+      - ./dbt:/usr/app/dbt
+    working_dir: /usr/app/dbt
+    environment:
+      - DBT_PROFILES_DIR=/usr/app/dbt
+      - DBT_TARGET=docker
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - pipeline_network
+    command: ["dbt", "debug"]  
+
+  superset:
+    image: apache/superset:3.1.0
+    container_name: pipeline_superset
+    ports:
+      - "8088:8088"
+    environment:
+      - SUPERSET_SECRET_KEY=pipeline_superset_secret_key_change_in_production
+      - SUPERSET_CONFIG_PATH=/app/superset_config.py
+      - TZ=America/Sao_Paulo
+    volumes:
+      - superset_data:/app/superset_home
+      - ./superset/superset_config.py:/app/superset_config.py
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - pipeline_network
+    restart: always
+
+  superset-init:
+    image: apache/superset:3.1.0
+    container_name: superset_init
+    command:
+      - /bin/sh
+      - -c
+      - |
+        superset db upgrade &&
+        superset fab create-admin \
+          --username admin \
+          --firstname Admin \
+          --lastname Admin \
+          --email admin@pipeline.local \
+          --password admin &&
+        superset init
+    environment:
+      - SUPERSET_SECRET_KEY=pipeline_superset_secret_key_change_in_production
+      - SUPERSET_CONFIG_PATH=/app/superset_config.py
+    volumes:
+      - superset_data:/app/superset_home
+      - ./superset/superset_config.py:/app/superset_config.py
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - pipeline_network
+    restart: "no"
+
+networks:
+  pipeline_network:
+    name: pipeline_network
+    driver: bridge
+
+volumes:
+  postgres_data:
+  superset_data:
+  duckdb_data:
+    driver: local

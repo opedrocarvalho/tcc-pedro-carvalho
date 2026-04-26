@@ -1,0 +1,168 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: "Dados brutos exportados do DuckDB, um schema por scraper."
+    tables:
+      - name: bleu_selectour
+      - name: comptoir_des_voyages
+      - name: ikarus_tours
+      - name: jetmar
+      - name: journey_latin_america
+      - name: newmarket_holidays
+      - name: panam
+      - name: sol_ferias
+      - name: transalpino
+      - name: turismo_costanera
+
+models:
+
+  - name: stg_bleu_selectour
+    description: "Pacotes turísticos para o Brasil da operadora francesa Bleu Selectour."
+    columns:
+      - name: data_extracao
+        tests: [not_null]
+      - name: operadora
+        tests: [not_null]
+      - name: titulo
+        tests: [not_null]
+      - name: preco_moeda
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['EUR']
+
+  - name: stg_comptoir_des_voyages
+    description: "Pacotes turísticos para o Brasil da operadora francesa Comptoir des Voyages."
+    columns:
+      - name: data_extracao
+        tests: [not_null]
+      - name: operadora
+        tests: [not_null]
+      - name: titulo
+        tests: [not_null]
+      - name: preco_moeda
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['EUR']
+
+  - name: stg_ikarus_tours
+    description: "Pacotes turísticos para o Brasil da operadora alemã Ikarus Tours."
+    columns:
+      - name: data_extracao
+        tests: [not_null]
+      - name: operadora
+        tests: [not_null]
+      - name: titulo
+        tests: [not_null]
+      - name: url
+        tests: [not_null]
+      - name: preco_moeda
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['EUR']
+
+  - name: stg_jetmar
+    description: "Pacotes turísticos para o Brasil da operadora uruguaia Jetmar."
+    columns:
+      - name: data_extracao
+        tests: [not_null]
+      - name: operadora
+        tests: [not_null]
+      - name: titulo
+        tests: [not_null]
+      - name: preco_moeda
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['USD']
+
+  - name: stg_journey_latin_america
+    description: "Pacotes turísticos para o Brasil da operadora britânica Journey Latin America."
+    columns:
+      - name: data_extracao
+        tests: [not_null]
+      - name: operadora
+        tests: [not_null]
+      - name: titulo
+        tests: [not_null]
+      - name: preco_moeda
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['GBP']
+
+  - name: stg_newmarket_holidays
+    description: "Pacotes turísticos para o Brasil da operadora britânica Newmarket Holidays."
+    columns:
+      - name: data_extracao
+        tests: [not_null]
+      - name: operadora
+        tests: [not_null]
+      - name: titulo
+        tests: [not_null]
+      - name: preco_moeda
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['GBP']
+
+  - name: stg_panam
+    description: "Pacotes turísticos para o Brasil da operadora chilena Panam."
+    columns:
+      - name: data_extracao
+        tests: [not_null]
+      - name: operadora
+        tests: [not_null]
+      - name: titulo
+        tests: [not_null]
+      - name: preco_moeda
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['USD']
+
+  - name: stg_sol_ferias
+    description: "Pacotes turísticos para o Brasil da operadora portuguesa Sol Férias."
+    columns:
+      - name: data_extracao
+        tests: [not_null]
+      - name: operadora
+        tests: [not_null]
+      - name: titulo
+        tests: [not_null]
+      - name: id_pacote
+        tests: [not_null]
+      - name: preco_moeda
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['EUR']
+
+  - name: stg_transalpino
+    description: "Pacotes turísticos para o Brasil da operadora portuguesa Transalpino (filtrado por destino Brasil)."
+    columns:
+      - name: data_extracao
+        tests: [not_null]
+      - name: operadora
+        tests: [not_null]
+      - name: titulo
+        tests: [not_null]
+      - name: preco_moeda
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['EUR']
+
+  - name: stg_turismo_costanera
+    description: "Pacotes turísticos para o Brasil da operadora chilena Turismo Costanera (registros com título vazio removidos)."
+    columns:
+      - name: data_extracao
+        tests: [not_null]
+      - name: operadora
+        tests: [not_null]
+      - name: titulo
+        tests: [not_null]

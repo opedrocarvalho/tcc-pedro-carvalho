@@ -1,0 +1,28 @@
+# Ambiente virtual Python
+venv/
+.venv/
+env/
+
+# Cache Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Banco de dados
+data/duckdb/*.duckdb
+
+# Logs
+data/logs/*.log
+airflow/logs/
+dbt/logs/
+
+# dbt artifacts (gerados automaticamente pelo dbt run/compile)
+dbt/target/
+dbt/dbt_packages/
+dbt/.user.yml
+
+# VS Code
+.vscode/
+
+# Variáveis de ambiente sensíveis
+# .env

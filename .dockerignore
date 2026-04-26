@@ -1,0 +1,13 @@
+airflow/logs/
+airflow/plugins/
+data/duckdb/
+data/logs/
+dbt/target/
+dbt/dbt_packages/
+postgres/
+superset/
+.git/
+.claude/
+__pycache__/
+*.pyc
+*.pyo
