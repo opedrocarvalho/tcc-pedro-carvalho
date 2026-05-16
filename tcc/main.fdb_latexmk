@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex main"] 1777236549.70995 "main.aux" "main.bbl" "main" 1777236909.97674 0
-  "./references.bib" 1776131321 4539 2eccb8db5b34166eca344cc980ae4002 ""
+["bibtex main"] 1778956033.21217 "main.aux" "main.bbl" "main" 1778957338.25975 0
+  "./references.bib" 1778870631 5164 f415d34880708334315b791a75bf638a ""
   "C:/Users/Pedro Carvalho/AppData/Local/Programs/MiKTeX/bibtex/bst/natbib/plainnat.bst" 1284455456 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "main.aux" 1777236908 23716 dcd94f4ac9050f09b4c522b61bf67fd8 "pdflatex"
+  "main.aux" 1778957337 26427 4569e2cda711cca06b8a0834a426097e "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1777236904.29973 "c:/Users/Pedro Carvalho/Desktop/TCC___PEDRO_CARVALHO/main.tex" "main.pdf" "main" 1777236909.97796 0
+["pdflatex"] 1778957332.1307 "c:/Users/Pedro Carvalho/Desktop/TCC___PEDRO_CARVALHO/tcc/main.tex" "main.pdf" "main" 1778957338.26141 0
   "C:/Users/Pedro" 1753537426 19093 801e011aea34a1cf39f076bb6409f87b ""
-  "C:/Users/Pedro Carvalho/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1776134514 82507 a9eef8696c92627b87e9975edea03b2a ""
+  "C:/Users/Pedro Carvalho/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1777236996 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/Pedro Carvalho/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ectt1200.pk" 1776134519 24152 4b119613ea1c0e2e3a3a52ba502736eb ""
   "C:/Users/Pedro Carvalho/AppData/Local/MiKTeX/fonts/tfm/public/rsfs/rsfs10.tfm" 1777231819 688 37338d6ab346c2f1466b29e195316aa4 ""
   "C:/Users/Pedro Carvalho/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1776134498 13354664 99226b3fdfa0d265ed3b8a60ad6dd2e2 ""
@@ -273,20 +273,20 @@
   "C:/Users/Pedro Carvalho/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "arquitetura.png" 1776131321 1344918 d6588610ce34de0d9fedb2a8b9364889 ""
   "c:/Users/Pedro" 1753537426 19093 801e011aea34a1cf39f076bb6409f87b ""
-  "c:/Users/Pedro Carvalho/Desktop/TCC___PEDRO_CARVALHO/main.tex" 1777233854 9353 fbcbaf62b893f08d9a04ab591a503bb4 ""
+  "c:/Users/Pedro Carvalho/Desktop/TCC___PEDRO_CARVALHO/tcc/main.tex" 1777233854 9353 fbcbaf62b893f08d9a04ab591a503bb4 ""
   "details_execucao.png" 1776131321 87732 fb4cd11d116150a1b4e73c4bfefc274a ""
   "detalhamento-por-destino.png" 1777223324 276150 f9119a277f1831738a9f8b656c9e4d65 ""
   "graph_dag.png" 1776131321 119336 5137800b589918a8a9db30eabc3d22e7 ""
-  "main.aux" 1777236908 23716 dcd94f4ac9050f09b4c522b61bf67fd8 "pdflatex"
-  "main.bbl" 1777236549 4130 04fc07901122918c59c9fb7114db904a "bibtex main"
-  "main.lof" 1777236908 1080 98a3ba604988d25d11b3b4683455b838 "pdflatex"
-  "main.out" 1777236908 15290 f0a79f7aeafc4b95233e6542fe55fc3d "pdflatex"
+  "main.aux" 1778957337 26427 4569e2cda711cca06b8a0834a426097e "pdflatex"
+  "main.bbl" 1778956033 4732 71e2fd7c203fab8084f36e55b21af1d1 "bibtex main"
+  "main.lof" 1778957337 1080 98a3ba604988d25d11b3b4683455b838 "pdflatex"
+  "main.out" 1778957337 15290 f0a79f7aeafc4b95233e6542fe55fc3d "pdflatex"
   "main.tex" 1777233854 9353 fbcbaf62b893f08d9a04ab591a503bb4 ""
-  "main.toc" 1777236908 7628 e8262cca0d83e20f049892e72fe1eb87 "pdflatex"
+  "main.toc" 1778957337 7628 03bb82439178080fcf97ff1d07b9441a "pdflatex"
   "panorama-geral.png" 1777223336 134569 ee463c9edc2af862452e58054ca2715f ""
   "sections/abstract.tex" 1776131321 2848 afe890308b345fdf7e4ae0dcd1c22245 ""
   "sections/acronimos.tex" 1776131321 796 419282745209eb3f7b390849a061a18d ""
-  "sections/conclusao.tex" 1777236903 5337 1be14304bb5a1d8400f4b3f718c61d1c ""
+  "sections/conclusao.tex" 1778957331 22360 f253b50d0b51e13236638ef0b36be485 ""
   "sections/fundamentação.tex" 1776131321 8400 1b2f2ad973bd96162b0150e344db12f1 ""
   "sections/ingestaodosdados.tex" 1777232845 70457 e1e38c0b77790d365b926c12a384367a ""
   "sections/intro.tex" 1776989546 20122 b998d41e53f76c51f1ed2fd0ddee0794 ""

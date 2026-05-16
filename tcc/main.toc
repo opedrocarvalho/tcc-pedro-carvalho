@@ -64,11 +64,11 @@
 \contentsline {chapter}{\numberline {5}Conclusão}{54}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Estimativa de Custos Operacionais}{54}{section.5.1}%
 \contentsline {subsection}{\numberline {5.1.1}Premissas da Estimativa}{54}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Infraestrutura de Servidor}{54}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Armazenamento}{54}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}Transferência de Dados}{54}{subsection.5.1.4}%
-\contentsline {subsection}{\numberline {5.1.5}Custo Total e Comparação com Soluções Proprietárias}{54}{subsection.5.1.5}%
-\contentsline {section}{\numberline {5.2}Análise Crítica e Lições Aprendidas}{54}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Limitações de Escalabilidade das Ferramentas \textit {Open Source}}{54}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Síntese das Lições Aprendidas}{54}{subsection.5.2.2}%
-\contentsline {section}{Referências Bibliográficas}{56}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.1.2}Infraestrutura de Servidor}{55}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Armazenamento}{56}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Transferência de Dados}{57}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5}Custo Total e Comparação com Soluções Proprietárias}{57}{subsection.5.1.5}%
+\contentsline {section}{\numberline {5.2}Análise Crítica e Lições Aprendidas}{59}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Limitações de Escalabilidade das Ferramentas \textit {Open Source}}{59}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Síntese das Lições Aprendidas}{60}{subsection.5.2.2}%
+\contentsline {section}{Referências Bibliográficas}{61}{subsection.5.2.2}%

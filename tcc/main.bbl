@@ -1,9 +1,15 @@
-\begin{thebibliography}{12}
+\begin{thebibliography}{15}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[{Amazon Web Services}(2026)]{aws2026pricing}
+{Amazon Web Services}.
+\newblock {AWS Pricing}.
+\newblock \url{https://aws.amazon.com/pricing/}, 2026.
+\newblock Acessado em maio de 2026.
 
 \bibitem[Boulahia et~al.(2024)Boulahia, Behja, Chbihi~Louhdi, and
   Boulahia]{boulahia2024}
@@ -27,6 +33,12 @@ Maureen Dobbins.
 \newblock Rapid review guidebook.
 \newblock \emph{Natl Collab Cent Method Tools}, 13:\penalty0 25, 2017.
 
+\bibitem[{Google Cloud}(2026)]{gcp2026pricing}
+{Google Cloud}.
+\newblock {Google Cloud Pricing}.
+\newblock \url{https://cloud.google.com/pricing}, 2026.
+\newblock Acessado em maio de 2026.
+
 \bibitem[Heltweg and Riehle(2023)]{heltweg2023systematic}
 Philip Heltweg and Dirk Riehle.
 \newblock A systematic analysis of problems in open collaborative data
@@ -45,6 +57,12 @@ Moaiad~Ahmad Khder.
 Anthony Mbata, Yaji Sripada, and Mingjun Zhong.
 \newblock A survey of pipeline tools for data engineering.
 \newblock \emph{arXiv preprint arXiv:2406.08335}, 2024.
+
+\bibitem[{Microsoft Azure}(2026)]{azure2026pricing}
+{Microsoft Azure}.
+\newblock {Azure Pricing}.
+\newblock \url{https://azure.microsoft.com/en-us/pricing}, 2026.
+\newblock Acessado em maio de 2026.
 
 \bibitem[Murarka et~al.(2024)Murarka, Jain, and Singh]{murarka2024}
 Sachin Murarka, Anshuj Jain, and Laxmi Singh.

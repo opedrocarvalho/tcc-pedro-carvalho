@@ -1,6 +1,6 @@
-PWD c:\Users\Pedro Carvalho\Desktop\TCC___PEDRO_CARVALHO
+PWD c:\Users\Pedro Carvalho\Desktop\TCC___PEDRO_CARVALHO\tcc
 INPUT C:\Users\Pedro Carvalho\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\Pedro Carvalho\Desktop\TCC___PEDRO_CARVALHO\main.tex
+INPUT c:\Users\Pedro Carvalho\Desktop\TCC___PEDRO_CARVALHO\tcc\main.tex
 OUTPUT main.log
 INPUT .\tcc.cls
 INPUT tcc.cls
@@ -680,6 +680,14 @@ INPUT .\sections\conclusao.tex
 INPUT .\sections\conclusao.tex
 INPUT .\sections\conclusao.tex
 INPUT sections\conclusao.tex
+INPUT C:\Users\Pedro Carvalho\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8t.tfm
+INPUT C:\Users\Pedro Carvalho\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8t.tfm
+INPUT C:\Users\Pedro Carvalho\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmri8t.tfm
+INPUT C:\Users\Pedro Carvalho\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr8t.vf
+INPUT C:\Users\Pedro Carvalho\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8r.tfm
+INPUT C:\Users\Pedro Carvalho\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr8t.vf
+INPUT C:\Users\Pedro Carvalho\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmri8t.vf
+INPUT C:\Users\Pedro Carvalho\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmri8r.tfm
 INPUT .\main.bbl
 INPUT .\main.bbl
 INPUT main.bbl
