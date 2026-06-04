@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1780604580.36951 "main.aux" "main.bbl" "main" 1780604593.41649 0
+["bibtex main"] 1780604580.36951 "main.aux" "main.bbl" "main" 1780606709.96013 0
   "./references.bib" 1780604402.47665 5164 f415d34880708334315b791a75bf638a ""
   "/usr/share/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1775415801 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "main.aux" 1780604592.49169 26408 c6066fb7feddcf2bd020b7023aae59f7 "pdflatex"
+  "main.aux" 1780606709.41044 26408 c6066fb7feddcf2bd020b7023aae59f7 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1780604580.5805 "/home/diego/Documents/git/Alunos-TCC/tcc-pedro-carvalho/tcc/main.tex" "main.pdf" "main" 1780604593.4172 0
+["pdflatex"] 1780606700.26496 "/home/diego/Documents/git/Alunos-TCC/tcc-pedro-carvalho/tcc/main.tex" "main.pdf" "main" 1780606709.9605 0
   "/home/diego/Documents/git/Alunos-TCC/tcc-pedro-carvalho/tcc/main.tex" 1780604568.14451 9353 fbcbaf62b893f08d9a04ab591a503bb4 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1775415801 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1775415801 2971 def0b6c1f0b107b3b936def894055589 ""
@@ -276,14 +276,14 @@
   "details_execucao.png" 1780604402.45883 87732 73ceaae95fd0eeceb5c6889bca953bce ""
   "detalhamento-por-destino.png" 1780604402.46191 276150 c7215745e8a442a909a97dc5a90eddb4 ""
   "graph_dag.png" 1780604402.46366 119336 e7cb15fb563c9b8261067fd3cb24aa44 ""
-  "main.aux" 1780604592.49169 26408 c6066fb7feddcf2bd020b7023aae59f7 "pdflatex"
+  "main.aux" 1780606709.41044 26408 c6066fb7feddcf2bd020b7023aae59f7 "pdflatex"
   "main.bbl" 1780604580.5565 4581 37d171d18a6d52b3b65e06ee1bf485a7 "bibtex main"
-  "main.lof" 1780604592.50469 1080 98a3ba604988d25d11b3b4683455b838 "pdflatex"
-  "main.out" 1780604592.50269 15290 f0a79f7aeafc4b95233e6542fe55fc3d "pdflatex"
+  "main.lof" 1780606709.41744 1080 98a3ba604988d25d11b3b4683455b838 "pdflatex"
+  "main.out" 1780606709.41644 15290 f0a79f7aeafc4b95233e6542fe55fc3d "pdflatex"
   "main.tex" 1780604568.14451 9353 fbcbaf62b893f08d9a04ab591a503bb4 ""
-  "main.toc" 1780604592.50469 7628 d45f6c486f6577e4fa11532216e5bd05 "pdflatex"
+  "main.toc" 1780606709.41744 7628 d45f6c486f6577e4fa11532216e5bd05 "pdflatex"
   "panorama-geral.png" 1780604402.47656 134569 abcf5b726e2434573655c4573574ea92 ""
-  "sections/abstract.tex" 1780604402.47678 2848 afe890308b345fdf7e4ae0dcd1c22245 ""
+  "sections/abstract.tex" 1780606699.80277 2943 6458b667868e3d6cb8234099b75bc2a4 ""
   "sections/acronimos.tex" 1780604402.47688 796 419282745209eb3f7b390849a061a18d ""
   "sections/conclusao.tex" 1780604402.47707 22360 f253b50d0b51e13236638ef0b36be485 ""
   "sections/fundamentação.tex" 1780604402.47717 8400 1b2f2ad973bd96162b0150e344db12f1 ""

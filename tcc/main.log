@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.5.23)  4 JUN 2026 17:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.5.23)  4 JUN 2026 17:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2000,7 +2000,7 @@ Overfull \hbox (1.8072pt too wide) in paragraph at lines 392--397
 ) (./main.bbl [61] [62
 
 ]) [63]
-runsystem(latexminted cleantemp  --timestamp 20260604172300 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
+runsystem(latexminted cleantemp  --timestamp 20260604175820 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
 
  (./main.aux)
  ***********
@@ -2019,7 +2019,7 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  90i,15n,104p,1916b,880s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (71 pages, 720262 bytes).
+Output written on main.pdf (71 pages, 720317 bytes).
 PDF statistics:
  1082 PDF objects out of 1200 (max. 8388607)
  979 compressed objects within 10 object streams
