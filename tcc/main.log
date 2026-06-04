@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.5.23)  4 JUN 2026 17:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.5.23)  4 JUN 2026 18:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1233,7 +1233,7 @@ Package shellesc Info: Restricted shell escape enabled on input line 77.
 \c@minted@FancyVerbLineTemp=\count503
 \@float@every@listing=\toks81
 \c@listing=\count504
-) (/usr/share/texmf-dist/tex/latex/lipsum/lipsum.sty (/usr/share/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty (/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
+) (/usr/share/texmf-dist/tex/latex/acro/acro.sty (/usr/share/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty (/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2026-01-19 L3 programming layer (loader) 
  (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
@@ -1241,10 +1241,44 @@ File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 ))
 Package: l3keys2e 2025-10-09 LaTeX2e option processing using LaTeX3 keys
 )
+Package: acro 2022/04/01 v3.8 typeset acronyms and other abbreviations (CN)
+\l__acro_tmpa_int=\count506
+\l__acro_tmpb_int=\count507
+\l__acro_tmpc_int=\count508
+\l__acro_tmpd_int=\count509
+Loading module `base' ...
+Loading module `interface' ...
+Loading module `aux' ...
+Loading module `properties' ...
+Loading module `acronyms' ...
+Loading module `formatting' ...
+Loading module `ppfixes' ...
+Loading module `tools' ...
+\l__acro_minimal_usage_int=\count510
+\l__acro_nest_int=\count511
+\g_acro_barrier_int=\count512
+\g_acro_barrier_total_int=\count513
+Loading module `commands' ...
+\l_acro_nest_level_int=\count514
+Loading module `templates' ...
+Loading module `list' ...
+Loading module `pages' ...
+\l__acro_pages_seq_threshold_int=\count515
+Loading module `locale' ...
+ (/usr/share/texmf-dist/tex/latex/translations/translations.sty
+Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages (CN)
+)
+Loading module `pdfsupport' ...
+Loading module `patch' ...
+Loading module `definitions' ...
+Loading module `upgrade' ...
+)
+==> First Aid for acro.sty applied!
+(/usr/share/texmf-dist/tex/latex/lipsum/lipsum.sty
 Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
-\g__lipsum_par_int=\count506
-\l__lipsum_a_int=\count507
-\l__lipsum_b_int=\count508
+\g__lipsum_par_int=\count516
+\l__lipsum_a_int=\count517
+\l__lipsum_b_int=\count518
  (/usr/share/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex)) (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2025/11/14 1.11b listings language file
 ) (/usr/share/texmf-dist/tex/latex/listings/lstlang2.sty
@@ -1265,31 +1299,50 @@ Package: amsthm 2020/05/29 v2.20.6
 \thm@headsep=\skip170
 \dth@everypar=\toks87
 )
-\c@definition=\count509
- (./sections/acronimos.tex) (./main.aux
+\c@definition=\count519
+ (./sections/acronimos.tex
+\c@g@acro@api@int=\count520
+\c@g@acro@bi@int=\count521
+\c@g@acro@cli@int=\count522
+\c@g@acro@csrf@int=\count523
+\c@g@acro@dl@int=\count524
+\c@g@acro@dsr@int=\count525
+\c@g@acro@dw@int=\count526
+\c@g@acro@etl@int=\count527
+\c@g@acro@html@int=\count528
+\c@g@acro@http@int=\count529
+\c@g@acro@iot@int=\count530
+\c@g@acro@llm@int=\count531
+\c@g@acro@npm@int=\count532
+\c@g@acro@orm@int=\count533
+\c@g@acro@php@int=\count534
+\c@g@acro@rr@int=\count535
+\c@g@acro@sql@int=\count536
+\c@g@acro@url@int=\count537
+) (./main.aux
 Package babel Info: 'brazil' activates 'portuges' shorthands.
-(babel)             Reported on input line 9.
+(babel)             Reported on input line 12.
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 235.
-LaTeX Font Info:    ... okay on input line 235.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 235.
-LaTeX Font Info:    ... okay on input line 235.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 235.
-LaTeX Font Info:    ... okay on input line 235.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 235.
-LaTeX Font Info:    ... okay on input line 235.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 235.
-LaTeX Font Info:    ... okay on input line 235.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 235.
-LaTeX Font Info:    ... okay on input line 235.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 235.
-LaTeX Font Info:    ... okay on input line 235.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 235.
-LaTeX Font Info:    ... okay on input line 235.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 235.
-LaTeX Font Info:    ... okay on input line 235.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 239.
+LaTeX Font Info:    ... okay on input line 239.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 239.
+LaTeX Font Info:    ... okay on input line 239.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 239.
+LaTeX Font Info:    ... okay on input line 239.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 239.
+LaTeX Font Info:    ... okay on input line 239.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 239.
+LaTeX Font Info:    ... okay on input line 239.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 239.
+LaTeX Font Info:    ... okay on input line 239.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 239.
+LaTeX Font Info:    ... okay on input line 239.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 239.
+LaTeX Font Info:    ... okay on input line 239.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 239.
+LaTeX Font Info:    ... okay on input line 239.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1327,16 +1380,16 @@ LaTeX Font Info:    ... okay on input line 235.
 
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count510
+\scratchcounter=\count538
 \scratchdimen=\dimen364
 \scratchbox=\box161
-\nofMPsegments=\count511
-\nofMParguments=\count512
+\nofMPsegments=\count539
+\nofMParguments=\count540
 \everyMPshowfont=\toks88
-\MPscratchCnt=\count513
+\MPscratchCnt=\count541
 \MPscratchDim=\dimen365
-\MPnumerator=\count514
-\makeMPintoPDFobject=\count515
+\MPnumerator=\count542
+\makeMPintoPDFobject=\count543
 \everyMPtoPDFconversion=\toks89
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1344,7 +1397,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 235.
+Package hyperref Info: Link coloring OFF on input line 239.
  (./main.out) (./main.out)
 \@outlinefile=\write5
 \openout5 = `main.out'.
@@ -1362,7 +1415,11 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
-\c@lstlisting=\count516
+\c@lstlisting=\count544
+ (/usr/share/texmf-dist/tex/latex/translations/translations-basic-dictionary-brazil.trsl
+File: translations-basic-dictionary-brazil.trsl (brazil translation file `translations-basic-dictionary')
+)
+Package translations Info: loading dictionary `translations-basic-dictionary' for `brazil'. on input line 239.
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: pdftex
 * paper: a4paper
@@ -1395,32 +1452,32 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line 239.
+LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line 243.
  (/usr/share/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line 239.
+LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line 243.
  (/usr/share/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line 239.
+LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line 243.
  (/usr/share/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line 239.
+LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line 243.
  (/usr/share/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 239.
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 243.
  (/usr/share/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 239.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 243.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 239.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 243.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 239.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 243.
  [1
 
 
@@ -1469,11 +1526,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--11
 
  []
 
-) [5] (./main.toc [6] [7])
+) [5] (./main.toc [6
+
+] [7] [8])
 \tf@toc=\write6
 \openout6 = `main.toc'.
 
- [8] (./main.lof)
+ [9] (./main.lof)
 \tf@lof=\write7
 \openout7 = `main.lof'.
 
@@ -1852,7 +1911,7 @@ Cap\'{\i }tulo 4.
 (./sections/ingestaodosdados.tex [23
 
 ]
-<arquitetura.png, id=736, 573.14125pt x 282.05376pt>
+<arquitetura.png, id=741, 573.14125pt x 282.05376pt>
 File: arquitetura.png Graphic file (type png)
 <use arquitetura.png>
 Package pdftex.def Info: arquitetura.png  used on input line 17.
@@ -1923,23 +1982,23 @@ Overfull \hbox (6.90617pt too wide) in paragraph at lines 501--502
  []
 
 [42] [43]
-<graph_dag.png, id=877, 1440.13031pt x 711.4078pt>
+<graph_dag.png, id=882, 1440.13031pt x 711.4078pt>
 File: graph_dag.png Graphic file (type png)
 <use graph_dag.png>
 Package pdftex.def Info: graph_dag.png  used on input line 522.
 (pdftex.def)             Requested size: 455.24411pt x 224.87622pt.
-<details_execucao.png, id=878, 1434.86063pt x 710.655pt>
+<details_execucao.png, id=883, 1434.86063pt x 710.655pt>
 File: details_execucao.png Graphic file (type png)
 <use details_execucao.png>
 Package pdftex.def Info: details_execucao.png  used on input line 529.
 (pdftex.def)             Requested size: 455.24411pt x 225.47322pt.
  [44 <./graph_dag.png> <./details_execucao.png>] [45] [46]
-<panorama-geral.png, id=895, 1880.02374pt x 834.11626pt>
+<panorama-geral.png, id=901, 1880.02374pt x 834.11626pt>
 File: panorama-geral.png Graphic file (type png)
 <use panorama-geral.png>
 Package pdftex.def Info: panorama-geral.png  used on input line 594.
 (pdftex.def)             Requested size: 455.24411pt x 201.97385pt.
-<detalhamento-por-destino.png, id=896, 1651.16875pt x 867.24pt>
+<detalhamento-por-destino.png, id=902, 1651.16875pt x 867.24pt>
 File: detalhamento-por-destino.png Graphic file (type png)
 <use detalhamento-por-destino.png>
 Package pdftex.def Info: detalhamento-por-destino.png  used on input line 601.
@@ -2000,7 +2059,7 @@ Overfull \hbox (1.8072pt too wide) in paragraph at lines 392--397
 ) (./main.bbl [61] [62
 
 ]) [63]
-runsystem(latexminted cleantemp  --timestamp 20260604175820 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
+runsystem(latexminted cleantemp  --timestamp 20260604184117 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
 
  (./main.aux)
  ***********
@@ -2011,18 +2070,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: F0A79F7AEAFC4B95233E6542FE55FC3D;15290.
  ) 
 Here is how much of TeX's memory you used:
- 44982 strings out of 469515
- 920953 string characters out of 5470807
- 1940953 words of memory out of 5000000
- 72695 multiletter control sequences out of 15000+600000
- 710165 words of font info for 153 fonts, out of 8000000 for 9000
+ 50164 strings out of 469515
+ 1088522 string characters out of 5470807
+ 2027369 words of memory out of 5000000
+ 77863 multiletter control sequences out of 15000+600000
+ 715948 words of font info for 172 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 90i,15n,104p,1916b,880s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,15n,104p,1916b,882s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (71 pages, 720317 bytes).
+Output written on main.pdf (72 pages, 721103 bytes).
 PDF statistics:
- 1082 PDF objects out of 1200 (max. 8388607)
- 979 compressed objects within 10 object streams
- 189 named destinations out of 1000 (max. 500000)
+ 1087 PDF objects out of 1200 (max. 8388607)
+ 983 compressed objects within 10 object streams
+ 191 named destinations out of 1000 (max. 500000)
  502 words of extra memory for PDF output out of 10000 (max. 10000000)
 
