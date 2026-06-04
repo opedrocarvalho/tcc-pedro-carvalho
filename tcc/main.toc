@@ -32,8 +32,8 @@
 \contentsline {subsection}{\numberline {4.2.2}Modelagem das tabelas}{30}{subsection.4.2.2}%
 \contentsline {subsubsection}{Variações Estruturais e Padronização dos Dados}{31}{subsection.4.2.2}%
 \contentsline {subsection}{\numberline {4.2.3}Implementação Prática}{31}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Desafios e Estratégias de Mitigação}{31}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}Formato e Armazenamento dos Dados Brutos}{32}{subsection.4.2.5}%
+\contentsline {subsection}{\numberline {4.2.4}Desafios e Estratégias de Mitigação}{32}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Formato e Armazenamento dos Dados Brutos}{33}{subsection.4.2.5}%
 \contentsline {section}{\numberline {4.3}Transformação dos Dados com dbt e PostgreSQL}{33}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Migração do DuckDB para PostgreSQL}{33}{subsection.4.3.1}%
 \contentsline {subsection}{\numberline {4.3.2}Arquitetura Medallion no PostgreSQL}{34}{subsection.4.3.2}%
