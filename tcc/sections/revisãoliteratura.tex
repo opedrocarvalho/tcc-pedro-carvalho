@@ -100,7 +100,7 @@ A revisão da literatura aponta para um ecossistema de pipelines de dados domina
 
 \begin{enumerate}
     \item \textbf{Ingestão de Dados e Filas de Mensagens (\textit{Data Ingestion and Message Queues}):}
-    O \textbf{Apache Kafka} é amplamente reconhecido como a principal ferramenta \textit{open source} para processamento de \textit{streams} de dados em tempo real, fornecendo escalabilidade e tolerância a falhas na ingestão de dados de alta velocidade \cite{murarka2024, mbata2024survey}. Ferramentas como \textbf{Apache Flume} e \textbf{Apache Nifi} são citadas para ingestão em lote (\textit{batch}) e em \textit{stream} de dados de diversas fontes, como \textit{logs} e sistemas baseados em eventos \cite{murarka2024}. O \textbf{RabbitMQ} também é mencionado como outra opção popular de fila de mensagens \textit{open source} \cite{septian2019}.
+    O \textbf{Apache Kafka} é amplamente reconhecido como a principal ferramenta \acs{open_source} para processamento de \textit{streams} de dados em tempo real, fornecendo escalabilidade e tolerância a falhas na ingestão de dados de alta velocidade \cite{murarka2024, mbata2024survey}. Ferramentas como \textbf{Apache Flume} e \textbf{Apache Nifi} são citadas para ingestão em lote (\textit{batch}) e em \textit{stream} de dados de diversas fontes, como \textit{logs} e sistemas baseados em eventos \cite{murarka2024}. O \textbf{RabbitMQ} também é mencionado como outra opção popular de fila de mensagens \acs{open_source} \cite{septian2019}.
 
     \item \textbf{Processamento, Transformação e Orquestração (ETL/ELT):}
     O \textbf{Apache Spark} é a ferramenta de processamento de dados mais destacada, considerada uma alternativa robusta ao tradicional MapReduce. O Spark oferece processamento em memória, acelerando drasticamente as velocidades de processamento de dados e suportando tanto o processamento em lote quanto em tempo real \cite{murarka2024, septian2019, mbata2024survey}. Para orquestração e gerenciamento de fluxo de trabalho:
@@ -110,7 +110,7 @@ A revisão da literatura aponta para um ecossistema de pipelines de dados domina
     \end{itemize}
 
     \item \textbf{Armazenamento (\textit{Data Lake} e \textit{Data Warehouse}):}
-    O \textbf{Hadoop Distributed File System (HDFS)} é citado como o componente fundamental \textit{open source} para a construção de um \textit{Data Lake}, permitindo o armazenamento confiável e o processamento distribuído de grandes conjuntos de dados \cite{murarka2024, septian2019}.
+    O \textbf{Hadoop Distributed File System (HDFS)} é citado como o componente fundamental \acs{open_source} para a construção de um \textit{Data Lake}, permitindo o armazenamento confiável e o processamento distribuído de grandes conjuntos de dados \cite{murarka2024, septian2019}.
 
     \item \textbf{Visualização e \textit{Business Intelligence} (BI):}
     Produtos como \textbf{Apache Zeppelin} e \textbf{Metabase} são citados como exemplos de ferramentas de código aberto que auxiliam na visualização dos \textit{insights} e podem se conectar com sistemas como HDFS e diversos bancos de dados \cite{septian2019}.
@@ -119,10 +119,10 @@ A revisão da literatura aponta para um ecossistema de pipelines de dados domina
 \subsection{De que forma o uso de ferramentas open source impacta a eficiência, flexibilidade e custo dos pipelines de dados?}
 \label{sec:respostas:impacto}
 
-O impacto das ferramentas \textit{open source} nos \textit{pipelines} de dados é positivo em três dimensões críticas: custo, flexibilidade e eficiência, sendo particularmente relevante para empresas de menor porte \cite{septian2019}.
+O impacto das ferramentas \acs{open_source} nos \textit{pipelines} de dados é positivo em três dimensões críticas: custo, flexibilidade e eficiência, sendo particularmente relevante para empresas de menor porte \cite{septian2019}.
 
 \begin{itemize}
-    \item \textbf{Custo (Custo-Benefício):} Para Pequenas e Médias Empresas (PMEs), a adoção de ferramentas \textit{open source} é frequentemente justificada pela \textbf{redução de custos de licenciamento de software} (\textit{low cost over a software license}). O uso de produtos como Apache Hadoop, Kafka e Spark permite que as empresas iniciem seus projetos de \textit{Big Data} com um custo mínimo de licença para a implementação inicial (\textit{minimum cost over a software license for the early implementation}).
+    \item \textbf{Custo (Custo-Benefício):} Para Pequenas e Médias Empresas (PMEs), a adoção de ferramentas \acs{open_source} é frequentemente justificada pela \textbf{redução de custos de licenciamento de software} (\textit{low cost over a software license}). O uso de produtos como Apache Hadoop, Kafka e Spark permite que as empresas iniciem seus projetos de \textit{Big Data} com um custo mínimo de licença para a implementação inicial (\textit{minimum cost over a software license for the early implementation}).
     
     \item \textbf{Flexibilidade (\textit{Flexibility}):} A flexibilidade é uma das qualidades mais valorizadas em soluções ETL/ELT e está intrinsecamente ligada à capacidade de uma solução acomodar \textbf{mudanças nos requisitos de integração de dados} e adaptar-se a volumes e complexidades de dados variáveis.
     
@@ -132,7 +132,7 @@ O impacto das ferramentas \textit{open source} nos \textit{pipelines} de dados �
     
     \item \textbf{Eficiência (\textit{Performance} e Escalabilidade):} A eficiência dos \textit{pipelines} é frequentemente medida pelo atributo de \textit{performance}, que exige que o processo ETL seja concluído em uma \textbf{janela de tempo especificada}.
     
-    \item \textbf{Processamento Distribuído:} Plataformas \textit{open source} como o Hadoop com HDFS e o Apache Spark são essenciais para a eficiência em escala, pois fornecem capacidades de armazenamento distribuído e processamento paralelo, acelerando drasticamente o processamento de grandes volumes de dados.
+    \item \textbf{Processamento Distribuído:} Plataformas \acs{open_source} como o Hadoop com HDFS e o Apache Spark são essenciais para a eficiência em escala, pois fornecem capacidades de armazenamento distribuído e processamento paralelo, acelerando drasticamente o processamento de grandes volumes de dados.
     
     \item \textbf{Escalabilidade (\textit{Scalability}):} A escalabilidade refere-se à capacidade de uma solução ETL/ELT ser usada para volumes e complexidades de dados variáveis. O design inerente de ferramentas como Kafka (mensageria distribuída) e Spark (processamento em memória) as torna soluções robustas para gerenciar \textit{Big Data} em escala.
 \end{itemize}
@@ -140,7 +140,7 @@ O impacto das ferramentas \textit{open source} nos \textit{pipelines} de dados �
 \subsection{Em quais contextos as ferramentas open source são mais vantajosas para o desenvolvimento de pipelines de dados?}
 \label{sec:respostas:contextos}
 
-As ferramentas \textit{open source} demonstram ser vantajosas em diversos contextos, sendo o fator predominante a necessidade de escalabilidade e flexibilidade em ambientes de \textit{Big Data} e a otimização de custos em organizações com recursos limitados \cite{septian2019, murarka2024}.
+As ferramentas \acs{open_source} demonstram ser vantajosas em diversos contextos, sendo o fator predominante a necessidade de escalabilidade e flexibilidade em ambientes de \textit{Big Data} e a otimização de custos em organizações com recursos limitados \cite{septian2019, murarka2024}.
 
 \begin{itemize}
     \item \textbf{Contexto de \textit{Big Data} e \textit{Scalability}:}
@@ -150,15 +150,15 @@ As ferramentas \textit{open source} demonstram ser vantajosas em diversos contex
     Para pequenas e médias empresas, o código aberto é a principal via de acesso à infraestrutura de \textit{Big Data} \cite{septian2019}. A ausência de custos de licença (\textit{low cost over a software license}) permite que as PMEs experimentem e cresçam com a infraestrutura sem a barreira financeira associada a soluções proprietárias de grande escala \cite{septian2019}.
 
     \item \textbf{Contexto de Inovação e \textit{Feature Engineering} (ML/AI):}
-    A vasta e criativa comunidade \textit{open source} (\textit{vibrant and creative open-source ecosystem}) é o "combustível para foguetes" (\textit{rocket fuel}) para pesquisa e inovação em \textit{Machine Learning} (ML) e Inteligência Artificial (AI) \cite{reddi2021data}. Em contextos de engenharia de dados voltados para alimentar modelos de ML, a colaboração em torno de conjuntos de dados e ferramentas \textit{open source} acelera o desenvolvimento de novos modelos e a reprodutibilidade dos resultados \cite{reddi2021data}.
+    A vasta e criativa comunidade \acs{open_source} (\textit{vibrant and creative open-source ecosystem}) é o "combustível para foguetes" (\textit{rocket fuel}) para pesquisa e inovação em \textit{Machine Learning} (ML) e Inteligência Artificial (AI) \cite{reddi2021data}. Em contextos de engenharia de dados voltados para alimentar modelos de ML, a colaboração em torno de conjuntos de dados e ferramentas \acs{open_source} acelera o desenvolvimento de novos modelos e a reprodutibilidade dos resultados \cite{reddi2021data}.
 \end{itemize}
 
 \subsection{Quais os benefícios e limitações do uso de ferramentas open source em comparação com ferramentas proprietárias no contexto da engenharia de dados?}
 \label{sec:respostas:comparacao}
 
-A comparação entre ferramentas \textit{open source} e proprietárias é um tema central na Engenharia de Dados. A literatura fornece uma visão clara sobre os \textit{trade-offs} envolvidos, especialmente em termos de custo, suporte e complexidade operacional \cite{septian2019, nwokeji2021, murarka2024, mbata2024survey}.
+A comparação entre ferramentas \acs{open_source} e proprietárias é um tema central na Engenharia de Dados. A literatura fornece uma visão clara sobre os \textit{trade-offs} envolvidos, especialmente em termos de custo, suporte e complexidade operacional \cite{septian2019, nwokeji2021, murarka2024, mbata2024survey}.
 
-\subsubsection{Benefícios do \textit{Open Source} em Comparação com o Proprietário}
+\subsubsection{Benefícios do \acs{open_source} em Comparação com o Proprietário}
 \begin{table}[h!]
     \label{tab:beneficios_os}
     \small
@@ -173,10 +173,10 @@ A comparação entre ferramentas \textit{open source} e proprietárias é um tem
         \bottomrule
     \end{tabular}
         \centering
-    \caption{Benefícios do \textit{Open Source} em \textit{Data Pipelines}}
+    \caption{Benefícios do \acs{open_source} em \textit{Data Pipelines}}
 \end{table}
 
-\subsubsection{Limitações do \textit{Open Source} em Comparação com o Proprietário}
+\subsubsection{Limitações do \acs{open_source} em Comparação com o Proprietário}
 \begin{table}[h!]
     \label{tab:limitacoes_os}
     \small
@@ -189,9 +189,9 @@ A comparação entre ferramentas \textit{open source} e proprietárias é um tem
         Complexidade Operacional & A configuração e a manutenção podem ser complexas e exigir um alto nível de especialização técnica. Soluções proprietárias baseadas em nuvem oferecem serviços gerenciados, simplificando essa complexidade \cite{septian2019, murarka2024}. & \cite{septian2019, murarka2024} \\
         Observabilidade (Reverse ETL) & O \textit{Reverse ETL} é mais difícil devido à necessidade de sincronização manual e reconciliação de dados, um desafio simplificado por ferramentas proprietárias focadas em \textit{Operational Analytics} \cite{reverseetl2022}. & \cite{reverseetl2022} \\
         \rowcolor[gray]{0.95}
-        Foco na Ferramenta & Soluções \textit{open source}, por vezes, carecem de um gerenciamento de fluxo de trabalho de ponta a ponta e componentes "prontos para usar", exigindo a combinação de várias ferramentas para obter uma solução completa \cite{mbata2024survey}. & \cite{mbata2024survey} \\
+        Foco na Ferramenta & Soluções \acs{open_source}, por vezes, carecem de um gerenciamento de fluxo de trabalho de ponta a ponta e componentes "prontos para usar", exigindo a combinação de várias ferramentas para obter uma solução completa \cite{mbata2024survey}. & \cite{mbata2024survey} \\
         \bottomrule
     \end{tabular}
         \centering
-    \caption{Limitações do \textit{Open Source} em \textit{Data Pipelines}}
+    \caption{Limitações do \acs{open_source} em \textit{Data Pipelines}}
 \end{table}

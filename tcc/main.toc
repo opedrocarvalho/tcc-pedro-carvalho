@@ -8,7 +8,7 @@
 \contentsline {section}{\numberline {1.4} Organização do texto }{7}{section.1.4}%
 \contentsline {chapter}{\numberline {2}Fundamentação Teórica}{9}{chapter.2}%
 \contentsline {section}{\numberline {2.1}ETL e a Evolução das Arquiteturas de Dados}{9}{section.2.1}%
-\contentsline {subsubsection}{Transição para ELT e o Papel do Data Wrangling}{10}{section.2.1}%
+\contentsline {subsubsection}{Transição para ELT e o Papel do \textit {Data Wrangling}}{10}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Open Source: Estratégia, Flexibilidade e Comparação}{10}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Técnicas Avançadas de Ingestão e Processamento}{11}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Tendências Emergentes: Reverse ETL}{11}{section.2.4}%
@@ -19,8 +19,8 @@
 \contentsline {subsection}{\numberline {3.1.2}De que forma o uso de ferramentas open source impacta a eficiência, flexibilidade e custo dos pipelines de dados?}{18}{subsection.3.1.2}%
 \contentsline {subsection}{\numberline {3.1.3}Em quais contextos as ferramentas open source são mais vantajosas para o desenvolvimento de pipelines de dados?}{19}{subsection.3.1.3}%
 \contentsline {subsection}{\numberline {3.1.4}Quais os benefícios e limitações do uso de ferramentas open source em comparação com ferramentas proprietárias no contexto da engenharia de dados?}{20}{subsection.3.1.4}%
-\contentsline {subsubsection}{Benefícios do \textit {Open Source} em Comparação com o Proprietário}{20}{subsection.3.1.4}%
-\contentsline {subsubsection}{Limitações do \textit {Open Source} em Comparação com o Proprietário}{20}{table.caption.4}%
+\contentsline {subsubsection}{Benefícios do \acs {open_source} em Comparação com o Proprietário}{20}{subsection.3.1.4}%
+\contentsline {subsubsection}{Limitações do \acs {open_source} em Comparação com o Proprietário}{20}{table.caption.4}%
 \contentsline {chapter}{\numberline {4}Construção do Pipeline}{22}{chapter.4}%
 \contentsline {subsubsection}{Tecnologias Utilizadas}{22}{chapter.4}%
 \contentsline {subsection}{\numberline {4.0.1}Tentativa com a ferramenta Browser Use (\textit {Web Scraping} com Inteligência Artificial)}{25}{subsection.4.0.1}%
@@ -68,6 +68,6 @@
 \contentsline {subsection}{\numberline {5.1.4}Transferência de Dados}{56}{subsection.5.1.4}%
 \contentsline {subsection}{\numberline {5.1.5}Custo Total e Comparação com Soluções Proprietárias}{56}{subsection.5.1.5}%
 \contentsline {section}{\numberline {5.2}Análise Crítica e Lições Aprendidas}{58}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Limitações de Escalabilidade das Ferramentas \textit {Open Source}}{58}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.1}Limitações de Escalabilidade das Ferramentas \acs {open_source}}{58}{subsection.5.2.1}%
 \contentsline {subsection}{\numberline {5.2.2}Síntese das Lições Aprendidas}{59}{subsection.5.2.2}%
 \contentsline {section}{Referências Bibliográficas}{60}{subsection.5.2.2}%

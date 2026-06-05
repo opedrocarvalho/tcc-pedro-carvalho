@@ -9,7 +9,7 @@ A adoção de ferramentas de código aberto elimina os custos de licenciamento d
 mais expressiva do orçamento de um \textit{pipeline} de dados. No entanto, a ausência de
 licenças não implica ausência de custos. Os gastos com infraestrutura, servidores,
 armazenamento e transferência de dados persistem e devem ser estimados com precisão
-para que o benefício econômico do \textit{open source} seja quantificado de forma correta e justa.
+para que o benefício econômico do \acs{open_source} seja quantificado de forma correta e justa.
 
 \subsection{Premissas da Estimativa}
 
@@ -225,7 +225,7 @@ frequentes a dados armazenados em nuvem.
 \subsection{Custo Total e Comparação com Soluções Proprietárias}
 
 A Tabela~\ref{tab:custo_total} consolida os custos mensais estimados para dois
-cenários: (a) implantação da solução \textit{open source} em uma \textit{VM} própria na
+cenários: (a) implantação da solução \acs{open_source} em uma \textit{VM} própria na
 respectiva nuvem e (b) substituição de cada componente pelo serviço gerenciado
 equivalente da mesma provedora.
 
@@ -273,7 +273,7 @@ equivalente da mesma provedora.
         \textbf{Fator B / A}           & \textbf{4,9 vezes}  & \textbf{1,8 vezes}  & \textbf{3,6 vezes}  & \\
         \bottomrule
     \end{tabular}
-    \caption{Comparativo de custo mensal entre a solução \textit{open source}
+    \caption{Comparativo de custo mensal entre a solução \acs{open_source}
     auto-hospedada (Cenário A) e os serviços gerenciados equivalentes (Cenário B)
     nas três principais provedoras de nuvem, nas regiões sul-americanas (maio/2026).}
     \label{tab:custo_total}
@@ -297,11 +297,11 @@ ambiente US\$ 0,49/h + 1 worker US\$ 0,055/h por 730 h/mês.
 
 \medskip
 
-Os resultados evidenciam que a solução \textit{open source} auto-hospedada custa
+Os resultados evidenciam que a solução \acs{open_source} auto-hospedada custa
 entre US\$ 94,67 (GCP) e US\$ 131,27 (Azure) por mês, enquanto os equivalentes
 gerenciados variam de US\$ 238 (Azure) a US\$ 540 (AWS). O fator de custo, a
 razão entre o Cenário B e o Cenário A na mesma provedora, oscila de 1,8 vezes (Azure)
-a 4,9 vezes (AWS), chegando a 5,7 vezes quando se compara a opção \textit{open source} mais
+a 4,9 vezes (AWS), chegando a 5,7 vezes quando se compara a opção \acs{open_source} mais
 econômica (GCP: US\$ 94,67) ao equivalente gerenciado mais caro (AWS: US\$ 540).
 
 A diferença menos expressiva no caso da Azure (1,8 vezes) decorre de um fator estrutural.
@@ -315,21 +315,21 @@ técnica precisaria absorver.
 É necessário ressaltar que a comparação não é inteiramente semelhante. Os serviços
 gerenciados oferecem acordos de nível de serviço (\textit{SLAs}) de disponibilidade,
 escalabilidade automática, atualizações de segurança aplicadas pela própria
-provedora e monitoramento integrado. Na solução \textit{open source}, esses mesmos
+provedora e monitoramento integrado. Na solução \acs{open_source}, esses mesmos
 fatores, como atualização de contêineres, reinicialização após falhas, \textit{backup}
 do PostgreSQL, renovação de certificados TLS, são responsabilidade da equipe
 interna. O Custo Total de Propriedade (\textit{Total Cost of Ownership}, TCO)
 depende, portanto, do custo da hora de trabalho da equipe técnica. Para
-organizações com equipes qualificadas, o \textit{open source} permanece
+organizações com equipes qualificadas, o \acs{open_source} permanece
 substancialmente mais barato. Para organizações sem colaboradores técnicos dedicados,
 o valor agregado dos serviços gerenciados pode justificar o custo adicional.
 
 \section{Análise Crítica e Lições Aprendidas}
 
-\subsection{Limitações de Escalabilidade das Ferramentas \textit{Open Source}}
+\subsection{Limitações de Escalabilidade das Ferramentas \acs{open_source}}
 
 A solução desenvolvida demonstrou viabilidade técnica e econômica para o escopo
-escolhido. Contudo, a escolha por ferramentas \textit{open source}
+escolhido. Contudo, a escolha por ferramentas \acs{open_source}
 auto-hospedadas implica limitações de escalabilidade que é necessário delimitar
 com precisão, para que futuros usuários possam antecipar os pontos de quebra
 da arquitetura.
@@ -356,7 +356,7 @@ SQL complexas sobre grandes volumes de dados, o tempo de resposta pode diminuir
 progressivamente. A escalabilidade horizontal do Superset requer múltiplos
 \textit{workers} Celery, um broker Redis dedicado e migração do banco de metadados
 para PostgreSQL externo, o que aproxima a complexidade operacional da solução
-\textit{open source} com a de um serviço gerenciado na nuvem.
+\acs{open_source} com a de um serviço gerenciado na nuvem.
 
 O Docker Compose foi projetado para orquestração em um único hospedeiro e não
 suporta distribuição de contêineres entre múltiplos \textit{nodes} de forma nativa. A migração
@@ -367,7 +367,7 @@ um aumento massivo no custo de manutenção.
 Em conjunto, essas limitações não invalidam a abordagem para o escopo do projeto, 
 dezenas de fontes, execuções diárias e volumes na casa dos gigabytes, mas
 definem com clareza o horizonte da solução atual. O crescimento além
-desses limites demandará ou a evolução das ferramentas \textit{open source} para
+desses limites demandará ou a evolução das ferramentas \acs{open_source} para
 configurações distribuídas, ainda que dentro do ecossistema de código aberto e com
 custo substancialmente inferior ao dos serviços gerenciados, como evidenciado na
 Seção~\ref{sec:conclusao}, ou até mesmo a transição gradual para serviços gerenciados em
@@ -377,7 +377,7 @@ responsável pela manutenção.
 \subsection{Síntese das Lições Aprendidas}
 
 O desenvolvimento evidenciou que a viabilidade de um \textit{pipeline}
-de dados \textit{open source} para extração e análise de informações de mercado turístico
+de dados \acs{open_source} para extração e análise de informações de mercado turístico
 é técnica e economicamente comprovada. As principais lições aprendidas, com valor
 imediato para implementações futuras, são organizadas abaixo.
 
@@ -402,7 +402,7 @@ infraestrutura inicial, mas qualquer incremento substancial no número de
 e seus \textit{trade-offs} desde o início é fundamental para que futuros mantenedores
 compreendam o contexto da escolha, estejam cientes do débito técnico.
 
-Ferramentas \textit{open source} não eliminam custos, mas os redistribuem. O
+Ferramentas \acs{open_source} não eliminam custos, mas os redistribuem. O
 custo de licenciamento zero é substituído por custos de operação (servidor), custo de
 aprendizado (curva de adoção das ferramentas) e custo de manutenção (atualizações,
 correções de \textit{scrapers}, monitoramento). Para organizações sem equipe técnica
