@@ -1,4 +1,4 @@
-\begin{thebibliography}{15}
+\begin{thebibliography}{17}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -16,6 +16,11 @@ Chaimae Boulahia, Hicham Behja, Mohammed~Reda Chbihi~Louhdi, and Zoubair Boulahi
 \newblock The multi-criteria evaluation of research efforts based on etl software.
 \newblock \emph{Evolutionary Intelligence}, 17:\penalty0 2099–2124, 2024.
 \newblock \doi{10.1007/s12065-023-00899-z}.
+
+\bibitem[Brereton et~al.(2007)Brereton, Kitchenham, Budgen, Turner, and Khalil]{brereton2007lessons}
+Pearl Brereton, Barbara~A Kitchenham, David Budgen, Mark Turner, and Mohamed Khalil.
+\newblock Lessons from applying the systematic literature review process within the software engineering domain.
+\newblock \emph{Journal of systems and software}, 80\penalty0 (4):\penalty0 571--583, 2007.
 
 \bibitem[Dash and Swayamsiddha(2022)]{reverseetl2022}
 Bibhu Dash and Swati Swayamsiddha.
@@ -87,5 +92,10 @@ Ridwan~Fadjar Septian, Fajri Abdillah, and Tajhul~Faijin Aliyudin.
 \newblock A study review of common big data architecture for small-medium enterprise.
 \newblock In \emph{MSCEIS 2019}, 2019.
 \newblock \doi{10.4108/eai.12-10-2019.2296535}.
+
+\bibitem[Toma and Soares(2016)]{toma2016revisao}
+Tereza~Setsuko Toma and Amanda~Cristiane Soares.
+\newblock Uma revis{\~a}o r{\'a}pida sobre revis{\~o}es r{\'a}pidas.
+\newblock \emph{Boletim do Instituto de Sa{\'u}de-BIS}, 17\penalty0 (1):\penalty0 142--151, 2016.
 
 \end{thebibliography}

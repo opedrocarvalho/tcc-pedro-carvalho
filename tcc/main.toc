@@ -16,17 +16,17 @@
 \contentsline {subsection}{\numberline {3.0.1}Artigos Selecionados para a Revisão}{15}{subsection.3.0.1}%
 \contentsline {section}{\numberline {3.1}Respostas às Questões de Pesquisa}{16}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Quais são as principais ferramentas open source utilizadas no desenvolvimento de pipelines de dados atualmente?}{17}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}De que forma o uso de ferramentas open source impacta a eficiência, flexibilidade e custo dos pipelines de dados?}{18}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}Em quais contextos as ferramentas open source são mais vantajosas para o desenvolvimento de pipelines de dados?}{19}{subsection.3.1.3}%
-\contentsline {subsection}{\numberline {3.1.4}Quais os benefícios e limitações do uso de ferramentas open source em comparação com ferramentas proprietárias no contexto da engenharia de dados?}{20}{subsection.3.1.4}%
-\contentsline {subsubsection}{Benefícios do \acs {open_source} em Comparação com o Proprietário}{20}{subsection.3.1.4}%
-\contentsline {subsubsection}{Limitações do \acs {open_source} em Comparação com o Proprietário}{20}{table.caption.4}%
-\contentsline {chapter}{\numberline {4}Construção do Pipeline}{22}{chapter.4}%
-\contentsline {subsubsection}{Tecnologias Utilizadas}{22}{chapter.4}%
-\contentsline {subsection}{\numberline {4.0.1}Tentativa com a ferramenta Browser Use (\textit {Web Scraping} com Inteligência Artificial)}{25}{subsection.4.0.1}%
-\contentsline {section}{\numberline {4.1}Web Scraping}{26}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Diferenciação e Propósito}{26}{subsection.4.1.1}%
-\contentsline {section}{\numberline {4.2}Ingestão dos dados}{27}{section.4.2}%
+\contentsline {subsection}{\numberline {3.1.2}De que forma o uso de ferramentas open source impacta a eficiência, flexibilidade e custo dos pipelines de dados?}{19}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Em quais contextos as ferramentas open source são mais vantajosas para o desenvolvimento de pipelines de dados?}{20}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Quais os benefícios e limitações do uso de ferramentas open source em comparação com ferramentas proprietárias no contexto da engenharia de dados?}{21}{subsection.3.1.4}%
+\contentsline {subsubsection}{Benefícios do \acs {open_source} em Comparação com o Proprietário}{21}{subsection.3.1.4}%
+\contentsline {subsubsection}{Limitações do \acs {open_source} em Comparação com o Proprietário}{22}{table.caption.4}%
+\contentsline {chapter}{\numberline {4}Construção do Pipeline}{23}{chapter.4}%
+\contentsline {subsubsection}{Tecnologias Utilizadas}{23}{chapter.4}%
+\contentsline {subsection}{\numberline {4.0.1}Tentativa com a ferramenta Browser Use (\textit {Web Scraping} com Inteligência Artificial)}{26}{subsection.4.0.1}%
+\contentsline {section}{\numberline {4.1}Web Scraping}{27}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Diferenciação e Propósito}{27}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Ingestão dos dados}{28}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Limitações do Pandas e do Apache Spark}{28}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}Modelagem das tabelas}{29}{subsection.4.2.2}%
 \contentsline {subsubsection}{Variações Estruturais e Padronização dos Dados}{30}{subsection.4.2.2}%
@@ -41,33 +41,33 @@
 \contentsline {subsection}{\numberline {4.3.5}Camada Marts: Consolidação e Modelagem Dimensional}{37}{subsection.4.3.5}%
 \contentsline {subsubsection}{One Big Table (OBT)}{37}{subsection.4.3.5}%
 \contentsline {subsubsection}{Tabela Fato: fct\_pacotes}{37}{subsection.4.3.5}%
-\contentsline {subsubsection}{Dimensão de Operadoras: dim\_operadora}{38}{subsection.4.3.5}%
+\contentsline {subsubsection}{Dimensão de Operadoras: dim\_operadora}{37}{subsection.4.3.5}%
 \contentsline {subsubsection}{Dimensão Temporal: dim\_tempo}{38}{subsection.4.3.5}%
 \contentsline {subsubsection}{Dimensão de Destinos: dim\_destino}{38}{subsection.4.3.5}%
 \contentsline {subsubsection}{Mart de Faixas de Preço por Destino: mart\_faixa\_precos\_destino}{39}{subsection.4.3.5}%
 \contentsline {subsubsection}{Mart de Preços por Operadora: mart\_precos\_por\_operadora}{39}{subsection.4.3.5}%
 \contentsline {subsection}{\numberline {4.3.6}Testes de Qualidade de Dados}{39}{subsection.4.3.6}%
 \contentsline {subsection}{\numberline {4.3.7}Arquitetura da DAG}{40}{subsection.4.3.7}%
-\contentsline {subsection}{\numberline {4.3.8}Uso do DockerOperator}{41}{subsection.4.3.8}%
-\contentsline {subsection}{\numberline {4.3.9}Configuração do Agendamento}{42}{subsection.4.3.9}%
-\contentsline {subsection}{\numberline {4.3.10}Configuração do Executor}{42}{subsection.4.3.10}%
+\contentsline {subsection}{\numberline {4.3.8}Uso do DockerOperator}{40}{subsection.4.3.8}%
+\contentsline {subsection}{\numberline {4.3.9}Configuração do Agendamento}{41}{subsection.4.3.9}%
+\contentsline {subsection}{\numberline {4.3.10}Configuração do Executor}{41}{subsection.4.3.10}%
 \contentsline {subsection}{\numberline {4.3.11}Resultados da Orquestração}{42}{subsection.4.3.11}%
 \contentsline {section}{\numberline {4.4}Visualização dos Dados com Apache Superset}{45}{section.4.4}%
 \contentsline {subsection}{\numberline {4.4.1}Escolha e Configuração da ferramenta}{45}{subsection.4.4.1}%
 \contentsline {subsection}{\numberline {4.4.2}Dashboards Desenvolvidos}{45}{subsection.4.4.2}%
 \contentsline {subsection}{\numberline {4.4.3}Resultados da Visualização e Análise dos Dados}{46}{subsection.4.4.3}%
 \contentsline {subsubsection}{Painel Panorama Geral}{47}{figure.caption.14}%
-\contentsline {subsubsection}{Painel Detalhamento por Destino}{48}{figure.caption.14}%
-\contentsline {subsubsection}{Usabilidade e Discussão Crítica}{49}{figure.caption.14}%
-\contentsline {section}{\numberline {4.5}Infraestrutura Conteinerizada com Docker}{50}{section.4.5}%
-\contentsline {chapter}{\numberline {5}Conclusão}{53}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Estimativa de Custos Operacionais}{53}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Premissas da Estimativa}{53}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Infraestrutura de Servidor}{54}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Armazenamento}{55}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}Transferência de Dados}{56}{subsection.5.1.4}%
-\contentsline {subsection}{\numberline {5.1.5}Custo Total e Comparação com Soluções Proprietárias}{56}{subsection.5.1.5}%
-\contentsline {section}{\numberline {5.2}Análise Crítica e Lições Aprendidas}{58}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Limitações de Escalabilidade das Ferramentas \acs {open_source}}{58}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Síntese das Lições Aprendidas}{59}{subsection.5.2.2}%
-\contentsline {section}{Referências Bibliográficas}{60}{subsection.5.2.2}%
+\contentsline {subsubsection}{Painel Detalhamento por Destino}{47}{figure.caption.14}%
+\contentsline {subsubsection}{Usabilidade e Discussão Crítica}{48}{figure.caption.14}%
+\contentsline {section}{\numberline {4.5}Infraestrutura Conteinerizada com Docker}{49}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Conclusão}{52}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Estimativa de Custos Operacionais}{52}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Premissas da Estimativa}{52}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Infraestrutura de Servidor}{53}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Armazenamento}{54}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Transferência de Dados}{54}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5}Custo Total e Comparação com Soluções Proprietárias}{55}{subsection.5.1.5}%
+\contentsline {section}{\numberline {5.2}Análise Crítica e Lições Aprendidas}{57}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Limitações de Escalabilidade das Ferramentas \acs {open_source}}{57}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Síntese das Lições Aprendidas}{58}{subsection.5.2.2}%
+\contentsline {section}{Referências Bibliográficas}{59}{subsection.5.2.2}%

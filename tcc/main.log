@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.5.23)  5 JUN 2026 11:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.5.23)  5 JUN 2026 12:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1343,6 +1343,9 @@ Package: amsthm 2020/05/29 v2.20.6
 \c@g@acro@olap@int=\count546
 \c@g@acro@elt@int=\count547
 \c@g@acro@open_source@int=\count548
+\c@g@acro@picoc@int=\count549
+\c@g@acro@hdfs@int=\count550
+\c@g@acro@ml@int=\count551
 ) (./main.aux
 Package babel Info: 'brazil' activates 'portuges' shorthands.
 (babel)             Reported on input line 12.
@@ -1404,16 +1407,16 @@ LaTeX Font Info:    ... okay on input line 241.
 
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count549
+\scratchcounter=\count552
 \scratchdimen=\dimen365
 \scratchbox=\box166
-\nofMPsegments=\count550
-\nofMParguments=\count551
+\nofMPsegments=\count553
+\nofMParguments=\count554
 \everyMPshowfont=\toks89
-\MPscratchCnt=\count552
+\MPscratchCnt=\count555
 \MPscratchDim=\dimen366
-\MPnumerator=\count553
-\makeMPintoPDFobject=\count554
+\MPnumerator=\count556
+\makeMPintoPDFobject=\count557
 \everyMPtoPDFconversion=\toks90
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1443,7 +1446,7 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
-\c@lstlisting=\count555
+\c@lstlisting=\count558
  (/usr/share/texmf-dist/tex/latex/translations/translations-basic-dictionary-brazil.trsl
 File: translations-basic-dictionary-brazil.trsl (brazil translation file `translations-basic-dictionary')
 )
@@ -1692,190 +1695,185 @@ Cap\'{\i }tulo 3.
 [13
 
 ]
-Overfull \hbox (5.74207pt too wide) in paragraph at lines 23--24
+Overfull \hbox (5.74207pt too wide) in paragraph at lines 24--25
 []\T1/ptm/m/n/12 Quais são as prin-ci-pais fer-ra-men-tas open source uti-lizadas no de-sen-volvi-mento de pipelines
  []
 
-
-Overfull \hbox (35.64975pt too wide) in paragraph at lines 32--33
-[]\T1/cmtt/m/n/12 TITLE-ABS-KEY ( ( "data engineer*"OR "data processing"OR "big data*"OR
+(./tables/string.tex
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+[]|\T1/cmtt/m/n/12 TITLE-ABS-KEY ( ( "data engineer*"OR "data processing"OR "big
  []
 
 
-Overfull \hbox (4.78229pt too wide) in paragraph at lines 32--33
-\T1/cmtt/m/n/12 sql OR "Data lake"OR datawarehouse ) AND ( etl OR elt OR "extract
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+\T1/cmtt/m/n/12 data*"OR sql OR "Data lake"OR datawarehouse ) AND ( etl OR elt OR
  []
 
 
-Overfull \hbox (41.82324pt too wide) in paragraph at lines 32--33
-\T1/cmtt/m/n/12 transform load") ) AND PUBYEAR > 2019 AND PUBYEAR < 2026 AND ( LIMIT-TO
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+\T1/cmtt/m/n/12 "extract transform load") ) AND PUBYEAR > 2019 AND PUBYEAR < 2026 AND
  []
 
+)
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 39.
 
-[14]
+[14] (./tables/artigos.text
+ignored: Infinite glue shrinkage found in box being split [15]) [16] [17] (./tables/ferramentas.tex
+ignored: Infinite glue shrinkage found in box being split [18]) [19] [20]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 125.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 125.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
- [15] [16] [17]
-Overfull \hbox (1.51762pt too wide) in paragraph at lines 115--117
-[]\T1/ptm/b/n/12 Visualização e \T1/ptm/b/it/12 Busi-ness In-tel-li-gence \T1/ptm/b/n/12 (BI): \T1/ptm/m/n/12 Pro-du-tos como \T1/ptm/b/n/12 Apache Zep-pelin \T1/ptm/m/n/12 e \T1/ptm/b/n/12 Metabase
- []
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 125.
 
-[18] [19]
-Underfull \hbox (badness 3291) in paragraph at lines 169--169
+Underfull \hbox (badness 3291) in paragraph at lines 129--129
 []|\T1/ptm/m/n/10.95 Custo Ini-cial Re-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--170
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 []|[]\T1/ptm/m/n/10.95 Septian
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--170
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 \T1/ptm/m/n/10.95 et al.[]
  []
 
 
-Underfull \hbox (badness 1057) in paragraph at lines 171--171
+Underfull \hbox (badness 1057) in paragraph at lines 131--131
 \T1/ptm/m/n/10.95 paci-dade de ser re-uti-lizada em múlti-p-los domínios
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 171--172
+Underfull \hbox (badness 10000) in paragraph at lines 131--132
 []|[]\T1/ptm/m/n/10.95 Nwokeji
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 171--172
+Underfull \hbox (badness 10000) in paragraph at lines 131--132
 \T1/ptm/m/n/10.95 and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 171--172
+Underfull \hbox (badness 10000) in paragraph at lines 131--132
 \T1/ptm/m/n/10.95 Ma-tovu[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--172
+Underfull \hbox (badness 10000) in paragraph at lines 132--132
 []|\T1/ptm/m/n/10.95 Inovação Acel-er-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--173
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
 []|[]\T1/ptm/m/n/10.95 Reddi
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--173
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
 \T1/ptm/m/n/10.95 et al.[]
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 187--187
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
 []|\T1/ptm/m/n/10.95 Suporte e
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
 []|[]\T1/ptm/m/n/10.95 Mbata
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
 \T1/ptm/m/n/10.95 et al.[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
 \T1/ptm/m/n/10.95 [[]2024[]];
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
 []\T1/ptm/m/n/10.95 Sep-tian
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
 \T1/ptm/m/n/10.95 et al.[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--190
+Underfull \hbox (badness 10000) in paragraph at lines 151--152
 []|[]\T1/ptm/m/n/10.95 Septian
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--190
+Underfull \hbox (badness 10000) in paragraph at lines 151--152
 \T1/ptm/m/n/10.95 et al.[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--190
+Underfull \hbox (badness 10000) in paragraph at lines 151--152
 \T1/ptm/m/n/10.95 [[]2019[]];
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--190
+Underfull \hbox (badness 10000) in paragraph at lines 151--152
 []\T1/ptm/m/n/10.95 Mu-rarka
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--190
+Underfull \hbox (badness 10000) in paragraph at lines 151--152
 \T1/ptm/m/n/10.95 et al.[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 190--190
+Underfull \hbox (badness 10000) in paragraph at lines 152--152
 []|\T1/ptm/m/n/10.95 Observabilidade
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 190--191
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
 \T1/ptm/m/n/10.95 Swayam-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 190--191
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
 \T1/ptm/m/n/10.95 sid-dha[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 192--192
+Underfull \hbox (badness 10000) in paragraph at lines 154--154
 []|\T1/ptm/m/n/10.95 Foco na Fer-ra-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 192--193
+Underfull \hbox (badness 10000) in paragraph at lines 154--155
 []|[]\T1/ptm/m/n/10.95 Mbata
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 192--193
+Underfull \hbox (badness 10000) in paragraph at lines 154--155
 \T1/ptm/m/n/10.95 et al.[]
  []
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-) [20] [21]
+) [22]
 Cap\'{\i }tulo 4.
-(./sections/ingestaodosdados.tex [22
+(./sections/ingestaodosdados.tex [23
 
 ]
-<img/arquitetura.png, id=688, 573.14125pt x 282.05376pt>
+<img/arquitetura.png, id=739, 573.14125pt x 282.05376pt>
 File: img/arquitetura.png Graphic file (type png)
 <use img/arquitetura.png>
 Package pdftex.def Info: img/arquitetura.png  used on input line 17.
 (pdftex.def)             Requested size: 455.24411pt x 224.03798pt.
- [23 <./img/arquitetura.png>] [24]
+ [24 <./img/arquitetura.png>]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 36.
@@ -1910,64 +1908,40 @@ Underfull \hbox (badness 4096) in paragraph at lines 131--131
 []|\T1/ptm/m/n/12 Utilização de cam-pos de texto com
  []
 
-[29] [30] [31] [32]
-Overfull \hbox (5.46373pt too wide) in paragraph at lines 216--221
-[]\T1/ptm/m/n/12 A or-ga-ni-za-ção dos da-dos no Post-greSQL segue a ar-quite-tura \T1/ptm/m/it/12 Medal-lion \T1/ptm/m/n/12 (Bronze/Silver/Gold),
- []
-
-
-Overfull \hbox (2.38193pt too wide) in paragraph at lines 230--235
-[]\T1/ptm/b/n/12 marts (Gold): \T1/ptm/m/n/12 Ter-ceira e úl-tima ca-mada, onde o dbt cria tabelas con-sol-i-dadas e otimizadas
- []
-
-[33]
-Overfull \hbox (10.99188pt too wide) in paragraph at lines 248--253
-\T1/ptm/m/n/12 de nomen-clatura que iden-ti-fica clara-mente a fonte dos da-dos (por ex-em-plo, \T1/cmtt/m/n/12 stg_bleu_selectour
- []
-
-[34]
+[29] [30] [31] [32] [33] [34]
 Underfull \hbox (badness 1515) in paragraph at lines 319--322
 \T1/ptm/m/n/12 reg-istros onde \T1/cmtt/m/n/12 local = 'Brasil' \T1/ptm/m/n/12 são man-ti-dos,
  []
 
-[35] [36]
-Overfull \hbox (1.64836pt too wide) in paragraph at lines 387--395
-[]\T1/ptm/m/n/12 A tabela de di-men-são de op-er-ado-ras é al-i-men-tada por um ar-quivo de da-dos aux-il-iar (chamado
- []
-
-[37] [38] [39] [40]
-Overfull \hbox (6.90617pt too wide) in paragraph at lines 501--502
-[]\T1/ptm/b/n/12 Isolamento de de-pendên-cias: \T1/ptm/m/n/12 O am-bi-ente dos scrap-ers in-clui o nave-g-ador Google Chrome
- []
-
-[41] [42]
-<img/graph_dag.png, id=829, 1440.13031pt x 711.4078pt>
+[35] [36] [37] [38] [39] [40] [41]
+<img/graph_dag.png, id=874, 1440.13031pt x 711.4078pt>
 File: img/graph_dag.png Graphic file (type png)
 <use img/graph_dag.png>
 Package pdftex.def Info: img/graph_dag.png  used on input line 522.
 (pdftex.def)             Requested size: 455.24411pt x 224.87622pt.
-<img/details_execucao.png, id=830, 1434.86063pt x 710.655pt>
+<img/details_execucao.png, id=875, 1434.86063pt x 710.655pt>
 File: img/details_execucao.png Graphic file (type png)
 <use img/details_execucao.png>
 Package pdftex.def Info: img/details_execucao.png  used on input line 529.
 (pdftex.def)             Requested size: 455.24411pt x 225.47322pt.
- [43 <./img/graph_dag.png> <./img/details_execucao.png>] [44] [45]
-<img/panorama-geral.png, id=847, 1880.02374pt x 834.11626pt>
+ [42 <./img/graph_dag.png>] [43 <./img/details_execucao.png>] [44]
+<img/panorama-geral.png, id=892, 1880.02374pt x 834.11626pt>
 File: img/panorama-geral.png Graphic file (type png)
 <use img/panorama-geral.png>
 Package pdftex.def Info: img/panorama-geral.png  used on input line 594.
 (pdftex.def)             Requested size: 455.24411pt x 201.97385pt.
-<img/detalhamento-por-destino.png, id=848, 1651.16875pt x 867.24pt>
+ [45]
+<img/detalhamento-por-destino.png, id=897, 1651.16875pt x 867.24pt>
 File: img/detalhamento-por-destino.png Graphic file (type png)
 <use img/detalhamento-por-destino.png>
 Package pdftex.def Info: img/detalhamento-por-destino.png  used on input line 601.
 (pdftex.def)             Requested size: 455.24411pt x 239.10707pt.
- [46 <./img/panorama-geral.png>] [47 <./img/detalhamento-por-destino.png>]
-Overfull \hbox (62.6317pt too wide) in paragraph at lines 669--674
-[]\T1/ptm/m/n/12 A se-gunda linha ap-re-senta a tabela \T1/ptm/b/n/12 Faixa de Preços por Des-tino\T1/ptm/m/n/12 , derivada do mart_faixa_precos_destino,
+ [46 <./img/panorama-geral.png> <./img/detalhamento-por-destino.png>] [47]
+Overfull \hbox (18.85883pt too wide) in paragraph at lines 669--674
+[]\T1/ptm/m/n/10.95 A se-gunda linha ap-re-senta a tabela \T1/ptm/b/n/10.95 Faixa de Preços por Des-tino\T1/ptm/m/n/10.95 , derivada do mart_faixa_precos_destino,
  []
 
-[48] [49]
+[48]
 Underfull \hbox (badness 3849) in paragraph at lines 759--760
 []|\T1/ptm/m/n/12 Serviço tem-porário que prepara o
  []
@@ -1986,39 +1960,34 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 768.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 768.
-[50]
-Overfull \hbox (9.91542pt too wide) in paragraph at lines 772--776
-[]\T1/ptm/m/n/12 Dois am-bi-entes cus-tomiza-dos foram de-sen-volvi-dos es-peci-fi-ca-mente para o pro-jeto. O primeiro
- []
-
-[51]) (./sections/conclusao.tex [52]
+[49] [50]) (./sections/conclusao.tex [51]
 Cap\'{\i }tulo 5.
-
-Overfull \hbox (7.12125pt too wide) in paragraph at lines 20--27
-[]\T1/ptm/b/n/12 Região ge-ográ-fica equiv-a-lente: \T1/ptm/m/n/12 As três prove-do-ras avali-adas, Ama-zon Web Ser-vices (AWS),
- []
-
-[53
+[52
 
 ]
 Overfull \hbox (10.02347pt too wide) in paragraph at lines 63--84
  [][] 
  []
 
-[54]
+
+Overfull \hbox (2.34683pt too wide) in paragraph at lines 92--95
+[]\T1/ptm/m/n/10.95 Para a al-ter-na-tiva de serviços geren-ci-a-dos, o com-po-nente de maior im-pacto fi-nan-ceiro é o orquestrador
+ []
+
+[53]
 Overfull \hbox (8.4069pt too wide) in paragraph at lines 159--160
  []|\T1/ptm/b/n/10.95 US$/GB/mês| 
  []
 
-[55] [56] [57] [58]
-Overfull \hbox (1.8072pt too wide) in paragraph at lines 392--397
-\T1/ptm/m/n/12 parar tu-plas de campos-chave antes de in-serir reg-istros, im-ple-men-tada via get_existing_records()
+[54] [55] [56]
+Overfull \hbox (1.60524pt too wide) in paragraph at lines 331--336
+\T1/ptm/m/n/10.95 tudo, a es-colha por fer-ra-men-tas OP[] auto-hospedadas im-plica lim-i-tações de es-cal-a-bil-i-dade que é necessário
  []
 
-[59]) (./main.bbl [60] [61
+[57] [58]) (./main.bbl [59] [60
 
-]) [62]
-runsystem(latexminted cleantemp  --timestamp 20260605112133 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
+]) [61]
+runsystem(latexminted cleantemp  --timestamp 20260605120900 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
 
  (./main.aux)
  ***********
@@ -2029,18 +1998,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 100CA0DEE8B3F9C3BAC5A5EE5DE5AEF3;14666.
  ) 
 Here is how much of TeX's memory you used:
- 50903 strings out of 469515
- 1115652 string characters out of 5470807
+ 51225 strings out of 469515
+ 1128108 string characters out of 5470807
  2031747 words of memory out of 5000000
- 78598 multiletter control sequences out of 15000+600000
- 717752 words of font info for 178 fonts, out of 8000000 for 9000
+ 78906 multiletter control sequences out of 15000+600000
+ 722050 words of font info for 185 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  90i,15n,104p,1744b,882s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (70 pages, 715066 bytes).
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (69 pages, 745369 bytes).
 PDF statistics:
- 1034 PDF objects out of 1200 (max. 8388607)
- 932 compressed objects within 10 object streams
- 186 named destinations out of 1000 (max. 500000)
+ 1083 PDF objects out of 1200 (max. 8388607)
+ 980 compressed objects within 10 object streams
+ 189 named destinations out of 1000 (max. 500000)
  486 words of extra memory for PDF output out of 10000 (max. 10000000)
 

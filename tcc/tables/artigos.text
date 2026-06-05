@@ -1,0 +1,60 @@
+\small
+\setlength{\extrarowheight}{3pt}
+\renewcommand{\arraystretch}{1.3}
+
+\begin{longtable}{
+    >{\raggedright\arraybackslash}p{2.6cm}
+    >{\raggedright\arraybackslash}p{5.8cm}
+    >{\raggedright\arraybackslash}p{4.8cm}
+}
+
+\caption{Artigos Selecionados para a Revisão Rápida}
+\label{tab:artigos_selecionados}\\
+
+\toprule
+\textbf{Citação} & \textbf{Título e Foco Principal} & \textbf{Relevância para o Projeto} \\
+\midrule
+\endfirsthead
+
+\multicolumn{3}{c}{\textit{Continuação da Tabela \ref{tab:artigos_selecionados}}} \\
+\toprule
+\textbf{Citação} & \textbf{Título e Foco Principal} & \textbf{Relevância para o Projeto} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{3}{r}{\textit{Continua na próxima página}} \\
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+\rowcolor[gray]{0.96}
+\cite{boulahia2024} &
+\textit{The multi-criteria evaluation of research efforts based on ETL software} \newline
+(Avaliação de múltiplos critérios (AHP) para escolha de ETLs em BI, Big Data e contexto semântico.) &
+Critérios de avaliação de ETLs Open Source (M1). \\
+
+\cite{nwokeji2021} &
+\textit{A Systematic Literature Review on Big Data Extraction, Transformation and Loading (ETL)} \newline
+(Revisão sistemática sobre ETL para Big Data, abordando abordagens e atributos de qualidade.) &
+Estrutura e atributos de qualidade para ETL em Big Data (M1). \\
+
+\rowcolor[gray]{0.96}
+\cite{murarka2024} &
+\textit{Advanced Techniques in Data Ingestion and Pipelining for Scalable Big Data Platforms} \newline
+(Técnicas avançadas de ingestão e processamento para Big Data escalável, com uso de Kafka, Spark e ML/AI.) &
+Demonstra a escalabilidade de ferramentas como Kafka e Spark no ecossistema Open Source (M2/M5). \\
+
+\cite{septian2019} &
+\textit{A Study Review of Common Big Data Architecture for Small-medium Enterprise} \newline
+(Arquitetura de Big Data e pipelines para Pequenas e Médias Empresas, com foco em Open Source.) &
+Justifica o foco em Open Source para PMEs (M1) e serve de base para a arquitetura (M2). \\
+
+\rowcolor[gray]{0.96}
+\cite{reverseetl2022} &
+\textit{Reverse ETL for Improved Scalability, Observability, and Performance of Modern Operational Analytics – A Comparative Review} \newline
+(Análise e importância do Reverse ETL para o fluxo inverso do Data Warehouse para sistemas operacionais.) &
+Identifica a tendência emergente do Reverse ETL, essencial para a análise crítica (M5). \\
+
+\end{longtable}
