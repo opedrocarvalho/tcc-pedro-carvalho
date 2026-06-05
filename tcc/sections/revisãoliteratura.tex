@@ -1,11 +1,11 @@
 \chapter{Revisão da Literatura}
 \label{sec:revisãoliteratura}
 
-O método de pesquisa utilizado no trabalho se caracteriza como uma Revisão Rápida, sendo uma abordagem que se assemelha à Revisão Sistemática, mas que é conduzida com menos etapas, sendo muito utilizada em pesquisas que se precisa ganhar conhecimento rápido sobre um determinado tema \cite{pena2025comparing}.
+O método de pesquisa utilizado no trabalho se caracteriza como uma Revisão Rápida, sendo uma abordagem que se assemelha à Revisão Sistemática, mas que é conduzida com menos etapas, sendo muito utilizada em pesquisas que se precisa ganhar conhecimento rápido sobre um determinado tema \cite[]{pena2025comparing}.
 
-A Revisão Sistemática é um estudo secundário rigoroso e abrangente, projetado para localizar, avaliar criticamente e sintetizar todas as evidências relevantes sobre uma questão de pesquisa claramente definida, minimizando o viés e gerando conclusões confiáveis e cientificamente sólidas \cite{toma2016revisao, brereton2007lessons}.
+A Revisão Sistemática é um estudo secundário rigoroso e abrangente, projetado para localizar, avaliar criticamente e sintetizar todas as evidências relevantes sobre uma questão de pesquisa claramente definida, minimizando o viés e gerando conclusões confiáveis e cientificamente sólidas \cite[]{toma2016revisao, brereton2007lessons}.
 
-Em contraste, a Revisão Rápida adapta o método da Revisão Sistemática para entregar evidências em prazos reduzidos e a custos menores, geralmente simplificando procedimentos como a limitação das fontes de busca, o uso de apenas um avaliador para a triagem de estudos ou a omissão de uma avaliação de qualidade detalhada \cite{pena2025comparing}. Dada a necessidade de agilidade na coleta e análise de literatura para o trabalho em questão, opta-se pela metodologia de Revisão Rápida para a condução deste estudo.
+Em contraste, a Revisão Rápida adapta o método da Revisão Sistemática para entregar evidências em prazos reduzidos e a custos menores, geralmente simplificando procedimentos como a limitação das fontes de busca, o uso de apenas um avaliador para a triagem de estudos ou a omissão de uma avaliação de qualidade detalhada \cite[]{pena2025comparing}. Dada a necessidade de agilidade na coleta e análise de literatura para o trabalho em questão, opta-se pela metodologia de Revisão Rápida para a condução deste estudo.
 
 Para garantir rigor metodológico na seleção das fontes e na construção deste trabalho, foi adotado um rigoroso protocolo de revisão baseado no modelo \ac{picoc}. Esse modelo permitiu estruturar a busca de forma sistemática, relacionando diretamente os elementos da investigação com os objetivos do trabalho. Os elementos definidos foram:
 
@@ -18,7 +18,7 @@ Para garantir rigor metodológico na seleção das fontes e na construção dest
 \end{itemize}
 
 
-Com base a adoção do modelo \ac{picoc}, foram formuladas as seguintes questões de pesquisa, que guiaram a busca e a análise da literatura, sendo executado na base de busca Scopus, conforme recomendado por alguns autores \cite{toma2016revisao, brereton2007lessons, pena2025comparing}.
+Com base a adoção do modelo \ac{picoc}, foram formuladas as seguintes questões de pesquisa, que guiaram a busca e a análise da literatura, sendo executado na base de busca Scopus, conforme recomendado por alguns autores \cite[]{toma2016revisao, brereton2007lessons, pena2025comparing}.
 
 \begin{enumerate}
  	\item Quais são as principais ferramentas open source utilizadas no desenvolvimento de pipelines de dados atualmente?
@@ -51,24 +51,24 @@ A análise da literatura selecionada, complementada pela busca ad hoc, permite r
 \subsection{Quais são as principais ferramentas open source utilizadas no desenvolvimento de pipelines de dados atualmente?}
 \label{sec:respostas:ferramentas}
 
-A revisão da literatura aponta para um ecossistema de pipelines de dados dominado por ferramentas open source, especialmente no contexto de plataformas de \textit{Big Data} e para Pequenas e Médias Empresas (PMEs) \cite{septian2019, murarka2024, mbata2024survey}. As principais ferramentas de código aberto são categorizadas de acordo com a fase do pipeline de dados em que são aplicadas:
+A revisão da literatura aponta para um ecossistema de pipelines de dados dominado por ferramentas open source, especialmente no contexto de plataformas de \textit{Big Data} e para Pequenas e Médias Empresas (PMEs) \cite[]{septian2019, murarka2024, mbata2024survey}. As principais ferramentas de código aberto são categorizadas de acordo com a fase do pipeline de dados em que são aplicadas:
 
 \begin{enumerate}
     \item \textbf{Ingestão de Dados e Filas de Mensagens:}
-    O \textbf{Apache Kafka} é amplamente reconhecido como a principal ferramenta \acs{open_source} para processamento de \textit{streams} de dados em tempo real, fornecendo escalabilidade e tolerância a falhas na ingestão de dados de alta velocidade \cite{murarka2024, mbata2024survey}. Ferramentas como \textbf{Apache Flume} e \textbf{Apache Nifi} são citadas para ingestão em lote (\textit{batch}) e em \textit{stream} de dados de diversas fontes, como \textit{logs} e sistemas baseados em eventos \cite{murarka2024}. O \textbf{RabbitMQ} também é mencionado como outra opção popular de fila de mensagens \acs{open_source} \cite{septian2019}.
+    O \textbf{Apache Kafka} é amplamente reconhecido como a principal ferramenta \acs{open_source} para processamento de \textit{streams} de dados em tempo real, fornecendo escalabilidade e tolerância a falhas na ingestão de dados de alta velocidade \cite[]{murarka2024, mbata2024survey}. Ferramentas como \textbf{Apache Flume} e \textbf{Apache Nifi} são citadas para ingestão em lote (\textit{batch}) e em \textit{stream} de dados de diversas fontes, como \textit{logs} e sistemas baseados em eventos \cite[]{murarka2024}. O \textbf{RabbitMQ} também é mencionado como outra opção popular de fila de mensagens \acs{open_source} \cite[]{septian2019}.
 
     \item \textbf{Processamento, Transformação e Orquestração (ETL/ELT):}
-    O \textbf{Apache Spark} é a ferramenta de processamento de dados mais destacada, considerada uma alternativa robusta ao tradicional MapReduce. O Spark oferece processamento em memória, acelerando drasticamente as velocidades de processamento de dados e suportando tanto o processamento em lote quanto em tempo real \cite{murarka2024, septian2019, mbata2024survey}. Para orquestração e gerenciamento de fluxo de trabalho:
+    O \textbf{Apache Spark} é a ferramenta de processamento de dados mais destacada, considerada uma alternativa robusta ao tradicional MapReduce. O Spark oferece processamento em memória, acelerando drasticamente as velocidades de processamento de dados e suportando tanto o processamento em lote quanto em tempo real \cite[]{murarka2024, septian2019, mbata2024survey}. Para orquestração e gerenciamento de fluxo de trabalho:
     \begin{itemize}
-        \item \textbf{Apache Airflow:} Utilizado para orquestração e gerenciamento de fluxo de trabalho (\textit{Workflow Management}) e \textit{pipeline} de \acs{ml} \cite{mbata2024survey}.
-        \item \textbf{Apache NiFi:} Mencionado para a criação de fluxos de trabalho ETL, ingestão e transformação de dados, além de gerenciar fluxos de dados em tempo real \cite{mbata2024survey}.
+        \item \textbf{Apache Airflow:} Utilizado para orquestração e gerenciamento de fluxo de trabalho (\textit{Workflow Management}) e \textit{pipeline} de \acs{ml} \cite[]{mbata2024survey}.
+        \item \textbf{Apache NiFi:} Mencionado para a criação de fluxos de trabalho ETL, ingestão e transformação de dados, além de gerenciar fluxos de dados em tempo real \cite[]{mbata2024survey}.
     \end{itemize}
 
     \item \textbf{Armazenamento (DL e DW):}
-    O \acs{hdfs} é citado como o componente fundamental \acs{open_source} para a construção de um \acs{dl}, permitindo o armazenamento confiável e o processamento distribuído de grandes conjuntos de dados \cite{murarka2024, septian2019}.
+    O \acs{hdfs} é citado como o componente fundamental \acs{open_source} para a construção de um \acs{dl}, permitindo o armazenamento confiável e o processamento distribuído de grandes conjuntos de dados \cite[]{murarka2024, septian2019}.
 
     \item \textbf{Visualização e BI:}
-    Produtos como \textbf{Apache Zeppelin} e \textbf{Metabase} são citados como exemplos de ferramentas de código aberto que auxiliam na visualização dos \textit{insights} e podem se conectar com sistemas como HDFS e diversos bancos de dados \cite{septian2019}.
+    Produtos como \textbf{Apache Zeppelin} e \textbf{Metabase} são citados como exemplos de ferramentas de código aberto que auxiliam na visualização dos \textit{insights} e podem se conectar com sistemas como HDFS e diversos bancos de dados \cite[]{septian2019}.
 \end{enumerate}
 
 A tabela \ref{tab:ferramentas_open_source} apresenta um resumo das principais ferramentas \acs{open_source} encontradas, categorizadas por contexto de uso, com um breve resumo e as citações correspondentes. Vale destacar que muitas dessas ferramentas podem ser utilizadas em mais de um contexto, mas na tabela elas foram categorizadas de acordo com o contexto mais comumente associado a elas na literatura revisada.
@@ -79,7 +79,7 @@ A tabela \ref{tab:ferramentas_open_source} apresenta um resumo das principais fe
 \subsection{De que forma o uso de ferramentas open source impacta a eficiência, flexibilidade e custo dos pipelines de dados?}
 \label{sec:respostas:impacto}
 
-O impacto das ferramentas \acs{open_source} nos \textit{pipelines} de dados é positivo em três dimensões críticas: custo, flexibilidade e eficiência, sendo particularmente relevante para empresas de menor porte \cite{septian2019}.
+O impacto das ferramentas \acs{open_source} nos \textit{pipelines} de dados é positivo em três dimensões críticas: custo, flexibilidade e eficiência, sendo particularmente relevante para empresas de menor porte \cite[]{septian2019}.
 
 \begin{itemize}
     \item \textbf{Custo (Custo-Benefício):} Para Pequenas e Médias Empresas (PMEs), a adoção de ferramentas \acs{open_source} é frequentemente justificada pela \textbf{redução de custos de licenciamento de software} (\textit{low cost over a software license}). O uso de produtos como Apache Hadoop, Kafka e Spark permite que as empresas iniciem seus projetos de \textit{Big Data} com um custo mínimo de licença para a implementação inicial (\textit{minimum cost over a software license for the early implementation}).
@@ -100,23 +100,23 @@ O impacto das ferramentas \acs{open_source} nos \textit{pipelines} de dados é p
 \subsection{Em quais contextos as ferramentas open source são mais vantajosas para o desenvolvimento de pipelines de dados?}
 \label{sec:respostas:contextos}
 
-As ferramentas \acs{open_source} demonstram ser vantajosas em diversos contextos, sendo o fator predominante a necessidade de escalabilidade e flexibilidade em ambientes de \textit{Big Data} e a otimização de custos em organizações com recursos limitados \cite{septian2019, murarka2024}.
+As ferramentas \acs{open_source} demonstram ser vantajosas em diversos contextos, sendo o fator predominante a necessidade de escalabilidade e flexibilidade em ambientes de \textit{Big Data} e a otimização de custos em organizações com recursos limitados \cite[]{septian2019, murarka2024}.
 
 \begin{itemize}
     \item \textbf{Contexto de \textit{Big Data} e \textit{Scalability}:}
-    A vantagem do código aberto é máxima em projetos que lidam com as características V's do \textit{Big Data} (Volume, Velocidade, Variedade) \cite{septian2019}. Ferramentas como Apache Spark e Apache Kafka são fundamentais em cenários que exigem análise imediata e baixa latência \cite{murarka2024}. O uso do Spark (processamento em memória) oferece grande vantagem sobre modelos tradicionais em lote para cenários que necessitam de agilidade e escalabilidade horizontal \cite{murarka2024}.
+    A vantagem do código aberto é máxima em projetos que lidam com as características V's do \textit{Big Data} (Volume, Velocidade, Variedade) \cite[]{septian2019}. Ferramentas como Apache Spark e Apache Kafka são fundamentais em cenários que exigem análise imediata e baixa latência \cite[]{murarka2024}. O uso do Spark (processamento em memória) oferece grande vantagem sobre modelos tradicionais em lote para cenários que necessitam de agilidade e escalabilidade horizontal \cite[]{murarka2024}.
 
     \item \textbf{Contexto de PMEs e Custo (\textit{Cost-effective}):}
-    Para pequenas e médias empresas, o código aberto é a principal via de acesso à infraestrutura de \textit{Big Data} \cite{septian2019}. A ausência de custos de licença (\textit{low cost over a software license}) permite que as PMEs experimentem e cresçam com a infraestrutura sem a barreira financeira associada a soluções proprietárias de grande escala \cite{septian2019}.
+    Para pequenas e médias empresas, o código aberto é a principal via de acesso à infraestrutura de \textit{Big Data} \cite[]{septian2019}. A ausência de custos de licença (\textit{low cost over a software license}) permite que as PMEs experimentem e cresçam com a infraestrutura sem a barreira financeira associada a soluções proprietárias de grande escala \cite[]{septian2019}.
 
     \item \textbf{Contexto de Inovação e \textit{Feature Engineering} (ML/AI):}
-    A vasta e criativa comunidade \acs{open_source} (\textit{vibrant and creative open-source ecosystem}) é o "combustível para foguetes" (\textit{rocket fuel}) para pesquisa e inovação em \textit{Machine Learning} (ML) e Inteligência Artificial (AI) \cite{reddi2021data}. Em contextos de engenharia de dados voltados para alimentar modelos de ML, a colaboração em torno de conjuntos de dados e ferramentas \acs{open_source} acelera o desenvolvimento de novos modelos e a reprodutibilidade dos resultados \cite{reddi2021data}.
+    A vasta e criativa comunidade \acs{open_source} (\textit{vibrant and creative open-source ecosystem}) é o "combustível para foguetes" (\textit{rocket fuel}) para pesquisa e inovação em \textit{Machine Learning} (ML) e Inteligência Artificial (AI) \cite[]{reddi2021data}. Em contextos de engenharia de dados voltados para alimentar modelos de ML, a colaboração em torno de conjuntos de dados e ferramentas \acs{open_source} acelera o desenvolvimento de novos modelos e a reprodutibilidade dos resultados \cite[]{reddi2021data}.
 \end{itemize}
 
 \subsection{Quais os benefícios e limitações do uso de ferramentas open source em comparação com ferramentas proprietárias no contexto da engenharia de dados?}
 \label{sec:respostas:comparacao}
 
-A comparação entre ferramentas \acs{open_source} e proprietárias é um tema central na Engenharia de Dados. A literatura fornece uma visão clara sobre os \textit{trade-offs} envolvidos, especialmente em termos de custo, suporte e complexidade operacional \cite{septian2019, nwokeji2021, murarka2024, mbata2024survey}.
+A comparação entre ferramentas \acs{open_source} e proprietárias é um tema central na Engenharia de Dados. A literatura fornece uma visão clara sobre os \textit{trade-offs} envolvidos, especialmente em termos de custo, suporte e complexidade operacional \cite[]{septian2019, nwokeji2021, murarka2024, mbata2024survey}.
 
 \subsubsection{Benefícios do \acs{open_source} em Comparação com o Proprietário}
 \begin{table}[h!]
@@ -126,10 +126,10 @@ A comparação entre ferramentas \acs{open_source} e proprietárias é um tema c
         \toprule
         \textbf{Benefício} & \textbf{Descrição} & \textbf{Fontes} \\
         \midrule
-        Custo Inicial Reduzido & Eliminação ou redução drástica dos custos de licença, o que é crucial para a implementação inicial por PMEs \cite{septian2019}. & \cite{septian2019} \\
+        Custo Inicial Reduzido & Eliminação ou redução drástica dos custos de licença, o que é crucial para a implementação inicial por PMEs \cite[]{septian2019}. & \cite[]{septian2019} \\
         \rowcolor[gray]{0.95}
-        Flexibilidade e Reutilização & Maior adaptabilidade às mudanças de requisitos e capacidade de ser reutilizada em múltiplos domínios \cite{nwokeji2021}. & \cite{nwokeji2021} \\
-        Inovação Acelerada (ML/AI) & Acesso imediato ao ecossistema global de inovação, impulsionando a pesquisa e o desenvolvimento de modelos de \textit{Machine Learning} \cite{reddi2021data}. & \cite{reddi2021data} \\
+        Flexibilidade e Reutilização & Maior adaptabilidade às mudanças de requisitos e capacidade de ser reutilizada em múltiplos domínios \cite[]{nwokeji2021}. & \cite[]{nwokeji2021} \\
+        Inovação Acelerada (ML/AI) & Acesso imediato ao ecossistema global de inovação, impulsionando a pesquisa e o desenvolvimento de modelos de \textit{Machine Learning} \cite[]{reddi2021data}. & \cite[]{reddi2021data} \\
         \bottomrule
     \end{tabular}
         \centering
@@ -146,12 +146,12 @@ A comparação entre ferramentas \acs{open_source} e proprietárias é um tema c
         \toprule
         \textbf{Limitação} & \textbf{Descrição} & \textbf{Fontes} \\
         \midrule
-        Suporte e Manutenção & O suporte tende a ser baseado na comunidade, podendo levar a uma curva de aprendizado mais íngreme e custos indiretos com a complexidade de \textit{setup} e monitoramento operacional \cite{mbata2024survey, septian2019}. & \cite{mbata2024survey, septian2019} \\
+        Suporte e Manutenção & O suporte tende a ser baseado na comunidade, podendo levar a uma curva de aprendizado mais íngreme e custos indiretos com a complexidade de \textit{setup} e monitoramento operacional \cite[]{mbata2024survey, septian2019}. & \cite[]{mbata2024survey, septian2019} \\
         \rowcolor[gray]{0.95}
-        Complexidade Operacional & A configuração e a manutenção podem ser complexas e exigir um alto nível de especialização técnica. Soluções proprietárias baseadas em nuvem oferecem serviços gerenciados, simplificando essa complexidade \cite{septian2019, murarka2024}. & \cite{septian2019, murarka2024} \\
-        Observabilidade (Reverse ETL) & O \textit{Reverse ETL} é mais difícil devido à necessidade de sincronização manual e reconciliação de dados, um desafio simplificado por ferramentas proprietárias focadas em \textit{Operational Analytics} \cite{reverseetl2022}. & \cite{reverseetl2022} \\
+        Complexidade Operacional & A configuração e a manutenção podem ser complexas e exigir um alto nível de especialização técnica. Soluções proprietárias baseadas em nuvem oferecem serviços gerenciados, simplificando essa complexidade \cite[]{septian2019, murarka2024}. & \cite[]{septian2019, murarka2024} \\
+        Observabilidade (Reverse ETL) & O \textit{Reverse ETL} é mais difícil devido à necessidade de sincronização manual e reconciliação de dados, um desafio simplificado por ferramentas proprietárias focadas em \textit{Operational Analytics} \cite[]{reverseetl2022}. & \cite[]{reverseetl2022} \\
         \rowcolor[gray]{0.95}
-        Foco na Ferramenta & Soluções \acs{open_source}, por vezes, carecem de um gerenciamento de fluxo de trabalho de ponta a ponta e componentes "prontos para usar", exigindo a combinação de várias ferramentas para obter uma solução completa \cite{mbata2024survey}. & \cite{mbata2024survey} \\
+        Foco na Ferramenta & Soluções \acs{open_source}, por vezes, carecem de um gerenciamento de fluxo de trabalho de ponta a ponta e componentes "prontos para usar", exigindo a combinação de várias ferramentas para obter uma solução completa \cite[]{mbata2024survey}. & \cite[]{mbata2024survey} \\
         \bottomrule
     \end{tabular}
         \centering

@@ -60,14 +60,16 @@
 \contentsline {subsubsection}{Painel Detalhamento por Destino}{46}{figure.caption.13}%
 \contentsline {subsubsection}{Usabilidade e Discussão Crítica}{47}{figure.caption.13}%
 \contentsline {section}{\numberline {4.5}Infraestrutura Conteinerizada com Docker}{48}{section.4.5}%
-\contentsline {chapter}{\numberline {5}Conclusão}{51}{chapter.5}%
+\contentsline {chapter}{\numberline {5}Discussão}{51}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Estimativa de Custos Operacionais}{51}{section.5.1}%
 \contentsline {subsection}{\numberline {5.1.1}Premissas da Estimativa}{51}{subsection.5.1.1}%
 \contentsline {subsection}{\numberline {5.1.2}Infraestrutura de Servidor}{52}{subsection.5.1.2}%
 \contentsline {subsection}{\numberline {5.1.3}Armazenamento}{53}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}Transferência de Dados}{53}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.4}Transferência de Dados}{54}{subsection.5.1.4}%
 \contentsline {subsection}{\numberline {5.1.5}Custo Total e Comparação com Soluções Proprietárias}{54}{subsection.5.1.5}%
 \contentsline {section}{\numberline {5.2}Análise Crítica e Lições Aprendidas}{56}{section.5.2}%
 \contentsline {subsection}{\numberline {5.2.1}Limitações de Escalabilidade das Ferramentas \acs {open_source}}{56}{subsection.5.2.1}%
 \contentsline {subsection}{\numberline {5.2.2}Síntese das Lições Aprendidas}{57}{subsection.5.2.2}%
-\contentsline {section}{Referências Bibliográficas}{58}{subsection.5.2.2}%
+\contentsline {chapter}{\numberline {6}Conclusão}{59}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Ameaças à Validade}{59}{section.6.1}%
+\contentsline {section}{Referências Bibliográficas}{60}{section.6.1}%

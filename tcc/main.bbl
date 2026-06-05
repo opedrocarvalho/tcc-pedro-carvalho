@@ -1,4 +1,4 @@
-\begin{thebibliography}{17}
+\begin{thebibliography}{18}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -43,6 +43,11 @@ Maureen Dobbins.
 Philip Heltweg and Dirk Riehle.
 \newblock A systematic analysis of problems in open collaborative data engineering.
 \newblock \emph{ACM Transactions on Social Computing}, 6\penalty0 (3-4):\penalty0 1--30, 2023.
+
+\bibitem[Ihantola and Kihn(2011)]{ihantola2011threats}
+Eeva-Mari Ihantola and Lili-Anne Kihn.
+\newblock Threats to validity and reliability in mixed methods accounting research.
+\newblock \emph{Qualitative Research in Accounting \& Management}, 8\penalty0 (1):\penalty0 39--58, 2011.
 
 \bibitem[Khder(2021)]{khder2021web}
 Moaiad~Ahmad Khder.

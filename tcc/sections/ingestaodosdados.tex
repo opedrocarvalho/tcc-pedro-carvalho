@@ -51,26 +51,26 @@ Essa experiência reforça a importância de considerar o custo operacional e os
 
 \section{Web Scraping}
 
-O \textit{Web Scraping} ou \textit{Web Crawling} refere-se ao procedimento de extração automática de dados de websites utilizando software \cite{khder2021web}. Essa técnica é fundamental em cenários onde os dados não são fornecidos em formatos facilmente legíveis por máquinas, como JSON ou XML, sendo utilizada para extrair dados estruturados a partir de texto, tipicamente em HTML \cite{khder2021web}. Em essência, o \textit{web scraping} é um método para converter dados da web não estruturados em \textbf{dados estruturados} que podem ser armazenados e analisados em um banco de dados central ou planilha \cite{khder2021web, mbata2024survey}.
+O \textit{Web Scraping} ou \textit{Web Crawling} refere-se ao procedimento de extração automática de dados de websites utilizando software \cite[]{khder2021web}. Essa técnica é fundamental em cenários onde os dados não são fornecidos em formatos facilmente legíveis por máquinas, como JSON ou XML, sendo utilizada para extrair dados estruturados a partir de texto, tipicamente em HTML \cite[]{khder2021web}. Em essência, o \textit{web scraping} é um método para converter dados da web não estruturados em \textbf{dados estruturados} que podem ser armazenados e analisados em um banco de dados central ou planilha \cite[]{khder2021web, mbata2024survey}.
 
-Essa automação é significativamente mais rápida e precisa do que a entrada manual de dados, resultando em informações mais completas, consistentes e acuradas \cite{khder2021web}.
+Essa automação é significativamente mais rápida e precisa do que a entrada manual de dados, resultando em informações mais completas, consistentes e acuradas \cite[]{khder2021web}.
 
 \subsection{Diferenciação e Propósito}
 
-Embora os termos \textit{Web Scraping} e \textit{Web Crawling} sejam frequentemente usados de forma intercambiável para descrever a extração automática de dados de websites \cite{khder2021web}, é importante notar a distinção. O processo de \textit{web scraping} geralmente envolve a criação e implementação de duas ferramentas de software principais:
+Embora os termos \textit{Web Scraping} e \textit{Web Crawling} sejam frequentemente usados de forma intercambiável para descrever a extração automática de dados de websites \cite[]{khder2021web}, é importante notar a distinção. O processo de \textit{web scraping} geralmente envolve a criação e implementação de duas ferramentas de software principais:
 \begin{enumerate}
-    \item Um \textbf{crawler} (ou \textit{spider}), que tem a função de baixar os dados da Internet de forma sistemática \cite{khder2021web, heltweg2023systematic}.
-    \item Um \textbf{scraper}, que extrai as informações cruas relevantes do dado baixado, codifica-as e armazena-as em um arquivo ou banco de dados em um formato e estrutura definidos pelo usuário \cite{khder2021web}.
+    \item Um \textbf{crawler} (ou \textit{spider}), que tem a função de baixar os dados da Internet de forma sistemática \cite[]{khder2021web, heltweg2023systematic}.
+    \item Um \textbf{scraper}, que extrai as informações cruas relevantes do dado baixado, codifica-as e armazena-as em um arquivo ou banco de dados em um formato e estrutura definidos pelo usuário \cite[]{khder2021web}.
 \end{enumerate}
 
-O processo de \textit{web scraping} (ou \textit{data acquisition}) é uma das primeiras fases em qualquer estudo ou desenvolvimento de Ciência de Dados, sendo crucial em situações como a Inteligência de Negócios (\textit{Business Intelligence}) e em análises de mercado, onde a coleta de dados é de extrema importância para a tomada de decisões estratégicas \cite{khder2021web, reddi2021data}. O uso de \textit{web scraping} tem sido largamente documentado em diversas indústrias, como:
+O processo de \textit{web scraping} (ou \textit{data acquisition}) é uma das primeiras fases em qualquer estudo ou desenvolvimento de Ciência de Dados, sendo crucial em situações como a Inteligência de Negócios (\textit{Business Intelligence}) e em análises de mercado, onde a coleta de dados é de extrema importância para a tomada de decisões estratégicas \cite[]{khder2021web, reddi2021data}. O uso de \textit{web scraping} tem sido largamente documentado em diversas indústrias, como:
 \begin{itemize}
-    \item \textbf{Comércio e Varejo:} Para coletar preços em tempo real de sites de varejistas e obter detalhes do produto \cite{khder2021web}.
-    \item \textbf{Inteligência de Negócios (\textit{Business Intelligence}):} Para rastreamento de preços, pesquisa de mercado e análise de sentimento \cite{khder2021web}.
-    \item \textbf{Ciência de Dados e Aprendizado de Máquina (\textit{Machine Learning}):} Como método para obter grandes volumes de dados necessários para treinar e avaliar modelos, inclusive em casos onde as APIs são limitadas ou inexistentes \cite{khder2021web, reddi2021data}.
+    \item \textbf{Comércio e Varejo:} Para coletar preços em tempo real de sites de varejistas e obter detalhes do produto \cite[]{khder2021web}.
+    \item \textbf{Inteligência de Negócios (\textit{Business Intelligence}):} Para rastreamento de preços, pesquisa de mercado e análise de sentimento \cite[]{khder2021web}.
+    \item \textbf{Ciência de Dados e Aprendizado de Máquina (\textit{Machine Learning}):} Como método para obter grandes volumes de dados necessários para treinar e avaliar modelos, inclusive em casos onde as APIs são limitadas ou inexistentes \cite[]{khder2021web, reddi2021data}.
 \end{itemize}
 
-Essa técnica é particularmente útil quando os dados não são acessíveis por meio de uma Interface de Programação de Aplicações (\textbf{API}) ou quando o acesso via API é limitado, pago ou restrito \cite{khder2021web}.
+Essa técnica é particularmente útil quando os dados não são acessíveis por meio de uma Interface de Programação de Aplicações (\textbf{API}) ou quando o acesso via API é limitado, pago ou restrito \cite[]{khder2021web}.
 
 \section{Ingestão dos dados}
 
@@ -174,7 +174,9 @@ Turismo\_Costanera      & raw.turismo\_costanera      & Chile       \\ \hline
 
 \subsection{Arquitetura Medallion no PostgreSQL}
 
-A organização dos dados no PostgreSQL segue a arquitetura \textit{Medallion}
+A organização dos dados no PostgreSQL segue a arquitetura \textit{
+     2-
+}
 (Bronze/Silver/Gold), um padrão amplamente adotado na ED que organiza
 as informações em camadas progressivas de qualidade e refinamento. Essa arquitetura
 foi implementada por meio de três áreas de armazenamento separadas (chamadas
