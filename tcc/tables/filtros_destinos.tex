@@ -1,0 +1,36 @@
+\small
+\renewcommand{\arraystretch}{1.2}
+
+\begin{longtable}{|p{3.5cm}|p{10cm}|}
+
+\caption{Filtros de destino aplicados nos modelos staging}
+\label{tab:staging_filtros} \\
+
+\hline
+\textbf{Modelo} & \textbf{Filtro de Destino Brasil} \\ \hline
+\endfirsthead
+
+\multicolumn{2}{c}{\textit{Continuação da Tabela \ref{tab:staging_filtros}}} \\ \hline
+\textbf{Modelo} & \textbf{Filtro de Destino Brasil} \\ \hline
+\endhead
+
+\hline
+\multicolumn{2}{r}{\textit{Continua na próxima página}} \\
+\endfoot
+
+\hline
+\endlastfoot
+
+stg\_ikarus\_tours &
+Busca pela palavra ``Brasil'' (em português/espanhol) e também por ``Brasilien'' (Brasil em alemão). Adicionalmente, identifica referências indiretas ao país por meio de termos como ``Amazon'' (Amazônia) e ``Iguazu'' (Cataratas do Iguaçu). \\ \hline
+
+stg\_journey\_latin\_america &
+Classifica registros como destino Brasil quando a URL contém padrões como \texttt{/brazil/}. Também realiza busca textual pela palavra ``Brazil'' nas descrições dos pacotes. \\ \hline
+
+stg\_transalpino &
+Aplica filtro por meio de uma CTE intermediária, mantendo apenas registros cujo campo \texttt{destino} ou a \texttt{url} contenham a palavra ``brasil'', sem diferenciação entre maiúsculas e minúsculas. \\ \hline
+
+stg\_turismo\_costanera &
+Remove registros com título vazio e mantém exclusivamente aqueles cujo campo \texttt{local} possui o valor ``Brasil'', dispensando análise textual complementar. \\
+
+\end{longtable}

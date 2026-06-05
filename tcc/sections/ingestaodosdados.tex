@@ -1,14 +1,16 @@
 \label{sec:ingestaodosdados}
 
-Para a construção do \textit{pipeline} de dados, foram mapeadas e extraídas informações de dez websites internacionais, de diferentes países, que oferecem pacotes de viagem e passagens aéreas com destino ao Brasil. Essa diversidade de fontes enriquece o conjunto de dados, permitindo uma análise comparativa mais ampla e detalhada. Contudo, essa variedade também impôs desafios significativos, especialmente em relação à multi-moeda e ao multi-idioma. A extração de dados exigiu que os scripts fossem adaptados para lidar com diferentes moedas (Euros, Libras, Dólares americanos e Dólares chilenos) e idiomas (alemão, espanhol, francês e inglês), garantindo que os dados brutos fossem coletados de forma consistente, apesar das variações. Foram desenvolvidos dez scripts para cada site escolhido: Bleu Selectour (França), Comptoir Des Voyages (França), Ikarus Tours (Alemanha), Jetmar (Uruguai), Journey Latin America (Reino Unido), Newmarket Holidays (Reino Unido), Panamericana Turismo (Chile), Sol Férias (Portugal), Transalpino (Portugal) e Turismo Costanera (Chile).
+O escopo deste trabalho foi motivado por um projeto de extensão realizado no CEFET-RJ em parceria com a Embratur, cujo objetivo era identificar os destinos brasileiros mais procurados por turistas internacionais. Durante a execução desse projeto, foi observada uma dificuldade relacionada à coleta e integração de dados provenientes de diferentes sites de agências de viagem, os quais apresentam estruturas, formatos distintos.
 
-O foco principal do trabalho é a avaliação de ferramentas de código aberto, analisando seu impacto direto na escalabilidade e no desempenho da solução. A metodologia empregada aborda os principais desafios na elaboração da arquitetura, desde a extração de dados dinâmicos até o processamento e armazenamento eficientes.
+Entretanto, este Trabalho de Conclusão de Curso não foi desenvolvido para atender às demandas da Embratur nem constitui uma continuidade direta do referido projeto de extensão. O projeto foi utilizado apenas como fonte de inspiração para a definição do problema de pesquisa, fornecendo um contexto prático para a investigação proposta. Além disso, o autor deste trabalho não participou do projeto de extensão mencionado, e a solução apresentada neste TCC foi concebida e desenvolvida de forma independente, com metodologia e escopo próprios.
 
-Em suma, este estudo de caso serve como um guia prático para a construção de soluções de dados eficientes, provando que é possível desenvolver sistemas de alta performance utilizando um ecossistema de ferramentas acessíveis e flexíveis. Além de seu caráter acadêmico e tecnológico, este trabalho também possui relevância prática, podendo servir como base para instituições como a Embratur, que dependem da coleta e análise de informações de mercado internacional para planejar estratégias de promoção turística do Brasil no exterior.
+Para a construção do \textit{pipeline} de dados, foram mapeadas e extraídas informações de dez websites internacionais, de diferentes países, que oferecem pacotes de viagem e passagens aéreas com destino ao Brasil. Essa diversidade de fontes enriquece o conjunto de dados, permitindo uma análise comparativa mais ampla e detalhada. Contudo, essa variedade também impôs desafios significativos, especialmente em relação à diferentes moedas e idiomas. A extração de dados exigiu que os scripts fossem adaptados para lidar com diferentes moedas (Euros, Libras, Dólares americanos e Dólares chilenos) e idiomas (alemão, espanhol, francês e inglês), garantindo que os dados brutos fossem coletados de forma consistente, apesar das variações. Foram desenvolvidos dez scripts para cada site escolhido: Bleu Selectour (França), Comptoir Des Voyages (França), Ikarus Tours (Alemanha), Jetmar (Uruguai), Journey Latin America (Reino Unido), Newmarket Holidays (Reino Unido), Panamericana Turismo (Chile), Sol Férias (Portugal), Transalpino (Portugal) e Turismo Costanera (Chile).
+
+O foco principal do trabalho é a avaliação de ferramentas de código aberto, analisando seu impacto direto na escalabilidade e no desempenho da solução. A metodologia empregada aborda os principais desafios na elaboração da arquitetura, desde a extração de dados dinâmicos até o processamento e armazenamento eficientes. Em suma, este estudo de caso serve como um guia prático para a construção de soluções de dados eficientes, provando que é possível desenvolver sistemas de alta \textit{performance} utilizando um ecossistema de ferramentas acessíveis e flexíveis. 
 
 \subsubsection{Tecnologias Utilizadas}
 
-O processo de construção do pipeline de dados foi integralmente desenvolvido em Python, uma linguagem de programação cuja vasta aplicabilidade em automação e no ecossistema de processamento de dados a torna uma escolha robusta para projetos de Engenharia de Dados.
+O processo de construção do pipeline de dados foi integralmente desenvolvido em Python, uma linguagem de programação cuja aplicabilidade em automação e no ecossistema de processamento de dados a torna uma escolha robusta para projetos de ED.
 
 A Figura~\ref{fig:arquitetura} apresenta a visão geral da arquitetura do pipeline desenvolvido. O fluxo de dados percorre cinco etapas: (1) extração dos dados de dez sites internacionais via Selenium e Python; (2) armazenamento dos dados brutos no DuckDB, que atua como repositório temporário (\textit{raw}); (3) transformação e padronização dos dados pelo dbt; (4) consolidação no PostgreSQL, que serve como \textit{data warehouse} analítico; e (5) visualização por meio do Apache Superset. O Apache Airflow orquestra todas as etapas de forma automatizada, e toda a infraestrutura é conteinerizada via Docker Compose, garantindo a reprodutibilidade do ambiente.
 
@@ -23,13 +25,13 @@ Para a fase crucial de aquisição e extração de conteúdo dinâmico (\textit{
 
 Uma vez extraídos, os dados brutos foram imediatamente direcionados para o \textbf{DuckDB}, que atuou como repositório temporário de alto desempenho. O DuckDB é um sistema de banco de dados relacional e analítico que se destaca por sua arquitetura embutida, ou seja, ele funciona diretamente dentro do programa que o utiliza, sem a necessidade de instalar ou manter um servidor de banco de dados separado. Essa característica simplifica a arquitetura do projeto e minimiza os custos indiretos associados à complexidade operacional e manutenção de um componente dedicado.
 
-Após a ingestão inicial, os dados brutos foram migrados para o \textbf{PostgreSQL}, um sistema de gerenciamento de banco de dados relacional open source que atua como o \textit{data warehouse} analítico do projeto. Diferentemente do DuckDB, o PostgreSQL opera no modelo cliente-servidor, o que significa que ele funciona como um serviço independente ao qual múltiplas ferramentas podem se conectar simultaneamente, uma característica essencial para a integração com as demais tecnologias do pipeline. Sua robustez, ampla conformidade com padrões SQL e mais de 35 anos de desenvolvimento ativo o consolidam como uma das soluções open source mais confiáveis para cargas analíticas.
+Após a ingestão inicial, os dados brutos foram migrados para o \textbf{PostgreSQL}, um sistema de gerenciamento de banco de dados relacional open source que atua como o DW analítico do projeto. Diferentemente do DuckDB, o PostgreSQL opera no modelo cliente-servidor, o que siganifica que ele funciona como um serviço independente ao qual múltiplas ferramentas podem se conectar simultaneamente, uma característica essencial para a integração com as demais tecnologias do pipeline. Sua robustez, ampla conformidade com padrões SQL e mais de 35 anos de desenvolvimento ativo o consolidam como uma das soluções open source mais confiáveis para cargas analíticas.
 
-Para a camada de transformação dos dados, foi adotado o \textbf{dbt} (\textit{data build tool}), uma ferramenta open source que implementa o paradigma de transformação como código (\textit{transformation as code}). Em termos práticos, isso significa que todas as regras de limpeza, padronização e reorganização dos dados são escritas em SQL, a linguagem padrão para consultas em bancos de dados, e armazenadas em arquivos versionáveis, da mesma forma que se versiona o código de um software. O dbt opera exclusivamente sobre os dados já carregados no PostgreSQL, alinhando-se à abordagem ELT discutida no Capítulo 2. Seu sistema integrado de testes automáticos e documentação agrega uma camada de qualidade e governança que seria difícil de replicar com scripts avulsos.
+Para a camada de transformação dos dados, foi adotado o \ac{dbt}, uma ferramenta open source que implementa o paradigma de transformação como código (\textit{transformation as code}). Em termos práticos, isso significa que todas as regras de limpeza, padronização e reorganização dos dados são escritas em SQL, a linguagem padrão para consultas em bancos de dados, e armazenadas em arquivos versionáveis, da mesma forma que se versiona o código de um software. O dbt opera exclusivamente sobre os dados já carregados no PostgreSQL, alinhando-se à abordagem ELT discutida no Capítulo 2. Seu sistema integrado de testes automáticos e documentação agrega uma camada de qualidade e governança que seria difícil de replicar com scripts avulsos.
 
-A orquestração de todo o pipeline, desde a execução dos scripts de web scraping até a materialização dos modelos dbt, foi confiada ao \textbf{Apache Airflow}, uma plataforma open source de gerenciamento de fluxos de trabalho. O Airflow permite a definição de pipelines como código Python, utilizando o conceito de DAGs (\textit{Directed Acyclic Graphs}), que são grafos direcionados sem ciclos nos quais cada nó representa uma tarefa a ser executada e as setas entre eles definem a ordem de execução, ou seja, qual tarefa precisa terminar antes que a próxima comece. Sua interface web oferece visibilidade completa sobre o histórico de execuções, registros detalhados de cada etapa e mecanismos automáticos de reexecução em caso de falha, garantindo a observabilidade e a resiliência do pipeline em produção.
+A orquestração de todo o pipeline, desde a execução dos scripts de web scraping até a materialização dos modelos dbt, foi confiada ao \textbf{Apache Airflow}, uma plataforma open source de gerenciamento de fluxos de trabalho. O Airflow permite a definição de pipelines como código Python, utilizando o conceito de \acs{dags}, que são grafos direcionados sem ciclos nos quais cada nó representa uma tarefa a ser executada e as setas entre eles definem a ordem de execução, ou seja, qual tarefa precisa terminar antes que a próxima comece. Sua interface web oferece visibilidade completa sobre o histórico de execuções, registros detalhados de cada etapa e mecanismos automáticos de reexecução em caso de falha, garantindo a observabilidade e a resiliência do pipeline em produção.
 
-Por fim, a disponibilização dos dados transformados para análise visual foi realizada por meio do \textbf{Apache Superset}, uma plataforma open source de \textit{Business Intelligence} que permite a criação de painéis interativos (\textit{dashboards}) e a exploração de dados via consultas SQL. O Superset conecta-se nativamente ao PostgreSQL e se posiciona como uma alternativa direta a ferramentas proprietárias como Tableau e Power BI, sem custos de licenciamento.
+Por fim, a disponibilização dos dados transformados para análise visual foi realizada por meio do \textbf{Apache Superset}, uma plataforma open source de BI que permite a criação de painéis interativos (\textit{dashboards}) e a exploração de dados via consultas SQL. O Superset conecta-se nativamente ao PostgreSQL e se posiciona como uma alternativa direta a ferramentas proprietárias como Tableau e Power BI, sem custos de licenciamento.
 
 Em paralelo, o processamento e a qualidade dos dados foram aprimorados pelo uso estratégico de bibliotecas nativas do Python. A biblioteca de expressões regulares foi essencial na etapa de transformação para identificar e extrair padrões específicos dentro de textos, como valores monetários e durações de viagem que estavam misturados em frases descritivas. Adicionalmente, bibliotecas auxiliares foram integradas ao pipeline para gerenciar a organização dos arquivos e enriquecer os dados com informações temporais (como a data e hora da coleta), garantindo a rastreabilidade e a consistência do conjunto de dados final.
 
@@ -37,11 +39,11 @@ Em paralelo, o processamento e a qualidade dos dados foram aprimorados pelo uso 
 
 Antes de iniciar a abordagem manual com o Selenium, foi explorada a possibilidade de usar ferramentas de inteligência artificial para a extração de dados. A ferramenta Browser Use, que atua como um agente de navegação autônomo, prometia uma alternativa mais intuitiva e menos dependente de seletores CSS fixos, ao permitir a automação de tarefas online em linguagem natural. Essa abordagem era perfeitamente alinhada com a premissa do trabalho, que busca soluções \acs{open_source} e flexíveis. O agente foi configurado para usar o modelo de linguagem Mistral, que rodou localmente via Ollama e foi orquestrado com a biblioteca LangChain.
 
-O Mistral 8x7B é um Grande Modelo de Linguagem (Large Language Model - LLM) notável por sua arquitetura Mixture of Experts (MoE), sendo composto por oito módulos especialistas (\textit{experts}), cada um contendo sete bilhões de parâmetros. Essa estrutura é projetada para especializar-se em diferentes tipos de tarefas e está na vanguarda da pesquisa em aprendizado multimodal, visando aprimorar a integração e o processamento de dados de texto, imagem e áudio.
+O Mistral 8x7B é um Grande Modelo de Linguagem (\ac{llm}) notável por sua arquitetura Mixture of Experts (MoE), sendo composto por oito módulos especialistas, cada um contendo sete bilhões de parâmetros. Essa estrutura é projetada para especializar-se em diferentes tipos de tarefas e está na vanguarda da pesquisa em aprendizado multimodal, visando aprimorar a integração e o processamento de dados de texto, imagem e áudio.
 
-A tentativa demonstrou que o Browser Use é funcional. O modelo conseguia interagir com as páginas e extrair informações, validando a promessa de que é possível automatizar o processo com comandos de alto nível. No entanto, essa abordagem enfrentou uma limitação técnica significativa: o processamento local do modelo de IA. A execução do Mistral via Ollama se mostrou extremamente intensiva em termos de recursos computacionais, sobrecarregando a máquina utilizada para o projeto.
+A tentativa demonstrou que o \textit{Browser Use} é funcional. O modelo conseguia interagir com as páginas e extrair informações, validando a promessa de que é possível automatizar o processo com comandos de alto nível. No entanto, essa abordagem enfrentou uma limitação técnica significativa: o processamento local do modelo de IA. A execução do Mistral via Ollama se mostrou extremamente intensiva em termos de recursos computacionais, sobrecarregando a máquina utilizada para o projeto.
 
-Os testes foram realizados em um computador DESKTOP-I0H93GR, equipado com um processador AMD Ryzen 7 4800HS with Radeon Graphics (2,90 GHz), 16 GB de memória RAM (15,4 GB utilizáveis) e sistema operacional Windows 10 de 64 bits. Apesar de possuir boas especificações para tarefas gerais de desenvolvimento, a execução local do modelo exigiu recursos acima da capacidade disponível, resultando em lentidão significativa e, em alguns casos, no desligamento completo do computador devido à alta demanda de CPU e memória RAM.
+Os testes foram realizados em um computador DESKTOP-I0H93GR, equipado com um processador \textit{AMD Ryzen 7 4800HS with Radeon Graphics} (2,90 GHz), 16 GB de memória RAM (15,4 GB utilizáveis) e sistema operacional Windows 10 de 64 bits. Apesar de possuir boas especificações para tarefas gerais de desenvolvimento, a execução local do modelo exigiu recursos acima da capacidade disponível, resultando em lentidão significativa e, em alguns casos, no desligamento completo do computador devido à alta demanda de CPU e memória RAM.
 
 Essa limitação inviabilizou a continuidade do projeto com essa arquitetura, evidenciando a necessidade de recursos computacionais mais robustos ou da adoção de uma abordagem baseada em infraestrutura em nuvem para o processamento de modelos de linguagem de grande porte.
 
@@ -92,48 +94,7 @@ A modelagem de dados de cada tabela foi desenvolvida de forma personalizada, res
 
 \subsubsection{Variações Estruturais e Padronização dos Dados}
 
-\begin{table}[H]
-\centering
-\begin{tabular}{|p{7cm}|p{7cm}|}
-\hline
-\textbf{Problema} & \textbf{Solução} \\ \hline
-
-Nível de Detalhamento: Alguns sites (ex.: Journey Latin America, Newmarket Holidays) oferecem informações mais granulares, enquanto outros (ex.: Sol Férias, Panam) apresentam estruturas simples. 
-& 
-Padronização dos campos: criação de estrutura flexível com campos opcionais para dados adicionais e campos obrigatórios para informações essenciais. \\ \hline
-
-Formato de Preços: Alguns sites exibem preços padronizados; outros misturam moeda e texto descritivo. 
-& 
-Utilização de campos de texto para armazenar valores mistos e posterior normalização via scripts de limpeza. \\ \hline
-
-Descrições e Atributos: Sites europeus apresentam descrições estruturadas (highlights, includes), enquanto sites latino-americanos usam formato livre. 
-& 
-Uso combinado de campos de texto curto e longo para suportar diferentes níveis de estruturação. \\ \hline
-
-URLs e Navegação: Variação significativa na estrutura das URLs (deep links, hashes, parâmetros complexos). 
-& 
-Criação de campo URL padronizado e tratamento posterior com scripts de análise para extração de componentes relevantes. \\ \hline
-
-Idioma e Terminologia: Termos específicos em diferentes idiomas (ex.: \textit{circuit/séjour}, \textit{rundreisen}, \textit{holidays}). 
-& 
-Preservação da terminologia original nos campos de tipo/categoria, garantindo consistência sem perda semântica. \\ \hline
-
-Controle Temporal: Necessidade de rastrear quando os dados foram coletados. 
-& 
-Inclusão de um campo de data de extração em todas as tabelas. \\ \hline
-
-Heterogeneidade de Campos: Diferenças entre tabelas quanto à presença de colunas específicas. 
-& 
-Definição mínima comum de colunas (preço, URL, data de extração) para uniformização. \\ \hline
-
-Textos de Diferentes Tamanhos: Campos variando entre descrições curtas e longas. 
-& 
-Utilização de campos de texto com tamanhos adequados a cada tipo de conteúdo. \\ \hline
-
-\end{tabular}
-\caption{Problemas e soluções observados na estrutura dos sites analisados}
-\label{tab:problemas_solucoes}
-\end{table}
+\input{tables/problemas_solucoes.tex}
 
 
 \subsection{Implementação Prática}
@@ -214,7 +175,7 @@ Turismo\_Costanera      & raw.turismo\_costanera      & Chile       \\ \hline
 \subsection{Arquitetura Medallion no PostgreSQL}
 
 A organização dos dados no PostgreSQL segue a arquitetura \textit{Medallion}
-(Bronze/Silver/Gold), um padrão amplamente adotado na engenharia de dados que organiza
+(Bronze/Silver/Gold), um padrão amplamente adotado na ED que organiza
 as informações em camadas progressivas de qualidade e refinamento. Essa arquitetura
 foi implementada por meio de três áreas de armazenamento separadas (chamadas
 \textit{schemas}), criadas automaticamente pelo script de inicialização do banco:
@@ -298,32 +259,7 @@ As transformações realizadas na camada staging incluem:
 A Tabela~\ref{tab:staging_filtros} apresenta os filtros específicos aplicados nos
 modelos de operadoras que oferecem destinos múltiplos.
 
-\begin{table}[H]
-\centering
-\begin{tabular}{|l|p{9cm}|}
-\hline
-\textbf{Modelo} & \textbf{Filtro de Destino Brasil} \\ \hline
-stg\_ikarus\_tours & Busca pela palavra ``Brasil'' (em português/espanhol) e também
-por ``Brasilien'' (que é Brasil em alemão). Isso garante que, se o anúncio for para
-turistas europeus, ele ainda seja capturado. Mesmo que o texto não diga o nome do
-país, o filtro entende que se o roteiro menciona ``Amazon'' (Amazônia) ou ``Iguazu''
-(Cataratas do Iguaçu), a viagem é, com certeza, para o Brasil. \\ \hline
-stg\_journey\_latin\_america & O sistema olha para o endereço da página. Se na URL
-aparecer algo como \texttt{/brazil/}, ele já classifica automaticamente como destino
-Brasil. Ele também faz uma varredura no texto descritivo buscando pela grafia em
-inglês: ``Brazil''. \\ \hline
-stg\_transalpino & Filtro por destino Brasil aplicado via CTE intermediária: mantém
-apenas registros onde o campo de destino (\texttt{destino}) ou a URL do pacote
-(\texttt{url}) contém a palavra ``brasil'' (sem distinção de maiúsculas/minúsculas).
-\\ \hline
-stg\_turismo\_costanera & Remoção de registros com título vazio ou em branco. Filtro
-estrito pelo campo de localização: apenas registros onde \texttt{local = 'Brasil'} são
-mantidos, garantindo exclusividade de destino sem necessidade de análise textual.
-\\ \hline
-\end{tabular}
-\caption{Filtros de destino aplicados nos modelos staging}
-\label{tab:staging_filtros}
-\end{table}
+\input{tables/filtros_destinos.tex}
 
 \subsection{Macros Reutilizáveis}
 
@@ -360,7 +296,7 @@ PostgreSQL, garantindo desempenho nas consultas realizadas pelo Superset.
 
 \subsubsection{One Big Table (OBT)}
 
-O modelo central desta camada é a chamada \textit{One Big Table} (OBT), literalmente
+O modelo central desta camada é a chamada \ac{obt}, literalmente
 ``Uma Grande Tabela''. Seu papel é unificar os dados dos dez modelos de staging em uma
 única tabela consolidada, com colunas padronizadas que incluem: data de extração, nome
 da operadora, país de origem, idioma, título do pacote, descrição, tipo, texto original
@@ -669,7 +605,7 @@ mart\_precos\_por\_operadora.
 A segunda linha apresenta a tabela \textbf{Faixa de Preços por Destino}, derivada
 do mart\_faixa\_precos\_destino, com colunas de preço mínimo, médio e máximo
 agrupadas por destino e moeda. O gráfico de barras \textbf{Duração Média por
-Destino}, que exibe a média do campo de duracao de dias para cada destino,
+Destino}, que exibe a média do campo de duração de dias para cada destino,
 excluindo registros sem duração informada.
 
 O gráfico de \textbf{visibilidade dos destinos} é o principal instrumento analítico
