@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1781295935.00477 "main.aux" "main.bbl" "main" 1781298178.39596 0
+["bibtex main"] 1781295935.00477 "main.aux" "main.bbl" "main" 1781298446.09574 0
   "./references.bib" 1781283706 8083 f922daf936f0ebfdb3685c310c1e24c1 ""
   "C:/Users/Pedro Carvalho/AppData/Local/Programs/MiKTeX/bibtex/bst/natbib/plainnat.bst" 1284455456 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "main.aux" 1781298177 35230 e719b581effd6ea99e73a3cebac52173 "pdflatex"
+  "main.aux" 1781298444 35230 e719b581effd6ea99e73a3cebac52173 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1781298168.85168 "c:/Users/Pedro Carvalho/Desktop/TCC___PEDRO_CARVALHO/tcc/main.tex" "main.pdf" "main" 1781298178.39767 0
+["pdflatex"] 1781298435.96836 "c:/Users/Pedro Carvalho/Desktop/TCC___PEDRO_CARVALHO/tcc/main.tex" "main.pdf" "main" 1781298446.09664 0
   "C:/Users/Pedro" 1753537426 19093 801e011aea34a1cf39f076bb6409f87b ""
   "C:/Users/Pedro Carvalho/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1780782175 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/Pedro Carvalho/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ectt1095.pk" 1780710124 21972 18c48c4ac5ee0129636216df0db2f93e ""
@@ -292,18 +292,18 @@
   "img/graph_dag.png" 1780710057 119336 5137800b589918a8a9db30eabc3d22e7 ""
   "img/mer_medallion.png" 1781288514 243799 d082c8e1b8043f006cc8bb6a1e3238cc ""
   "img/panorama-geral.png" 1780710057 134569 ee463c9edc2af862452e58054ca2715f ""
-  "main.aux" 1781298177 35230 e719b581effd6ea99e73a3cebac52173 "pdflatex"
+  "main.aux" 1781298444 35230 e719b581effd6ea99e73a3cebac52173 "pdflatex"
   "main.bbl" 1781295935 6918 fc9999ab9221665a0ec05d4290502217 "bibtex main"
-  "main.lof" 1781298177 1400 77d165826b73cc5aef12b163b6b7052e "pdflatex"
-  "main.out" 1781298177 14910 01305f8936f6b8f190d77c2021a73274 "pdflatex"
+  "main.lof" 1781298444 1400 77d165826b73cc5aef12b163b6b7052e "pdflatex"
+  "main.out" 1781298444 14910 01305f8936f6b8f190d77c2021a73274 "pdflatex"
   "main.tex" 1780880481 10845 7dc097ef91ebfd2780adfad1dc211b6c ""
-  "main.toc" 1781298177 7747 b3a77c21abd44badc08967c9dff32e0e "pdflatex"
+  "main.toc" 1781298444 7747 b3a77c21abd44badc08967c9dff32e0e "pdflatex"
   "sections/abstract.tex" 1780710057 2953 6458b667868e3d6cb8234099b75bc2a4 ""
   "sections/acronimos.tex" 1781289107 2585 3131a7bda2cd75f82cdeb2d4d6fa17bc ""
   "sections/conclusao.tex" 1780710057 5351 009e503d215b6028f01d01c23881d749 ""
   "sections/discussao.tex" 1780710057 22947 de96a983e6aefbd0969863a0eb010dbd ""
   "sections/fundamentação.tex" 1780710057 7987 9c4cb4e10f0acd86ba390ee38776185e ""
-  "sections/ingestaodosdados.tex" 1781298167 83685 43f4cc01978d28614671642673d2270e ""
+  "sections/ingestaodosdados.tex" 1781298434 83667 721e0fd28054f47ce40ded1cba88e2e3 ""
   "sections/intro.tex" 1780710057 13891 be19c57a713d933fb048f2b704d212d4 ""
   "sections/revisãoliteratura.tex" 1781283972 20187 3935f060de3a29e504eda73d515cc007 ""
   "tables/DSR.tex" 1780710057 2328 877cfcfd1b2c47281187831c941bf358 ""
