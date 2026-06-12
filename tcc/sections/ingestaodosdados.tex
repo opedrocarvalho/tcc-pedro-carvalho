@@ -10,6 +10,24 @@ O foco principal do trabalho é a avaliação de ferramentas de código aberto, 
 
 \subsubsection{Tecnologias Utilizadas}
 
+As ferramentas que compõem este \textit{pipeline} foram escolhidas de forma deliberada, seguindo um critério central: selecionar \textbf{uma representante de cada categoria} identificada na literatura revisada, conforme sistematizado na Tabela~\ref{tab:ferramentas_open_source} \cite{mbata2024survey}. O objetivo foi demonstrar a integração entre categorias complementares, ingestão, armazenamento analítico embutido, transformação ELT, orquestração e visualização, utilizando exclusivamente ferramentas open source.
+
+\begin{itemize}
+    \item \textbf{Selenium} (\textit{web scraping}/ingestão): Representa a categoria de aquisição de dados dinâmicos. Frente a alternativas como o \textbf{Apache NiFi}, citado na literatura para fluxos de ingestão contínua, o Selenium foi escolhido por sua capacidade de simular interações humanas em páginas com JavaScript, requisito indispensável para os dez sites monitorados. O NiFi é mais adequado a pipelines de dados estruturados e APIs; para raspagem de HTML dinâmico com autenticação visual e paginação interativa, o Selenium é a solução consolidada \cite{mbata2024survey}.
+
+    \item \textbf{DuckDB} (armazenamento analítico embutido/\textit{raw}): Representa a categoria de banco de dados embutido para análise local. Em relação ao \textbf{Pandas}, amplamente usado para manipulação tabular em memória, o DuckDB supera a limitação de carregar todos os dados na RAM, processando diretamente do disco com arquitetura colunar, crucial para médios volumes de dados. Frente ao \textbf{Apache Spark}, ideal para clusters distribuídos de \textit{petabytes}, o DuckDB é mais adequado ao escopo do projeto: não requer infraestrutura de servidores, elimina custos operacionais e integra-se nativamente ao Python \cite{gargouri2026multi}.
+
+    \item \textbf{dbt} (transformação ELT): Representa a categoria de ferramentas de transformação declarativa. Diferentemente de scripts ETL avulsos em Python ou do uso direto de stored procedures, o dbt implementa SQL versionado com testes automáticos, documentação integrada e suporte à arquitetura Medallion, alinhando-se diretamente ao paradigma ELT discutido no Capítulo~2. Foi escolhido em detrimento de alternativas como \textbf{Apache Spark} para transformações (que exigiria infraestrutura distribuída desproporcional ao volume de dados) ou \textbf{AWS Glue} (solução proprietária de nuvem) \cite{gargouri2026multi, mbata2024survey}.
+
+    \item \textbf{PostgreSQL} (\textit{data warehouse} analítico): Representa a categoria de banco relacional como destino central do pipeline. Comparado ao \textbf{MySQL}, o PostgreSQL oferece conformidade mais rigorosa com o padrão SQL, tipos de dados avançados e melhor suporte a cargas analíticas complexas com múltiplas conexões simultâneas, necessárias para que o dbt, o Airflow e o Superset operem em paralelo sobre o mesmo banco \cite{figueira2025arquitetura, gargouri2026multi}.
+
+    \item \textbf{Apache Airflow} (orquestração): Representa a categoria de orquestração e gerenciamento de fluxo de trabalho. Frente ao \textbf{Apache NiFi}, que também suporta orquestração além de ingestão, o Airflow é superior para pipelines orientados a tarefas Python com dependências complexas, pois permite definir DAGs como código, oferece interface web completa de monitoramento e é o padrão de mercado para orquestração de pipelines ELT \cite{mbata2024survey}. O NiFi é mais adequado ao fluxo contínuo de dados em tempo real; o Airflow, ao agendamento e coordenação de tarefas interdependentes. 
+
+    \item \textbf{Apache Superset} (visualização e BI): Representa a categoria de Business Intelligence. Em relação a alternativas open source como \textbf{Metabase} e \textbf{Apache Zeppelin}, o Superset oferece maior riqueza de tipos de gráfico, suporte nativo a filtros cruzados entre painéis e conexão direta via SQLAlchemy com o PostgreSQL \cite{figueira2025arquitetura, mbata2024survey}. Frente a ferramentas proprietárias como Tableau e Power BI, elimina custos de licenciamento mantendo capacidade analítica equivalente para o perfil de uso deste projeto.
+
+    \item \textbf{Docker/Docker Compose} (infraestrutura e conteinização): Representa a categoria de infraestrutura reprodutível. O Docker foi escolhido por garantir que o ambiente completo do pipeline, scrapers, banco de dados, Airflow, dbt e Superset, possa ser reproduzido em qualquer máquina com um único comando, eliminando conflitos de dependências entre os serviços \cite{figueira2025arquitetura, gargouri2026multi}.
+\end{itemize}
+
 O processo de construção do pipeline de dados foi integralmente desenvolvido em Python, uma linguagem de programação cuja aplicabilidade em automação e no ecossistema de processamento de dados a torna uma escolha robusta para projetos de ED.
 
 A Figura~\ref{fig:arquitetura} apresenta a visão geral da arquitetura do pipeline desenvolvido. O fluxo de dados percorre cinco etapas: (1) extração dos dados de dez sites internacionais via Selenium e Python; (2) armazenamento dos dados brutos no DuckDB, que atua como repositório temporário (\textit{raw}); (3) transformação e padronização dos dados pelo dbt; (4) consolidação no PostgreSQL, que serve como \textit{data warehouse} analítico; e (5) visualização por meio do Apache Superset. O Apache Airflow orquestra todas as etapas de forma automatizada, e toda a infraestrutura é conteinerizada via Docker Compose, garantindo a reprodutibilidade do ambiente.
@@ -31,7 +49,7 @@ Para a camada de transformação dos dados, foi adotado o \ac{dbt}, uma ferramen
 
 A orquestração de todo o pipeline, desde a execução dos scripts de web scraping até a materialização dos modelos dbt, foi confiada ao \textbf{Apache Airflow}, uma plataforma open source de gerenciamento de fluxos de trabalho. O Airflow permite a definição de pipelines como código Python, utilizando o conceito de \acs{dags}, que são grafos direcionados sem ciclos nos quais cada nó representa uma tarefa a ser executada e as setas entre eles definem a ordem de execução, ou seja, qual tarefa precisa terminar antes que a próxima comece. Sua interface web oferece visibilidade completa sobre o histórico de execuções, registros detalhados de cada etapa e mecanismos automáticos de reexecução em caso de falha, garantindo a observabilidade e a resiliência do pipeline em produção.
 
-Por fim, a disponibilização dos dados transformados para análise visual foi realizada por meio do \textbf{Apache Superset}, uma plataforma open source de BI que permite a criação de painéis interativos (\textit{dashboards}) e a exploração de dados via consultas SQL. O Superset conecta-se nativamente ao PostgreSQL e se posiciona como uma alternativa direta a ferramentas proprietárias como Tableau e Power BI, sem custos de licenciamento.
+Por fim, a disponibilização dos dados transformados para análise visual foi realizada por meio do \textbf{Apache Superset}, uma plataforma open source de \acs{bi} que permite a criação de painéis interativos (\textit{dashboards}) e a exploração de dados via consultas SQL. O Superset conecta-se nativamente ao PostgreSQL e se posiciona como uma alternativa direta a ferramentas proprietárias como Tableau e Power BI, sem custos de licenciamento.
 
 Em paralelo, o processamento e a qualidade dos dados foram aprimorados pelo uso estratégico de bibliotecas nativas do Python. A biblioteca de expressões regulares foi essencial na etapa de transformação para identificar e extrair padrões específicos dentro de textos, como valores monetários e durações de viagem que estavam misturados em frases descritivas. Adicionalmente, bibliotecas auxiliares foram integradas ao pipeline para gerenciar a organização dos arquivos e enriquecer os dados com informações temporais (como a data e hora da coleta), garantindo a rastreabilidade e a consistência do conjunto de dados final.
 
@@ -174,9 +192,7 @@ Turismo\_Costanera      & raw.turismo\_costanera      & Chile       \\ \hline
 
 \subsection{Arquitetura Medallion no PostgreSQL}
 
-A organização dos dados no PostgreSQL segue a arquitetura \textit{
-     2-
-}
+A organização dos dados no PostgreSQL segue a arquitetura \textit{Medallion}
 (Bronze/Silver/Gold), um padrão amplamente adotado na ED que organiza
 as informações em camadas progressivas de qualidade e refinamento. Essa arquitetura
 foi implementada por meio de três áreas de armazenamento separadas (chamadas
@@ -203,14 +219,174 @@ salvas que são recalculadas sob demanda, economizando espaço em disco), enquan
 modelos da camada marts são criados como \textit{tables} (tabelas físicas com dados
 pré-calculados, otimizando o desempenho das consultas). Uma configuração adicional
 garante que o dbt utilize os nomes das camadas exatamente como definidos, sem adicionar
-prefixos automáticos — um comportamento padrão da ferramenta que foi ajustado para
+prefixos automáticos, um comportamento padrão da ferramenta que foi ajustado para
 manter a nomenclatura organizada.
+
+
+\subsubsection{Modelo Entidade-Relacionamento da Arquitetura Medallion}
+\label{subsec:mer_medallion}
+
+Para compreender como os dados evoluem ao longo das três camadas da arquitetura
+Medallion, a Figura~\ref{fig:mer_medallion} apresenta o Modelo Entidade-Relacionamento
+(MER) completo do projeto, mapeando todas as entidades presentes nos
+\textit{schemas} \textit{raw}, \textit{staging} e \textit{marts} e os relacionamentos
+entre elas.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=0.85\textheight, keepaspectratio]{img/mer_medallion.png}
+    \caption{Modelo Entidade-Relacionamento da arquitetura Medallion do projeto}
+    \label{fig:mer_medallion}
+\end{figure}
+
+O MER evidencia que o pipeline promove uma progressão estrutural dos dados em
+três etapas bem delimitadas. A seguir, cada transição é detalhada, destacando quais
+tabelas existem em cada camada, quais colunas são adicionadas, transformadas ou
+removidas, e qual o relacionamento entre as entidades de camadas adjacentes.
+
+Na camada \textit{raw}, cada operadora possui sua própria tabela independente
+(raw.bleu\_selectour, raw.panam, raw.transalpino etc.),
+com colunas que refletem diretamente a estrutura do site de origem. As colunas
+variam entre operadoras: algumas possuem campo de url, outras não.
+Algumas armazenam preço e moeda em um único campo de texto livre como
+preco\_usd ou preco\_completo, e a duração pode estar ausente
+(Jetmar) ou embutida na descrição (Transalpino). Não há chaves estrangeiras nem
+campos padronizados entre as tabelas nesta camada, cada entidade é isolada e
+heterogênea.
+
+A transição para o \textit{staging} corresponde a uma transformação de
+um-para-um: cada tabela raw origina exatamente um modelo de
+\textit{staging} (stg\_bleu\_selectour, stg\_panam,
+stg\_transalpino etc.). Nessa transformação, as seguintes mudanças
+ocorrem nas colunas:
+
+\begin{itemize}
+    \item \textbf{Colunas adicionadas:} operadora (nome da agência como
+    literal fixo), pais\_origem, idioma e preco\_moeda
+    são incorporados como metadados de proveniência, ausentes na camada \textit{raw}.
+
+    \item \textbf{Colunas transformadas:} O campo de preço em texto livre é
+    dividido em dois: preco\_texto (valor original preservado) e
+    preco\_valor (valor numérico extraído via expressão regular e
+    convertido para o tipo NUMERIC). Da mesma forma, duracao\_texto
+    mantém o original e duracao\_dias extrai o número inteiro correspondente.
+
+    \item \textbf{Colunas renomeadas:} Campos com nomes específicos do site de
+    origem, como destino (Panam, Comptoir), titulo (Ikarus) ou
+    preco\_completo (Jetmar), são todos renomeados para titulo,
+    estabelecendo um vocabulário comum.
+
+    \item \textbf{Colunas removidas:} Campos redundantes ou desnecessários para
+    a análise são descartados nessa camada; por exemplo, o codigo e
+    id\_pacote presentes em raw.sol\_ferias são propagados apenas
+    para stg\_sol\_ferias, não para os demais modelos.
+
+    \item \textbf{Filtragem de registros:} Operadoras que cobrem múltiplos
+    destinos além do Brasil (Ikarus Tours, Journey Latin America, Transalpino
+    e Turismo Costanera) têm seus registros filtrados nesta camada, mantendo
+    apenas pacotes com destino ao Brasil.
+\end{itemize}
+
+Ao final da camada \textit{staging}, todas as dez entidades compartilham um
+conjunto mínimo de colunas padronizadas: data\_extracao,
+operadora, pais\_origem, idioma, titulo,
+descricao, tipo, preco\_texto, preco\_valor,
+preco\_moeda, duracao\_texto, duracao\_dias e
+url. Essa padronização é o pré-requisito para a unificação na camada
+seguinte.
+
+\paragraph{Da camada Staging para a camada Marts}
+
+A transição do \textit{staging} para os \textit{marts} é uma transformação de
+\textbf{muitos-para-um seguida de um-para-muitos}: os dez modelos de
+\textit{staging} são primeiro unificados em uma única entidade central, a
+obt\_pacotes (\textit{One Big Table}), que depois é consumida por
+múltiplas entidades analíticas independentes.
+
+A obt\_pacotes é construída por meio de um UNION ALL dos
+dez modelos de \textit{staging}, resultando em uma tabela com todas as linhas de
+todas as operadoras e as mesmas colunas padronizadas da camada anterior. A única
+coluna acrescentada nesta etapa é pacote\_id, uma chave surrogate gerada
+pela função MD5 sobre a concatenação de operadora, titulo e
+data\_extracao, garantindo identificação única de cada pacote mesmo após
+a unificação.
+
+A partir da obt\_pacotes, quatro entidades analíticas são derivadas,
+cada uma com um propósito e um conjunto de colunas distinto:
+
+\begin{itemize}
+    \item \textbf{fct\_pacotes}: Tabela de fatos com granularidade de
+    um registro por pacote por data de extração. Mantém as métricas quantitativas
+    (preco\_valor, preco\_moeda, duracao\_dias) e
+    substitui os campos descritivos por chaves estrangeiras: data\_key
+    referencia dim\_tempo e operadora\_key referencia
+    dim\_operadora.
+
+    \item \textbf{dim\_operadora}: Tabela de dimensão alimentada pelo
+    arquivo auxiliar operadoras.csv (\textit{seed}), e não diretamente
+    pela \texttt{obt\_pacotes}. Acrescenta colunas derivadas ausentes no
+    \textit{seed}: \texttt{idioma\_nome} (código ISO traduzido para nome por
+    extenso), \texttt{moeda\_nome} (código ISO traduzido) e \texttt{regiao\_origem}
+    (classificação Europa ou América do Sul com base no \texttt{pais\_origem}).
+
+    \item \textbf{dim\_tempo}: Tabela de dimensão temporal gerada
+    automaticamente a partir das datas distintas presentes na obt\_pacotes.
+    Decompõe cada data\_extracao em atributos temporais granulares
+    (ano,mes, dia, trimestre,
+    semana\_ano, dia\_semana\_nome, is\_fim\_de\_semana),
+    sem nenhum campo herdado diretamente da staging.
+
+    \item \textbf{dim\_destino}: Tabela de dimensão que classifica cada
+    pacote em um dos 21 destinos brasileiros identificados por meio de uma regra
+    condicional com mais de 80 variações de palavras-chave em cinco idiomas,
+    aplicada sobre o campo titulo da obt\_pacotes. Acrescenta
+    as colunas destino (resultado da classificação),
+    total\_pacotes e total\_operadoras (agregações por destino),
+    além de preco\_medio, preco\_min e preco\_max.
+\end{itemize}
+
+A Tabela~\ref{tab:mer_colunas} sintetiza as principais diferenças de colunas entre
+as três camadas para uma mesma entidade representativa, usando a operadora Panam
+como exemplo.
+
+\begin{table}[H]
+\centering
+\caption{Evolução das colunas da operadora Panam ao longo da arquitetura Medallion}
+\label{tab:mer_colunas}
+\begin{tabular}{|p{3.5cm}|p{3.5cm}|p{5.5cm}|}
+\hline
+\textbf{raw.panam} & \textbf{staging.stg\_panam} & \textbf{marts.obt\_pacotes / fct\_pacotes} \\ \hline
+data\_extracao & data\_extracao & data\_extracao \\ \hline
+destino & titulo & titulo \\ \hline
+— & operadora = \textit{'Panam'} & operadora \\ \hline
+— & pais\_origem = \textit{'Chile'} & pais\_origem \\ \hline
+— & idioma = \textit{'es'} & idioma \\ \hline
+preco\_usd & preco\_texto & preco\_texto \\ \hline
+— & preco\_valor \textit{(NUMERIC)} & preco\_valor \\ \hline
+— & preco\_moeda = \textit{'USD'} & preco\_moeda \\ \hline
+duracao & duracao\_texto & duracao\_texto \\ \hline
+— & duracao\_dias \textit{(INTEGER)} & duracao\_dias \\ \hline
+url & url & url \\ \hline
+— & — & pacote\_id \textit{(MD5 surrogate)} \\ \hline
+— & — & operadora\_key \textit{(FK → dim\_operadora)} \\ \hline
+— & — & data\_key \textit{(FK → dim\_tempo)} \\ \hline
+\end{tabular}
+\end{table}
+
+Em síntese, o MER evidencia que a arquitetura Medallion implementada não é apenas
+uma separação física de dados em \textit{schemas} distintos, mas uma evolução
+semântica progressiva: a camada \textit{raw} preserva a heterogeneidade das fontes,
+a camada \textit{staging} impõe um vocabulário comum e aplica regras de qualidade
+individualmente por operadora, e a camada \textit{marts} consolida, enriquece e
+organiza os dados em um modelo dimensional pronto para o consumo analítico.
+
+
 
 \subsection{Camada Staging: Limpeza e Padronização}
 
 Foram desenvolvidos dez modelos de staging, um para cada operadora, seguindo um padrão
 de nomenclatura que identifica claramente a fonte dos dados (por exemplo,
-\texttt{stg\_bleu\_selectour} para os dados da operadora francesa Bleu Selectour). Cada
+stg\_bleu\_selectour para os dados da operadora francesa Bleu Selectour). Cada
 modelo aplica um conjunto de transformações sobre os dados brutos, padronizando as
 colunas para um formato comum que viabiliza a unificação na camada seguinte.
 
@@ -245,10 +421,10 @@ As transformações realizadas na camada staging incluem:
     especificamente para este projeto, extrai o primeiro número encontrado no texto e o
     interpreta como a duração em dias. Quando nenhum número é encontrado, o campo
     recebe um valor vazio, evitando erros de processamento. Uma exceção é o modelo
-    \texttt{stg\_transalpino}, que utiliza uma expressão regular própria para
+    stg\_transalpino, que utiliza uma expressão regular própria para
     identificar padrões do tipo ``\textit{N Dias}'' diretamente no campo de descrição,
     em vez de aplicar a macro compartilhada. Adicionalmente, o modelo
-    \texttt{stg\_jetmar} atribui valores nulos aos campos de duração, pois o site de
+    stg\_jetmar atribui valores nulos aos campos de duração, pois o site de
     origem não disponibiliza essa informação de forma estruturada.
 
     \item \textbf{Filtragem de registros inválidos:} Cada modelo remove registros que
@@ -313,7 +489,7 @@ que podem ser inconsistentes ou inexistentes.
 
 \subsubsection{Tabela Fato: fct\_pacotes}
 
-A tabela de fatos (\texttt{fct\_pacotes}) é derivada da OBT e associa cada pacote
+A tabela de fatos (fct\_pacotes) é derivada da OBT e associa cada pacote
 turístico à sua respectiva operadora por meio de uma chave de referência. A
 granularidade — ou seja, o nível de detalhe — é de um registro por pacote por data de
 extração. Cada registro contém os valores de preço e duração como métricas
@@ -344,8 +520,8 @@ identificação de padrões sazonais.
 \subsubsection{Dimensão de Destinos: dim\_destino}
 
 A tabela de dimensão de destinos representa uma das transformações mais complexas do
-projeto. Como os dados brutos não possuem um campo estruturado de destino — a
-informação está dispersa nos títulos dos pacotes, escritos em múltiplos idiomas —
+projeto. Como os dados brutos não possuem um campo estruturado de destino, a
+informação está dispersa nos títulos dos pacotes, escritos em múltiplos idiomas,
 este modelo implementa uma estratégia de correspondência por palavras-chave em cinco
 idiomas.
 
@@ -673,7 +849,23 @@ relação a alternativas comerciais.
 
 \section{Infraestrutura Conteinerizada com Docker}
 
+A Figura~\ref{fig:c4_container} apresenta o diagrama C4 de nível de \textit{container} do sistema \textit{Pipeline Destinos Brasil}, ilustrando os oito serviços Docker e suas relações. Nesse modelo, cada retângulo representa um container independente; as setas indicam o sentido do fluxo de dados ou das chamadas de controle entre eles.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\linewidth]{img/c4_container_destinos_brasil.png}
+    \caption{Diagrama C4 de containers do sistema Pipeline Destinos Brasil}
+    \label{fig:c4_container}
+\end{figure}
+
+O fluxo principal parte do \textbf{scraper} (Python 3.11/Selenium/Chrome), que coleta dados dos dez sites de agências de viagem via HTTP/HTML e os armazena localmente no \textbf{DuckDB} (arquivo em volume compartilhado). Em seguida, o scraper exporta esses dados brutos para o \textbf{postgres} (PostgreSQL 15), que hospeda três bancos distintos: o banco analítico com as camadas \textit{raw}, \textit{staging} e \textit{marts}; o banco de metadados do Airflow; e o banco de metadados do Superset. O container \textbf{dbt} (dbt-postgres 1.8) lê os dados da camada \textit{raw}, aplica as transformações declarativas em SQL e materializa os modelos nas camadas \textit{staging} e \textit{marts} do mesmo PostgreSQL.
+
+A orchestração de todo esse fluxo é responsabilidade do \textbf{Apache Airflow 2.9} (LocalExecutor), composto por três containers: o \textbf{airflow-scheduler} (que agenda e dispara as DAGs via cron), o \textbf{airflow-webserver} (interface web de monitoramento na porta 8080) e o \textbf{airflow-init} (serviço de inicialização único que executa a migração do banco e cria o usuário administrador). O scheduler utiliza o \textbf{DockerOperator} para lançar os containers efêmeros de scraper e dbt sob demanda, esse padrão de \textit{Docker-out-of-Docker} (DooD) é viabilizado pela montagem do socket \texttt{/var/run/docker.sock} no container do Airflow, permitindo que ele controle o Docker Engine do host.
+
+Por fim, o \textbf{superset} (Apache Superset 3.1, porta 8088) conecta-se ao PostgreSQL via SQLAlchemy para consumir as tabelas da camada \textit{marts} e disponibilizar os painéis interativos ao \textbf{Analista de Dados}. O container \textbf{superset-init} é análogo ao \textit{airflow-init}: executa a configuração inicial e é encerrado automaticamente após sua conclusão. Todos os oito containers compartilham a rede Docker \texttt{pipeline\_network} (bridge), o que permite a comunicação por nome de serviço sem exposição desnecessária de portas ao exterior.
+
 Toda a infraestrutura do \textit{pipeline} foi conteinerizada utilizando o \textbf{Docker} e
+orquestrada via \textbf{Docker Compose}. do \textit{pipeline} foi conteinerizada utilizando o \textbf{Docker} e
 orquestrada via \textbf{Docker Compose}. Em termos práticos, a conteinerização significa que
 cada componente do sistema (o banco de dados, os scrapers, o dbt, o Airflow e o Superset) roda dentro de um ambiente isolado chamado \textit{container}, que empacota todas as
 dependências necessárias para o seu funcionamento. O Docker Compose é a aplicação que
@@ -731,4 +923,5 @@ maior escala, cada serviço poderia utilizar uma instância dedicada de banco de
 Essa abordagem conteinerizada garante que o \textit{pipeline} completo possa ser reproduzido
 em qualquer máquina com Docker instalado por meio do comando \textit{docker compose up},
 eliminando conflitos de dependências e reduzindo significativamente a barreira técnica para a
-validação dos resultados deste trabalho.
+validação dos resultados deste trab
+alho.

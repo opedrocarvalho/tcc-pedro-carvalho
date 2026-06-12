@@ -1,46 +1,50 @@
-This is BibTeX, Version 0.99e (TeX Live 2026/Arch Linux)
+This is BibTeX, Version 0.99e
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Reallocating 'name_of_file' (item size: 1) to 9 items.
 The style file: plainnat.bst
 Database file #1: references.bib
-You've used 18 entries,
+Warning--empty journal in figueira2025arquitetura
+You've used 22 entries,
             2773 wiz_defined-function locations,
-            704 strings with 8278 characters,
-and the built_in function-call counts, 8253 in all, are:
-= -- 728
-> -- 503
-< -- 11
-+ -- 171
-- -- 153
-* -- 645
-:= -- 1288
-add.period$ -- 66
-call.type$ -- 18
-change.case$ -- 105
-chr.to.int$ -- 18
-cite$ -- 36
-duplicate$ -- 376
-empty$ -- 679
-format.name$ -- 181
-if$ -- 1733
+            723 strings with 9093 characters,
+and the built_in function-call counts, 10059 in all, are:
+= -- 885
+> -- 612
+< -- 14
++ -- 208
+- -- 186
+* -- 784
+:= -- 1565
+add.period$ -- 78
+call.type$ -- 22
+change.case$ -- 128
+chr.to.int$ -- 22
+cite$ -- 45
+duplicate$ -- 464
+empty$ -- 827
+format.name$ -- 220
+if$ -- 2113
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 15
-newline$ -- 106
-num.names$ -- 72
-pop$ -- 221
+missing$ -- 19
+newline$ -- 126
+num.names$ -- 88
+pop$ -- 271
 preamble$ -- 1
-purify$ -- 87
+purify$ -- 106
 quote$ -- 0
-skip$ -- 282
+skip$ -- 350
 stack$ -- 0
-substring$ -- 207
-swap$ -- 30
-text.length$ -- 1
+substring$ -- 253
+swap$ -- 39
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 198
-warning$ -- 0
-while$ -- 68
+type$ -- 242
+warning$ -- 1
+while$ -- 85
 width$ -- 0
-write$ -- 252
+write$ -- 301
+(There was 1 warning)
