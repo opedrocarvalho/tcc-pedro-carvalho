@@ -1,43 +1,49 @@
 
-\begin{table}[H]
-\centering
-\begin{tabular}{|p{7cm}|p{7cm}|}
+\begin{longtable}{|p{7cm}|p{7cm}|}
+\caption{Problemas e soluções observados na estrutura dos sites analisados}
+\label{tab:problemas_solucoes} \\
 \hline
 \textbf{Problema} & \textbf{Solução} \\ \hline
+\endfirsthead
 
-Nível de Detalhamento: Alguns sites (ex.: Journey Latin America, Newmarket Holidays) oferecem informações mais granulares, enquanto outros (ex.: Sol Férias, Panam) apresentam estruturas simples. 
-& 
+\multicolumn{2}{c}{\tablename\ \thetable{} -- continuação} \\
+\hline
+\textbf{Problema} & \textbf{Solução} \\ \hline
+\endhead
+
+\hline
+\endfoot
+
+Nível de Detalhamento: Alguns sites (ex.: Journey Latin America, Newmarket Holidays) oferecem informações mais granulares, enquanto outros (ex.: Sol Férias, Panam) apresentam estruturas simples.
+&
 Padronização dos campos: criação de estrutura flexível com campos opcionais para dados adicionais e campos obrigatórios para informações essenciais. \\ \hline
 
-Formato de Preços: Alguns sites exibem preços padronizados; outros misturam moeda e texto descritivo. 
-& 
+Formato de Preços: Alguns sites exibem preços padronizados; outros misturam moeda e texto descritivo.
+&
 Utilização de campos de texto para armazenar valores mistos e posterior normalização via scripts de limpeza. \\ \hline
 
-Descrições e Atributos: Sites europeus apresentam descrições estruturadas (highlights, includes), enquanto sites latino-americanos usam formato livre. 
-& 
+Descrições e Atributos: Sites europeus apresentam descrições estruturadas (highlights, includes), enquanto sites latino-americanos usam formato livre.
+&
 Uso combinado de campos de texto curto e longo para suportar diferentes níveis de estruturação. \\ \hline
 
-URLs e Navegação: Variação significativa na estrutura das URLs (deep links, hashes, parâmetros complexos). 
-& 
+URLs e Navegação: Variação significativa na estrutura das URLs (deep links, hashes, parâmetros complexos).
+&
 Criação de campo URL padronizado e tratamento posterior com scripts de análise para extração de componentes relevantes. \\ \hline
 
-Idioma e Terminologia: Termos específicos em diferentes idiomas (ex.: \textit{circuit/séjour}, \textit{rundreisen}, \textit{holidays}). 
-& 
+Idioma e Terminologia: Termos específicos em diferentes idiomas (ex.: \textit{circuit/séjour}, \textit{rundreisen}, \textit{holidays}).
+&
 Preservação da terminologia original nos campos de tipo/categoria, garantindo consistência sem perda semântica. \\ \hline
 
-Controle Temporal: Necessidade de rastrear quando os dados foram coletados. 
-& 
+Controle Temporal: Necessidade de rastrear quando os dados foram coletados.
+&
 Inclusão de um campo de data de extração em todas as tabelas. \\ \hline
 
-Heterogeneidade de Campos: Diferenças entre tabelas quanto à presença de colunas específicas. 
-& 
+Heterogeneidade de Campos: Diferenças entre tabelas quanto à presença de colunas específicas.
+&
 Definição mínima comum de colunas (preço, URL, data de extração) para uniformização. \\ \hline
 
-Textos de Diferentes Tamanhos: Campos variando entre descrições curtas e longas. 
-& 
+Textos de Diferentes Tamanhos: Campos variando entre descrições curtas e longas.
+&
 Utilização de campos de texto com tamanhos adequados a cada tipo de conteúdo. \\ \hline
 
-\end{tabular}
-\caption{Problemas e soluções observados na estrutura dos sites analisados}
-\label{tab:problemas_solucoes}
-\end{table}
+\end{longtable}

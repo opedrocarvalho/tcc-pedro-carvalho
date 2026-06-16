@@ -5,12 +5,12 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2}{\ignorespaces Arquitetura completa do pipeline de dados}}{29}{figure.caption.6}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Modelo Entidade-Relacionamento da arquitetura Medallion do projeto}}{40}{figure.caption.9}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Estrutura visual da DAG pipeline\_destinos\_brasil na interface do Apache Airflow, exibindo o encadeamento sequencial das 16 tarefas.}}{51}{figure.caption.11}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Detalhes da execução da DAG, com status de sucesso e duração total de 19 minutos e 20 segundos.}}{52}{figure.caption.12}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Painel \textit {Panorama Geral} no Apache Superset}}{55}{figure.caption.14}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Painel \textit {Detalhamento por Destino} no Apache Superset}}{55}{figure.caption.15}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Diagrama C4 de containers do sistema Pipeline Destinos Brasil}}{59}{figure.caption.16}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Arquitetura completa do pipeline de dados}}{28}{figure.caption.6}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Modelo Entidade-Relacionamento da arquitetura Medallion do projeto}}{38}{figure.caption.8}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Estrutura visual da DAG pipeline\_destinos\_brasil na interface do Apache Airflow, exibindo o encadeamento sequencial das 16 tarefas.}}{49}{figure.caption.10}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Detalhes da execução da DAG, com status de sucesso e duração total de 19 minutos e 20 segundos.}}{49}{figure.caption.11}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Painel \textit {Panorama Geral} no Apache Superset}}{52}{figure.caption.13}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Painel \textit {Detalhamento por Destino} no Apache Superset}}{52}{figure.caption.14}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Diagrama C4 de containers do sistema Pipeline Destinos Brasil}}{56}{figure.caption.15}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
