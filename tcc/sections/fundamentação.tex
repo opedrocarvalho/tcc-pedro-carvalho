@@ -6,22 +6,11 @@ Neste capítulo, são apresentados os principais conceitos que embasam o desenvo
 \section{ETL e a Evolução das Arquiteturas de Dados}
 \label{sec:etl_evolucao}
 
-O processo de \acs{etl} consolidou-se como o componente fundamental na \acs{ed}, responsável por extrair informações de diversas fontes, transformá-las conforme necessidades analíticas e carregá-las em ambientes como \acs{dw} ou \acs{dl}. O DW é uma estrutura de banco de dados desnormalizado e centralizado, projetada para fornecer suporte à tomada de decisão estratégica por meio de análise histórica, amplamente utilizada em operações de \ac{olap} e \textit{data mining} (\cite[]{septian2019}).
+O processo de \acs{etl} consolidou-se historicamente como o componente fundamental na \acs{ed}, sendo responsável por extrair informações de diversas fontes, transformá-las conforme necessidades analíticas e carregá-las em ambientes de destino, como o \acs{dw} ou o \acs{dl} \cite{septian2019, nwokeji2021}. Enquanto o \acs{dw} atua como uma estrutura centralizada e desnormalizada, projetada para o suporte à decisão estratégica via análise histórica e operações \ac{olap}, o \acs{dl} surgiu como uma abordagem eficiente e escalável para o armazenamento de grandes volumes de dados brutos, permitindo o processamento sob demanda com suporte a ferramentas \acs{open_source}, como o \textit{Hadoop File System}, garantindo baixo custo, tolerância a falhas e a flexibilidade de esquema (\textit{schema on read}) \cite{septian2019}.
 
-Em contrapartida, o DL representa uma abordagem eficiente e escalável para o armazenamento de grandes volumes de dados brutos em diversos formatos, permitindo que o processamento ocorra sob demanda. Com suporte a ferramentas \acs{open_source}, como o Hadoop File System, os DLs oferecem vantagens como baixo custo, tolerância a falhas e flexibilidade de esquema (\textit{schema on read}).
+Essa evolução arquitetural é um reflexo direto dos desafios impostos pelo \textit{Big Data}. Segundo \cite{nwokeji2021}, o \acs{etl} evoluiu para endereçar os cinco pilares fundamentais do \textit{Big Data}, volume, variedade, velocidade, veracidade e valor. Contudo, os processos tradicionais de \acs{etl}, tipicamente confinados ao contexto de \ac{bi}, frequentemente demonstram limitações em ambientes modernos, especialmente no que tange ao custo elevado e à baixa capacidade de ingestão em tempo real \cite{nwokeji2021}. Para superar tais restrições, observou-se uma diversificação nas abordagens: \cite{boulahia2024} categorizam o \acs{etl} atual em três vertentes: o \acs{etl} tradicional para \ac{bi} (focado em dados estruturados), o \acs{etl} para \textit{Big Data} (utilizando \textit{frameworks} distribuídos como Spark para escalabilidade) e o \acs{etl} Semântico (que aplica ontologias para integrar dados heterogêneos).
 
-Essa evolução arquitetural é um reflexo direto dos desafios impostos pelo \textit{Big Data}. Segundo \cite[]{nwokeji2021}, o ETL evoluiu para lidar com os cinco principais desafios do Big Data, conhecidos como os 5Vs: volume, variedade, velocidade, veracidade e valor. No entanto, processos tradicionais de ETL, tipicamente associados ao contexto de \ac{bi}, frequentemente demonstram limitações em ambientes modernos, incluindo custo elevado e ingestão limitada em tempo real (\cite[]{nwokeji2021}).
-
-Para superar essas restrições, houve uma evolução significativa nos modelos. \cite[]{boulahia2024} categorizam o ETL em três grandes vertentes: ETL para BI (tradicional, focado em dados estruturados), ETL para \textit{Big Data} (utilizando tecnologias distribuídas como Hadoop e Spark para escalabilidade) e ETL Semântico (que utiliza ontologias para integração de dados heterogêneos).
-
-Em paralelo, a própria ordem do processamento foi redefinida. Surgiu a abordagem ELT, na qual os dados brutos são primeiramente carregados no \acs{dl} ou \acs{dw} e a transformação ocorre posteriormente, explorando o poder de processamento do próprio destino. Essa flexibilidade é crucial para o desenvolvimento de \textit{pipelines} híbridos e escaláveis.
-
-\subsubsection{Transição para ELT e o Papel do \textit{Data Wrangling}}
-\label{ssec:transicao_elt}
-
-Um desafio central que afeta a escolha é a \textbf{complexidade} do \textit{Data Wrangling} (obter, organizar, entender, extrair e formatar dados) . A complexidade e a escala do \textit{Big Data} impulsionaram a transição do modelo tradicional ETL para o \ac{elt} . No modelo ELT, a transformação ocorre após o carregamento dos dados brutos no \acs{dl}, aproveitando a capacidade de processamento distribuído da plataforma .
-
-Apesar do desafio de \textit{setup} e manutenção, o modelo \acs{open_source}, exemplificado pelo Apache Airflow, é a opção preferida por sua escalabilidade, flexibilidade e a capacidade de ser um "contêiner aberto" para diversas soluções de \textit{data wrangling} .
+Nesse cenário, a própria lógica de processamento foi redefinida, impulsionando a transição do modelo \acs{etl} para o \ac{elt}. Esta mudança é motivada em grande parte pela crescente complexidade do \textit{Data Wrangling} — o processo de obter, organizar, compreender, extrair e formatar dados. No modelo \ac{elt}, os dados brutos são primeiramente carregados no \acs{dl} ou \acs{dw}, e a transformação ocorre posteriormente, aproveitando a robusta capacidade de processamento distribuído da plataforma de destino. Esta flexibilidade é crucial para o desenvolvimento de \textit{pipelines} híbridos e escaláveis. Apesar dos desafios inerentes ao \textit{setup} e à manutenção, a adoção de ferramentas \acs{open_source}, exemplificada por plataformas como o Apache Airflow, consolidou-se como a escolha preferencial no setor. Tais ferramentas atuam como um "contêiner aberto" para diversas soluções de \textit{data wrangling}, oferecendo a escalabilidade e a agilidade necessárias para lidar com os fluxos de dados complexos que caracterizam a atual infraestrutura de dados moderna.
 
 \section{Open Source: Estratégia, Flexibilidade e Comparação}
 \label{sec:open_source}
@@ -30,14 +19,12 @@ O uso de ferramentas \acs{open_source} vem se consolidando como alternativa viá
 
 Especificamente para pequenas e médias empresas, \cite[]{septian2019} apontam que soluções baseadas em software livre oferecem alternativas de baixo custo para acessar tecnologias antes restritas a grandes corporações. Ferramentas como Apache Hadoop, Spark e Kafka são amplamente utilizadas em diversos ambientes corporativos, viabilizando a escalabilidade e a interoperabilidade entre diferentes camadas da arquitetura.
 
-A agilidade na evolução tecnológica é outro fator decisivo. \cite[]{murarka2024} destacam que a natureza colaborativa das comunidades \acs{open_source} impulsiona a inovação contínua, criando ecossistemas que evoluem rapidamente. Essa característica contrasta com o ciclo mais lento de atualização das ferramentas proprietárias.
-
 A escolha entre as abordagens, no entanto, depende do contexto organizacional. \cite[]{boulahia2024} apresentam uma análise comparativa:
 \begin{itemize}
-\item Ferramentas Proprietárias: Oferecem maior robustez, suporte técnico especializado e garantias contratuais.
+\item Ferramentas Proprietárias: Oferecem maior robustez, ou seja, a capacidade de um sistema operar de forma estável e confiável mesmo sob condições adversas ou não planejadas, suporte técnico especializado e garantias contratuais.suporte técnico especializado e garantias contratuais.
 \item Ferramentas \acs{open_source}: Destacam-se pela flexibilidade, personalização e baixo custo.
 \end{itemize}
-Desta forma, ambientes acadêmicos e empresas com foco em inovação e adaptabilidade podem beneficiar-se das soluções \acs{open_source}, enquanto grandes corporações com alta criticidade de dados e requisitos regulatórios podem ainda optar por ferramentas proprietárias (\cite[]{boulahia2024}, \cite[]{septian2019}).
+Desta forma, ambientes acadêmicos e empresas com foco em inovação e adaptabilidade podem beneficiar-se das soluções open source, enquanto grandes corporações, devido à necessidade de uma governança de dados robusta, que assegure a linhagem, a conformidade, a segurança e a qualidade das informações em conformidade com requisitos regulatórios rigorosos, podem ainda optar por ferramentas proprietárias (\cite[]{boulahia2024}, \cite[]{septian2019}).
 
 \section{Técnicas Avançadas de Ingestão e Processamento}
 \label{sec:avancos_tecnicas}

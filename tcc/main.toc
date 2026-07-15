@@ -8,7 +8,6 @@
 \contentsline {section}{\numberline {1.4} Organização do texto }{7}{section.1.4}%
 \contentsline {chapter}{\numberline {2}Fundamentação Teórica}{9}{chapter.2}%
 \contentsline {section}{\numberline {2.1}ETL e a Evolução das Arquiteturas de Dados}{9}{section.2.1}%
-\contentsline {subsubsection}{Transição para ELT e o Papel do \textit {Data Wrangling}}{10}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Open Source: Estratégia, Flexibilidade e Comparação}{10}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Técnicas Avançadas de Ingestão e Processamento}{11}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Tendências Emergentes: Reverse ETL}{11}{section.2.4}%
@@ -21,57 +20,58 @@
 \contentsline {subsection}{\numberline {3.1.4}Quais os benefícios e limitações do uso de ferramentas open source em comparação com ferramentas proprietárias no contexto da engenharia de dados?}{23}{subsection.3.1.4}%
 \contentsline {subsubsection}{Benefícios do \acs {open_source} em Comparação com o Proprietário}{23}{subsection.3.1.4}%
 \contentsline {subsubsection}{Limitações do \acs {open_source} em Comparação com o Proprietário}{24}{table.caption.4}%
-\contentsline {chapter}{\numberline {4}Construção do Pipeline}{25}{chapter.4}%
-\contentsline {subsubsection}{Tecnologias Utilizadas}{26}{chapter.4}%
-\contentsline {subsection}{\numberline {4.0.1}Tentativa com a ferramenta Browser Use (\textit {Web Scraping} com Inteligência Artificial)}{29}{subsection.4.0.1}%
-\contentsline {section}{\numberline {4.1}Web Scraping}{30}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Diferenciação e Propósito}{31}{subsection.4.1.1}%
-\contentsline {section}{\numberline {4.2}Ingestão dos dados}{31}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Limitações do Pandas e do Apache Spark}{32}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Modelagem das tabelas}{33}{subsection.4.2.2}%
-\contentsline {subsubsection}{Variações Estruturais e Padronização dos Dados}{33}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Implementação Prática}{34}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Desafios e Estratégias de Mitigação}{34}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}Formato e Armazenamento dos Dados Brutos}{35}{subsection.4.2.5}%
-\contentsline {section}{\numberline {4.3}Transformação dos Dados com dbt e PostgreSQL}{35}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Migração do DuckDB para PostgreSQL}{36}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Arquitetura Medallion no PostgreSQL}{37}{subsection.4.3.2}%
-\contentsline {subsubsection}{Modelo Entidade-Relacionamento da Arquitetura Medallion}{37}{subsection.4.3.2}%
-\contentsline {paragraph}{Da camada Staging para a camada Marts}{39}{figure.caption.8}%
-\contentsline {subsection}{\numberline {4.3.3}Camada Staging: Limpeza e Padronização}{41}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Macros Reutilizáveis}{43}{subsection.4.3.4}%
-\contentsline {subsection}{\numberline {4.3.5}Camada Marts: Consolidação e Modelagem Dimensional}{44}{subsection.4.3.5}%
-\contentsline {subsubsection}{One Big Table (OBT)}{44}{subsection.4.3.5}%
-\contentsline {subsubsection}{Tabela Fato: fct\_pacotes}{44}{subsection.4.3.5}%
-\contentsline {subsubsection}{Dimensão de Operadoras: dim\_operadora}{44}{subsection.4.3.5}%
-\contentsline {subsubsection}{Dimensão Temporal: dim\_tempo}{45}{subsection.4.3.5}%
-\contentsline {subsubsection}{Dimensão de Destinos: dim\_destino}{45}{subsection.4.3.5}%
-\contentsline {subsubsection}{Mart de Faixas de Preço por Destino: mart\_faixa\_precos\_destino}{46}{subsection.4.3.5}%
-\contentsline {subsubsection}{Mart de Preços por Operadora: mart\_precos\_por\_operadora}{46}{subsection.4.3.5}%
-\contentsline {subsection}{\numberline {4.3.6}Testes de Qualidade de Dados}{46}{subsection.4.3.6}%
-\contentsline {subsection}{\numberline {4.3.7}Arquitetura da DAG}{47}{subsection.4.3.7}%
-\contentsline {subsection}{\numberline {4.3.8}Uso do DockerOperator}{47}{subsection.4.3.8}%
-\contentsline {subsection}{\numberline {4.3.9}Configuração do Agendamento}{48}{subsection.4.3.9}%
-\contentsline {subsection}{\numberline {4.3.10}Configuração do Executor}{48}{subsection.4.3.10}%
-\contentsline {subsection}{\numberline {4.3.11}Resultados da Orquestração}{49}{subsection.4.3.11}%
-\contentsline {section}{\numberline {4.4}Visualização dos Dados com Apache Superset}{51}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Escolha e Configuração da ferramenta}{51}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Dashboards Desenvolvidos}{51}{subsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.4.3}Resultados da Visualização e Análise dos Dados}{52}{subsection.4.4.3}%
-\contentsline {subsubsection}{Painel Panorama Geral}{53}{figure.caption.14}%
-\contentsline {subsubsection}{Painel Detalhamento por Destino}{54}{figure.caption.14}%
-\contentsline {subsubsection}{Usabilidade e Discussão Crítica}{55}{figure.caption.14}%
-\contentsline {section}{\numberline {4.5}Infraestrutura Conteinerizada com Docker}{55}{section.4.5}%
-\contentsline {chapter}{\numberline {5}Discussão}{59}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Estimativa de Custos Operacionais}{59}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Premissas da Estimativa}{59}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Infraestrutura de Servidor}{60}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Armazenamento}{61}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}Transferência de Dados}{62}{subsection.5.1.4}%
-\contentsline {subsection}{\numberline {5.1.5}Custo Total e Comparação com Soluções Proprietárias}{62}{subsection.5.1.5}%
-\contentsline {section}{\numberline {5.2}Análise Crítica e Lições Aprendidas}{64}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Limitações de Escalabilidade das Ferramentas \acs {open_source}}{64}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Síntese das Lições Aprendidas}{65}{subsection.5.2.2}%
-\contentsline {chapter}{\numberline {6}Conclusão}{67}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Ameaças à Validade}{67}{section.6.1}%
-\contentsline {section}{Referências Bibliográficas}{68}{section.6.1}%
+\contentsline {chapter}{\numberline {4}Proposta de Solução e Arquitetura}{25}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Tecnologias Utilizadas}{26}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Tentativa com a ferramenta Browser Use}{29}{section.4.2}%
+\contentsline {chapter}{\numberline {5}Implementação e Análise de Resultados}{31}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Web Scraping}{31}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Diferenciação e Propósito}{31}{subsection.5.1.1}%
+\contentsline {section}{\numberline {5.2}Ingestão dos dados}{32}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Limitações do Pandas e do Apache Spark}{32}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Modelagem dos Dados}{34}{subsection.5.2.2}%
+\contentsline {subsubsection}{Variações Estruturais e Padronização dos Dados}{34}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Implementação do Pipeline}{35}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}Desafios e Estratégias de Mitigação}{35}{subsection.5.2.4}%
+\contentsline {subsection}{\numberline {5.2.5}Formato e Armazenamento dos Dados Brutos}{36}{subsection.5.2.5}%
+\contentsline {section}{\numberline {5.3}Transformação dos Dados com dbt e PostgreSQL}{36}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Migração do DuckDB para PostgreSQL}{37}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Arquitetura Medallion no PostgreSQL}{38}{subsection.5.3.2}%
+\contentsline {subsubsection}{Modelo Entidade-Relacionamento da Arquitetura Medallion}{38}{subsection.5.3.2}%
+\contentsline {paragraph}{Da camada Staging para a camada Marts}{40}{figure.caption.8}%
+\contentsline {subsection}{\numberline {5.3.3}Camada Staging: Limpeza e Padronização}{42}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Macros Reutilizáveis}{44}{subsection.5.3.4}%
+\contentsline {subsection}{\numberline {5.3.5}Camada Marts: Consolidação e Modelagem Dimensional}{45}{subsection.5.3.5}%
+\contentsline {subsubsection}{One Big Table (OBT)}{45}{subsection.5.3.5}%
+\contentsline {subsubsection}{Tabela Fato: fct\_pacotes}{45}{subsection.5.3.5}%
+\contentsline {subsubsection}{Dimensão de Operadoras: dim\_operadora}{45}{subsection.5.3.5}%
+\contentsline {subsubsection}{Dimensão Temporal: dim\_tempo}{46}{subsection.5.3.5}%
+\contentsline {subsubsection}{Dimensão de Destinos: dim\_destino}{46}{subsection.5.3.5}%
+\contentsline {subsubsection}{Mart de Faixas de Preço por Destino: mart\_faixa\_precos\_destino}{47}{subsection.5.3.5}%
+\contentsline {subsubsection}{Mart de Preços por Operadora: mart\_precos\_por\_operadora}{47}{subsection.5.3.5}%
+\contentsline {subsection}{\numberline {5.3.6}Testes de Qualidade de Dados}{47}{subsection.5.3.6}%
+\contentsline {subsection}{\numberline {5.3.7}Arquitetura da DAG}{48}{subsection.5.3.7}%
+\contentsline {subsection}{\numberline {5.3.8}Uso do DockerOperator}{48}{subsection.5.3.8}%
+\contentsline {subsection}{\numberline {5.3.9}Configuração do Agendamento}{49}{subsection.5.3.9}%
+\contentsline {subsection}{\numberline {5.3.10}Configuração do Executor}{49}{subsection.5.3.10}%
+\contentsline {subsection}{\numberline {5.3.11}Resultados da Orquestração}{50}{subsection.5.3.11}%
+\contentsline {section}{\numberline {5.4}Visualização dos Dados com Apache Superset}{52}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Escolha e Configuração da ferramenta}{52}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Dashboards Desenvolvidos}{52}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Resultados da Visualização e Análise dos Dados}{53}{subsection.5.4.3}%
+\contentsline {subsubsection}{Painel Panorama Geral}{54}{figure.caption.14}%
+\contentsline {subsubsection}{Painel Detalhamento por Destino}{55}{figure.caption.14}%
+\contentsline {subsubsection}{Usabilidade e Discussão Crítica}{56}{figure.caption.14}%
+\contentsline {section}{\numberline {5.5}Infraestrutura Conteinerizada com Docker}{56}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Discussão}{60}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Estimativa de Custos Operacionais}{60}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Premissas da Estimativa}{60}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Infraestrutura de Servidor}{61}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Armazenamento}{62}{subsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.1.4}Transferência de Dados}{63}{subsection.6.1.4}%
+\contentsline {subsection}{\numberline {6.1.5}Custo Total e Comparação com Soluções Proprietárias}{63}{subsection.6.1.5}%
+\contentsline {section}{\numberline {6.2}Análise Crítica e Lições Aprendidas}{65}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Limitações de Escalabilidade das Ferramentas \acs {open_source}}{65}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Síntese das Lições Aprendidas}{66}{subsection.6.2.2}%
+\contentsline {chapter}{\numberline {7}Conclusão}{68}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Ameaças à Validade}{68}{section.7.1}%
+\contentsline {section}{Referências Bibliográficas}{69}{section.7.1}%
